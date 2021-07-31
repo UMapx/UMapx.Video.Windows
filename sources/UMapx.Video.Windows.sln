@@ -5,12 +5,6 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMapx.Video.Windows", "UMapx.Video.Windows.csproj", "{127C4EA5-31F8-429A-AE56-157ECE7AB0E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMapx", "..\UMapx\sources\UMapx.csproj", "{36922130-5A5A-4B88-B522-41A74B03596A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMapx.Video.RealSense", "..\UMapx.Video.RealSense\sources\UMapx.Video.RealSense.csproj", "{30CCADAA-9832-4462-875A-CDF0558B0A38}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealSense.Example", "..\UMapx.Video.RealSense\example\RealSense.Example.csproj", "{C1D2D76A-0FF3-4E03-B537-AE43DE1040F2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,18 +15,6 @@ Global
 		{127C4EA5-31F8-429A-AE56-157ECE7AB0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{127C4EA5-31F8-429A-AE56-157ECE7AB0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{127C4EA5-31F8-429A-AE56-157ECE7AB0E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36922130-5A5A-4B88-B522-41A74B03596A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36922130-5A5A-4B88-B522-41A74B03596A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36922130-5A5A-4B88-B522-41A74B03596A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36922130-5A5A-4B88-B522-41A74B03596A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30CCADAA-9832-4462-875A-CDF0558B0A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30CCADAA-9832-4462-875A-CDF0558B0A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30CCADAA-9832-4462-875A-CDF0558B0A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30CCADAA-9832-4462-875A-CDF0558B0A38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1D2D76A-0FF3-4E03-B537-AE43DE1040F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1D2D76A-0FF3-4E03-B537-AE43DE1040F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1D2D76A-0FF3-4E03-B537-AE43DE1040F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1D2D76A-0FF3-4E03-B537-AE43DE1040F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,10 +25,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UMapx\sources\UMapx.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -37,6 +33,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="UMapx" Version="5.2.2.1" />
   </ItemGroup>
 
 </Project>
