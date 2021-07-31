@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMapx.Video.Windows.Example", "UMapx.Video.Windows.Example.csproj", "{9F191A96-7A10-4CE5-92E2-4ACD23FFC699}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UMapx.Video.Windows", "..\sources\UMapx.Video.Windows.csproj", "{67EDEBC6-8CC4-46AD-8FBA-F9A83881E88A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F191A96-7A10-4CE5-92E2-4ACD23FFC699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F191A96-7A10-4CE5-92E2-4ACD23FFC699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F191A96-7A10-4CE5-92E2-4ACD23FFC699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F191A96-7A10-4CE5-92E2-4ACD23FFC699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67EDEBC6-8CC4-46AD-8FBA-F9A83881E88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67EDEBC6-8CC4-46AD-8FBA-F9A83881E88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67EDEBC6-8CC4-46AD-8FBA-F9A83881E88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67EDEBC6-8CC4-46AD-8FBA-F9A83881E88A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92E9BFFB-8EC8-4CC7-901D-FD135D74BC4E}
+	EndGlobalSection
+EndGlobal
