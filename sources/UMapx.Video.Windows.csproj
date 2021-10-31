@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="UMapx" Version="5.2.2.1" />
+    <PackageReference Include="UMapx" Version="5.2.2.5" />
   </ItemGroup>
 
 </Project>
