@@ -9,7 +9,7 @@ C# interface
 using UMapx.Video.DirectShow;
 using UMapx.Video.VFW;
 ```
-To get started with **UMapx.Video.Windows** try simple [example](example).
+To get started with **UMapx.Video.Windows** try simple [example](examples).
 
 # License
 MIT
