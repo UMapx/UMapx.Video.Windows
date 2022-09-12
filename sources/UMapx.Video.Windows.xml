@@ -4712,6 +4712,26 @@
             <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
             
         </member>
+        <member name="M:UMapx.Video.VFW.Win32.memcpy(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            Copy a block of memory.
+            </summary>
+            
+            <param name="dst">Destination pointer.</param>
+            <param name="src">Source pointer.</param>
+            <param name="count">Memory block's length to copy.</param>
+            
+            <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+            
+        </member>
+        <member name="M:UMapx.Video.VFW.Win32.Add(System.IntPtr,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ptr"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIFileInit">
             <summary>
             Initialize the AVIFile library.

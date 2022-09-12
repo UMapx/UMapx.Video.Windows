@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<Version>5.2.4.5</Version>
-	<AssemblyVersion>5.2.4.5</AssemblyVersion>
-	<FileVersion>5.2.4.5</FileVersion>
+	<Version>5.2.4.6</Version>
+	<AssemblyVersion>5.2.4.6</AssemblyVersion>
+	<FileVersion>5.2.4.6</FileVersion>
     <Description>UMapx extensions for video streaming and processing on Windows.</Description>
     <Copyright>Valery Asiryan, © 2015-2022</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -17,13 +17,30 @@
     <NeutralLanguage>en</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>UMapx.Video.Windows.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>True</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>UMapx.Video.Windows.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <Optimize>True</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

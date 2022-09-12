@@ -27,6 +27,29 @@ namespace UMapx.Video.VFW
             int src,
             int count );
 
+        /// <summary>
+        /// Copy a block of memory.
+        /// </summary>
+        /// 
+        /// <param name="dst">Destination pointer.</param>
+        /// <param name="src">Source pointer.</param>
+        /// <param name="count">Memory block's length to copy.</param>
+        /// 
+        /// <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+        /// 
+        [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int memcpy(IntPtr dst, IntPtr src, int count);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ptr"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
+        public static IntPtr Add(this IntPtr ptr, int offset)
+        {
+            return new IntPtr(ptr.ToInt64() + offset);
+        }
 
         // --- Video for Windows Functions
 

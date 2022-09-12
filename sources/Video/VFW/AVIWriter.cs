@@ -278,7 +278,7 @@ namespace UMapx.Video.VFW
                     options.quality = quality;
 
                     // uncomment if video settings dialog is required to show
-                    // Win32.AVISaveOptions( stream, ref options );
+                    // Win32.AVISaveOptions(stream, ref options);
 
                     // create compressed stream
                     if ( Win32.AVIMakeCompressedStream( out streamCompressed, stream, ref options, IntPtr.Zero ) != 0 )
@@ -393,14 +393,21 @@ namespace UMapx.Video.VFW
                 int srcStride = imageData.Stride;
                 int dstStride = stride;
 
-                int src = imageData.Scan0.ToInt32( ) + srcStride * ( height - 1 );
-                int dst = buffer.ToInt32( );
+                var src = Win32.Add(imageData.Scan0, srcStride * ( height - 1 ));
+                var dst = buffer;
+
+                //int src = imageData.Scan0.ToInt32() + srcStride * (height - 1);
+                //int dst = buffer.ToInt32();
 
                 for ( int y = 0; y < height; y++ )
                 {
-                    Win32.memcpy( dst, src, dstStride );
-                    dst += dstStride;
-                    src -= srcStride;
+                    Win32.memcpy(dst, src, dstStride);
+                    dst = Win32.Add(dst, dstStride);
+                    src = Win32.Add(src, -srcStride);
+
+                    //Win32.memcpy( dst, src, dstStride );
+                    //dst += dstStride;
+                    //src -= srcStride;
                 }
 
                 // unlock bitmap data
@@ -414,5 +421,5 @@ namespace UMapx.Video.VFW
                 position++;
             }
 		}
-	}
+    }
 }

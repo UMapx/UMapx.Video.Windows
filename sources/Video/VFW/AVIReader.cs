@@ -339,14 +339,21 @@ namespace UMapx.Video.VFW
                 if ( bitmapInfoHeader.height > 0 )
                 {
                     // it`s a bottom-top image
-                    int dst = imageData.Scan0.ToInt32( ) + dstStride * ( height - 1 );
-                    int src = DIB.ToInt32( ) + Marshal.SizeOf( typeof( Win32.BITMAPINFOHEADER ) );
+                    var dst = Win32.Add(imageData.Scan0, dstStride * (height - 1));
+                    var src = Win32.Add(DIB, Marshal.SizeOf(typeof(Win32.BITMAPINFOHEADER)));
+
+                    //int dst = imageData.Scan0.ToInt32( ) + dstStride * ( height - 1 );
+                    //int src = DIB.ToInt32( ) + Marshal.SizeOf( typeof( Win32.BITMAPINFOHEADER ) );
 
                     for ( int y = 0; y < height; y++ )
                     {
-                        Win32.memcpy( dst, src, srcStride );
-                        dst -= dstStride;
-                        src += srcStride;
+                        Win32.memcpy(dst, src, dstStride);
+                        dst = Win32.Add(dst, -dstStride);
+                        src = Win32.Add(src, srcStride);
+
+                        //Win32.memcpy( dst, src, srcStride );
+                        //dst -= dstStride;
+                        //src += srcStride;
                     }
                 }
                 else
