@@ -854,6 +854,51 @@
             <returns>Return's <b>HRESULT</b> error code.</returns>
             
         </member>
+        <member name="T:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp">
+            <summary>
+            The IAMVideoProcAmp interface controls video camera settings such as brightness, contrast, hue,
+            or saturation. To obtain this interface, cast the MediaSource.
+            </summary>
+        </member>
+        <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp.GetRange(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32@,System.Int32@,System.Int32@,System.Int32@,UMapx.Video.DirectShow.VideoProcAmpFlags@)">
+             <summary>
+             Get the range and default value of a camera property.
+             </summary>
+            
+             <param name="Property">The property.</param>
+             <param name="pMin">The min value.</param>
+             <param name="pMax">The max value.</param>
+             <param name="pSteppingDelta">The step size.</param>
+             <param name="pDefault">The deafult value. </param>
+             <param name="pCapsFlags">Shows if it can be controlled automatically and/or manually.</param>
+            
+             <returns>Error code.</returns>
+            
+        </member>
+        <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp.Set(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32,UMapx.Video.DirectShow.VideoProcAmpFlags)">
+             <summary>
+             Set a specified property on the camera.
+             </summary>
+            
+             <param name="Property">The property to set.</param>
+             <param name="lValue">The new value of the property.</param>
+             <param name="Flags">The auto or manual setting.</param>
+            
+             <returns>Error code.</returns>
+            
+        </member>
+        <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp.Get(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32@,UMapx.Video.DirectShow.VideoProcAmpFlags@)">
+             <summary>
+             Get the current setting of a camera property.
+             </summary>
+            
+             <param name="Property">The property to retrieve.</param>
+             <param name="lValue">The current value of the property.</param>
+             <param name="Flags">Is it manual or automatic?</param>
+            
+             <returns>Error code.</returns>
+            
+        </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IBaseFilter">
             <summary>
             The IBaseFilter interface provides methods for controlling a filter.
@@ -4119,6 +4164,57 @@
             <exception cref="T:System.NotSupportedException">The video source does not support camera control.</exception>
             
         </member>
+        <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.SetVideoProcAmpProperty(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32,UMapx.Video.DirectShow.VideoProcAmpFlags)">
+            <summary>
+            Sets a specified property on the video signal adjustments.
+            </summary>
+            
+            <param name="property">Specifies the property to set.</param>
+            <param name="value">Specifies the new value of the property.</param>
+            <param name="controlFlags">Specifies the desired control setting.</param>
+            
+            <returns>Returns true on success or false otherwise.</returns>
+            
+            <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
+            <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
+            <exception cref="T:System.NotSupportedException">The video source does not support camera control.</exception>
+            
+        </member>
+        <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.GetVideoProcAmpProperty(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32@,UMapx.Video.DirectShow.VideoProcAmpFlags@)">
+            <summary>
+            Gets the current setting of a video signal adjustment property.
+            </summary>
+            
+            <param name="property">Specifies the property to retrieve.</param>
+            <param name="value">Receives the value of the property.</param>
+            <param name="controlFlags">Receives the value indicating whether the setting is controlled manually or automatically</param>
+            
+            <returns>Returns true on sucee or false otherwise.</returns>
+            
+            <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
+            <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
+            <exception cref="T:System.NotSupportedException">The video source does not support camera control.</exception>
+            
+        </member>
+        <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.GetVideoProcAmpRange(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32@,System.Int32@,System.Int32@,System.Int32@,UMapx.Video.DirectShow.VideoProcAmpFlags@)">
+            <summary>
+            Gets the range and default value of a specified video stream property.
+            </summary>
+            
+            <param name="property">Specifies the property to query.</param>
+            <param name="minValue">Receives the minimum value of the property.</param>
+            <param name="maxValue">Receives the maximum value of the property.</param>
+            <param name="stepSize">Receives the step size for the property.</param>
+            <param name="defaultValue">Receives the default value of the property.</param>
+            <param name="controlFlags">Receives a member of the <see cref="T:UMapx.Video.DirectShow.CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually.</param>
+            
+            <returns>Returns true on sucee or false otherwise.</returns>
+            
+            <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
+            <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
+            <exception cref="T:System.NotSupportedException">The video source does not support camera control.</exception>
+            
+        </member>
         <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.WorkerThread">
             <summary>
             Worker thread.
@@ -4164,6 +4260,101 @@
         <member name="P:UMapx.Video.DirectShow.VideoInput.Default">
             <summary>
             Default video input. Used to specify that it should not be changed.
+            </summary>
+        </member>
+        <member name="T:UMapx.Video.DirectShow.VideoProcAmpProperty">
+            <summary>
+            The enumeration specifies a setting on a video stream.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Brightness">
+            <summary>
+            Brightness control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Contrast">
+            <summary>
+            Contrast control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Hue">
+            <summary>
+            Hue control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Saturation">
+            <summary>
+            Saturation control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Sharpness">
+            <summary>
+            Sharpness control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Gamma">
+            <summary>
+            Gamma control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.ColorEnable">
+            <summary>
+            ColorEnable control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.WhiteBalance">
+            <summary>
+            WhiteBalance control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.BacklightCompensation">
+            <summary>
+            BacklightCompensation control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.Gain">
+            <summary>
+            Gain control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.DigitalMultiplier">
+            <summary>
+            amount of digital zoom to apply control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.DigitalMultiplierLimit">
+            <summary>
+            upper limit for the amount of digital zoom that can be applied control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.WhiteBalanceComponent">
+            <summary>
+            white balance setting in blue and red values control.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpProperty.PowerlineFrequency">
+            <summary>
+            local power line frequency control.
+            </summary>
+        </member>
+        <member name="T:UMapx.Video.DirectShow.VideoProcAmpFlags">
+            <summary>
+            The enumeration defines whether a setting is controlled manually or automatically.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpFlags.None">
+            <summary>
+            No control flag.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpFlags.Auto">
+            <summary>
+            Auto control Flag.
+            </summary>
+        </member>
+        <member name="F:UMapx.Video.DirectShow.VideoProcAmpFlags.Manual">
+            <summary>
+            Manual control Flag.
             </summary>
         </member>
         <member name="T:UMapx.Video.DirectShow.WindowsVideoCapabilities">
