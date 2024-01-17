@@ -255,7 +255,7 @@ namespace UMapx.Video.DirectShow.Internals
         int get_Height( out int height );
 
         /// <summary>
-        /// Specifies a parent window for the video windowþ
+        /// Specifies a parent window for the video window.
         /// </summary>
         /// 
         /// <param name="owner">Specifies a handle to the parent window.</param>
@@ -266,7 +266,7 @@ namespace UMapx.Video.DirectShow.Internals
         int put_Owner( IntPtr owner );
 
         /// <summary>
-        /// Retrieves the video window's parent window, if anyþ
+        /// Retrieves the video window's parent window, if any.
         /// </summary>
         /// 
         /// <param name="owner">Parent window's handle.</param>
@@ -369,7 +369,7 @@ namespace UMapx.Video.DirectShow.Internals
         int NotifyOwnerMessage( IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam );
 
         /// <summary>
-        /// Sets the position of the video windowþ
+        /// Sets the position of the video window.
         /// </summary>
         /// 
         /// <param name="left">Specifies the x-coordinate, in pixels.</param>

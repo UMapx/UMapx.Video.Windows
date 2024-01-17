@@ -25,7 +25,7 @@ namespace UMapx.Video.DirectShow.Internals
         int SampleCB( double sampleTime, IntPtr sample );
 
         /// <summary>
-        /// Callback method that receives a pointer to the sample bufferþ
+        /// Callback method that receives a pointer to the sample buffer.
         /// </summary>
         /// 
         /// <param name="sampleTime">Starting time of the sample, in seconds.</param>

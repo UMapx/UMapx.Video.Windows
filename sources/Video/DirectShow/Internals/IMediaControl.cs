@@ -45,7 +45,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// </summary>
         /// 
         /// <param name="timeout">Duration of the time-out, in milliseconds, or INFINITE to specify an infinite time-out.</param>
-        /// <param name="filterState">Ìariable that receives a member of the <b>FILTER_STATE</b> enumeration.</param>
+        /// <param name="filterState">Variable that receives a member of the <b>FILTER_STATE</b> enumeration.</param>
         /// 
         /// <returns>Return's <b>HRESULT</b> error code.</returns>
         /// 

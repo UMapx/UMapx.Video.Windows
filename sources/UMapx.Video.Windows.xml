@@ -1775,7 +1775,7 @@
             </summary>
             
             <param name="timeout">Duration of the time-out, in milliseconds, or INFINITE to specify an infinite time-out.</param>
-            <param name="filterState">�ariable that receives a member of the <b>FILTER_STATE</b> enumeration.</param>
+            <param name="filterState">Variable that receives a member of the <b>FILTER_STATE</b> enumeration.</param>
             
             <returns>Return's <b>HRESULT</b> error code.</returns>
             
@@ -2349,7 +2349,7 @@
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabberCB.BufferCB(System.Double,System.IntPtr,System.Int32)">
             <summary>
-            Callback method that receives a pointer to the sample buffer�
+            Callback method that receives a pointer to the sample buffer.
             </summary>
             
             <param name="sampleTime">Starting time of the sample, in seconds.</param>
@@ -2606,7 +2606,7 @@
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Owner(System.IntPtr)">
             <summary>
-            Specifies a parent window for the video window�
+            Specifies a parent window for the video window.
             </summary>
             
             <param name="owner">Specifies a handle to the parent window.</param>
@@ -2616,7 +2616,7 @@
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Owner(System.IntPtr@)">
             <summary>
-            Retrieves the video window's parent window, if any�
+            Retrieves the video window's parent window, if any.
             </summary>
             
             <param name="owner">Parent window's handle.</param>
@@ -2709,7 +2709,7 @@
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.SetWindowPosition(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Sets the position of the video window�
+            Sets the position of the video window.
             </summary>
             
             <param name="left">Specifies the x-coordinate, in pixels.</param>
@@ -5012,7 +5012,7 @@
             
             <param name="streamHandler">Handle to an open stream.</param>
             
-            <returns>Returns the number if successful or � 1 otherwise.</returns>
+            <returns>Returns the number if successful or – 1 otherwise.</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamLength(System.IntPtr)">
