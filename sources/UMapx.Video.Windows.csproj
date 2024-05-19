@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<Version>6.0.0.1</Version>
-	<AssemblyVersion>6.0.0.1</AssemblyVersion>
-	<FileVersion>6.0.0.1</FileVersion>
+	<Version>6.0.1.1</Version>
+	<AssemblyVersion>6.0.1.1</AssemblyVersion>
+	<FileVersion>6.0.1.1</FileVersion>
     <Description>UMapx extensions for video streaming and processing on Windows.</Description>
-    <Copyright>Valery Asiryan, © 2015-2023</Copyright>
+    <Copyright>Valery Asiryan, © 2015-2024</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>umapxnet.png</PackageIcon>
     <PackageIconUrl />
@@ -55,7 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="UMapx" Version="6.0.0.1" />
+    <PackageReference Include="UMapx" Version="6.0.1.1" />
   </ItemGroup>
 
 </Project>
