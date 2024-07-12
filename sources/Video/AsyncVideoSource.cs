@@ -1,5 +1,6 @@
 ﻿namespace UMapx.Video
 {
+    using System;
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.Threading;
@@ -458,5 +459,40 @@
 
             return destination;
         }
+
+        #region IDisposable
+
+        private bool _disposed;
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <inheritdoc/>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    isNewFrameAvailable?.Dispose();
+                    isProcessingThreadAvailable?.Dispose();
+                    nestedVideoSource?.Dispose();
+                    lastVideoFrame?.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+
+        /// <inheritdoc/>
+        ~AsyncVideoSource()
+        {
+            Dispose(false);
+        }
+
+        #endregion
     }
 }

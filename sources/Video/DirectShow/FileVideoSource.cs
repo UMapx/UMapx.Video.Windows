@@ -318,6 +318,7 @@ namespace UMapx.Video.DirectShow
 
             // release events
             stopEvent.Close();
+            stopEvent.Dispose();
             stopEvent = null;
         }
 
@@ -609,5 +610,37 @@ namespace UMapx.Video.DirectShow
                 return 0;
             }
         }
+
+        #region IDisposable
+
+        private bool _disposed;
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <inheritdoc/>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    stopEvent?.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+
+        /// <inheritdoc/>
+        ~FileVideoSource()
+        {
+            Dispose(false);
+        }
+
+        #endregion
     }
 }

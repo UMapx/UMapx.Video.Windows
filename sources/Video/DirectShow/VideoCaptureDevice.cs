@@ -21,14 +21,6 @@ namespace UMapx.Video.DirectShow
     ///   video size and snapshot size can be configured.</para>
     /// </remarks>
     /// 
-    /// <example>
-    /// <code source="Unit Tests\UMapx.Tests.Video\VideoCaptureDeviceTest.cs" region="doc_part_1" />
-    /// <para>
-    ///   The video_NewFrame event could have been defined as in any of the following examples:</para>
-    /// <code source="Unit Tests\UMapx.Tests.Video\VideoCaptureDeviceTest.cs" region="doc_part_2" />
-    /// <code source="Unit Tests\UMapx.Tests.Video\VideoCaptureDeviceTest.cs" region="doc_part_3" />
-    /// </example>
-    /// 
     public class VideoCaptureDevice : IVideoSource
     {
         // moniker string of video capture device
@@ -669,6 +661,7 @@ namespace UMapx.Video.DirectShow
 
             // release events
             stopEvent.Close();
+            stopEvent.Dispose();
             stopEvent = null;
         }
 
@@ -1811,7 +1804,7 @@ namespace UMapx.Video.DirectShow
                 if (parent.NewFrame != null)
                 {
                     // create new image
-                    System.Drawing.Bitmap image = new Bitmap(width, height, this.pixelFormat);
+                    Bitmap image = new Bitmap(width, height, this.pixelFormat);
 
                     // lock bitmap data
                     BitmapData imageData = image.LockBits(
@@ -1856,5 +1849,37 @@ namespace UMapx.Video.DirectShow
                 return 0;
             }
         }
+
+        #region IDisposable
+
+        private bool _disposed;
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <inheritdoc/>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    stopEvent?.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+
+        /// <inheritdoc/>
+        ~VideoCaptureDevice()
+        {
+            Dispose(false);
+        }
+
+        #endregion
     }
 }

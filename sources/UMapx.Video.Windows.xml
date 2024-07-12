@@ -229,6 +229,15 @@
             See documentation of the particular video source for additional details.</para></remarks>
             
         </member>
+        <member name="M:UMapx.Video.AsyncVideoSource.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.AsyncVideoSource.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.AsyncVideoSource.Finalize">
+            <inheritdoc/>
+        </member>
         <member name="T:UMapx.Video.DirectShow.CameraControlProperty">
             <summary>
             The enumeration specifies a setting on a camera.
@@ -504,6 +513,15 @@
             
             <param name="image">New frame's image.</param>
             
+        </member>
+        <member name="M:UMapx.Video.DirectShow.FileVideoSource.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.DirectShow.FileVideoSource.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.DirectShow.FileVideoSource.Finalize">
+            <inheritdoc/>
         </member>
         <member name="T:UMapx.Video.DirectShow.FilterInfo">
             <summary>
@@ -3695,14 +3713,6 @@
               video size and snapshot size can be configured.</para>
             </remarks>
             
-            <example>
-            <code source="Unit Tests\UMapx.Tests.Video\VideoCaptureDeviceTest.cs" region="doc_part_1" />
-            <para>
-              The video_NewFrame event could have been defined as in any of the following examples:</para>
-            <code source="Unit Tests\UMapx.Tests.Video\VideoCaptureDeviceTest.cs" region="doc_part_2" />
-            <code source="Unit Tests\UMapx.Tests.Video\VideoCaptureDeviceTest.cs" region="doc_part_3" />
-            </example>
-            
         </member>
         <member name="P:UMapx.Video.DirectShow.VideoCaptureDevice.CrossbarVideoInput">
             <summary>
@@ -4237,6 +4247,15 @@
             <param name="image">New snapshot's image.</param>
             
         </member>
+        <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.Finalize">
+            <inheritdoc/>
+        </member>
         <member name="T:UMapx.Video.DirectShow.VideoInput">
             <summary>
             Video input of a capture board.
@@ -4558,6 +4577,15 @@
             Worker thread.
             </summary>
             
+        </member>
+        <member name="M:UMapx.Video.VFW.AVIFileVideoSource.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.VFW.AVIFileVideoSource.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:UMapx.Video.VFW.AVIFileVideoSource.Finalize">
+            <inheritdoc/>
         </member>
         <member name="T:UMapx.Video.VFW.AVIReader">
             <summary>

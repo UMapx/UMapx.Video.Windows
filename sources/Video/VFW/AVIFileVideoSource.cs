@@ -303,7 +303,8 @@ namespace UMapx.Video.VFW
 			thread = null;
 
 			// release events
-			stopEvent.Close( );
+			stopEvent.Close();
+            stopEvent.Dispose();
 			stopEvent = null;
 		}
 
@@ -384,5 +385,37 @@ namespace UMapx.Video.VFW
                 PlayingFinished( this, reasonToStop );
             } 
 		}
-	}
+
+        #region IDisposable
+
+        private bool _disposed;
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <inheritdoc/>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    stopEvent?.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+
+        /// <inheritdoc/>
+        ~AVIFileVideoSource()
+        {
+            Dispose(false);
+        }
+
+        #endregion
+    }
 }

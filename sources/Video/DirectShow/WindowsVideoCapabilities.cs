@@ -113,8 +113,7 @@ namespace UMapx.Video.DirectShow
             }
             finally
             {
-                if (mediaType != null)
-                    mediaType.Dispose();
+                mediaType?.Dispose();
             }
         }
     }
