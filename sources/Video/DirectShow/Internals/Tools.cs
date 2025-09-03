@@ -12,11 +12,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Get filter's pin.
         /// </summary>
         /// 
-        /// <param name="filter">Filter to get pin of.</param>
-        /// <param name="dir">Pin's direction.</param>
-        /// <param name="num">Pin's number.</param>
+        /// <param name="filter">Filter to get pin of</param>
+        /// <param name="dir">Pin's direction</param>
+        /// <param name="num">Pin's number</param>
         /// 
-        /// <returns>Returns filter's pin.</returns>
+        /// <returns>Returns filter's pin</returns>
         /// 
         public static IPin GetPin( IBaseFilter filter, PinDirection dir, int num )
         {
@@ -60,10 +60,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Get filter's input pin.
         /// </summary>
         /// 
-        /// <param name="filter">Filter to get pin of.</param>
-        /// <param name="num">Pin's number.</param>
+        /// <param name="filter">Filter to get pin of</param>
+        /// <param name="num">Pin's number</param>
         /// 
-        /// <returns>Returns filter's pin.</returns>
+        /// <returns>Returns filter's pin</returns>
         /// 
         public static IPin GetInPin( IBaseFilter filter, int num )
         {
@@ -74,10 +74,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Get filter's output pin.
         /// </summary>
         /// 
-        /// <param name="filter">Filter to get pin of.</param>
-        /// <param name="num">Pin's number.</param>
+        /// <param name="filter">Filter to get pin of</param>
+        /// <param name="num">Pin's number</param>
         /// 
-        /// <returns>Returns filter's pin.</returns>
+        /// <returns>Returns filter's pin</returns>
         /// 
         public static IPin GetOutPin( IBaseFilter filter, int num )
         {

@@ -19,9 +19,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Returns the class identifier (CLSID) for the component object.
         /// </summary>
         /// 
-        /// <param name="ClassID">Points to the location of the CLSID on return.</param>
+        /// <param name="ClassID">Points to the location of the CLSID on return</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetClassID( [Out] out Guid ClassID );
@@ -32,7 +32,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Stops the filter.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Stop( );
@@ -41,7 +41,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Pauses the filter.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Pause( );
@@ -50,9 +50,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Runs the filter.
         /// </summary>
         /// 
-        /// <param name="start">Reference time corresponding to stream time 0.</param>
+        /// <param name="start">Reference time corresponding to stream time 0</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Run( long start );
@@ -61,10 +61,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the state of the filter (running, stopped, or paused).
         /// </summary>
         /// 
-        /// <param name="milliSecsTimeout">Time-out interval, in milliseconds.</param>
-        /// <param name="filterState">Pointer to a variable that receives filter's state.</param>
+        /// <param name="milliSecsTimeout">Time-out interval, in milliseconds</param>
+        /// <param name="filterState">Pointer to a variable that receives filter's state</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetState( int milliSecsTimeout, [Out] out int filterState );
@@ -75,7 +75,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// 
         /// <param name="clock">Pointer to the clock's <b>IReferenceClock</b> interface, or NULL. </param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetSyncSource( [In] IntPtr clock );
@@ -84,9 +84,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the current reference clock.
         /// </summary>
         /// 
-        /// <param name="clock">Address of a variable that receives a pointer to the clock's IReferenceClock interface.</param>
+        /// <param name="clock">Address of a variable that receives a pointer to the clock's IReferenceClock interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetSyncSource( [Out] out IntPtr clock );
@@ -97,9 +97,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Enumerates the pins on this filter.
         /// </summary>
         /// 
-        /// <param name="enumPins">Address of a variable that receives a pointer to the IEnumPins interface.</param>
+        /// <param name="enumPins">Address of a variable that receives a pointer to the IEnumPins interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int EnumPins( [Out] out IEnumPins enumPins );
@@ -108,10 +108,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the pin with the specified identifier.
         /// </summary>
         /// 
-        /// <param name="id">Pointer to a constant wide-character string that identifies the pin.</param>
-        /// <param name="pin">Address of a variable that receives a pointer to the pin's IPin interface.</param>
+        /// <param name="id">Pointer to a constant wide-character string that identifies the pin</param>
+        /// <param name="pin">Address of a variable that receives a pointer to the pin's IPin interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int FindPin( [In, MarshalAs( UnmanagedType.LPWStr )] string id, [Out] out IPin pin );
@@ -120,9 +120,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves information about the filter.
         /// </summary>
         /// 
-        /// <param name="filterInfo">Pointer to <b>FilterInfo</b> structure.</param>
+        /// <param name="filterInfo">Pointer to <b>FilterInfo</b> structure</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryFilterInfo( [Out] out FilterInfo filterInfo );
@@ -132,10 +132,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// </summary>
         /// 
         /// <param name="graph">Pointer to the Filter Graph Manager's <b>IFilterGraph</b> interface, or NULL
-        /// if the filter is leaving the graph.</param>
-        /// <param name="name">String that specifies a name for the filter.</param>
+        /// if the filter is leaving the graph</param>
+        /// <param name="name">String that specifies a name for the filter</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int JoinFilterGraph( [In] IFilterGraph graph, [In, MarshalAs( UnmanagedType.LPWStr )] string name );
@@ -144,9 +144,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves a string containing vendor information.
         /// </summary>
         /// 
-        /// <param name="vendorInfo">Receives a string containing the vendor information.</param>
+        /// <param name="vendorInfo">Receives a string containing the vendor information</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryVendorInfo( [Out, MarshalAs( UnmanagedType.LPWStr )] out string vendorInfo );

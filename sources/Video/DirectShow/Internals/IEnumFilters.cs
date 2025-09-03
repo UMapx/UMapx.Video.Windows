@@ -17,11 +17,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the specified number of filters in the enumeration sequence.
         /// </summary>
         /// 
-        /// <param name="cFilters">Number of filters to retrieve.</param>
-        /// <param name="filters">Array in which to place <see cref="IBaseFilter"/> interfaces.</param>
-        /// <param name="filtersFetched">Actual number of filters placed in the array.</param>
+        /// <param name="cFilters">Number of filters to retrieve</param>
+        /// <param name="filters">Array in which to place <see cref="IBaseFilter"/> interfaces</param>
+        /// <param name="filtersFetched">Actual number of filters placed in the array</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Next( [In] int cFilters,
@@ -32,9 +32,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Skips a specified number of filters in the enumeration sequence.
         /// </summary>
         /// 
-        /// <param name="cFilters">Number of filters to skip.</param>
+        /// <param name="cFilters">Number of filters to skip</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Skip( [In] int cFilters );
@@ -43,7 +43,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Resets the enumeration sequence to the beginning.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Reset( );
@@ -52,10 +52,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Makes a copy of the enumerator with the same enumeration state.
         /// </summary>
         /// 
-        /// <param name="enumFilters">Duplicate of the enumerator.</param>
+        /// <param name="enumFilters">Duplicate of the enumerator</param>
         /// 
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         /// 
         [PreserveSig]

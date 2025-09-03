@@ -164,7 +164,7 @@ namespace UMapx.Video.VFW
         /// Initializes a new instance of the <see cref="AVIWriter"/> class.
         /// </summary>
         /// 
-        /// <param name="codec">Codec to use for compression.</param>
+        /// <param name="codec">Codec to use for compression</param>
         /// 
         /// <remarks>Initializes Video for Windows library.</remarks>
         /// 
@@ -200,7 +200,7 @@ namespace UMapx.Video.VFW
         /// Dispose the object.
         /// </summary>
         /// 
-        /// <param name="disposing">Indicates if disposing was initiated manually.</param>
+        /// <param name="disposing">Indicates if disposing was initiated manually</param>
         /// 
         protected virtual void Dispose( bool disposing )
 		{
@@ -217,9 +217,9 @@ namespace UMapx.Video.VFW
         /// Create new AVI file and open it for writing.
         /// </summary>
         /// 
-        /// <param name="fileName">AVI file name to create.</param>
-        /// <param name="width">Video width.</param>
-        /// <param name="height">Video height.</param>
+        /// <param name="fileName">AVI file name to create</param>
+        /// <param name="width">Video width</param>
+        /// <param name="height">Video height</param>
         /// 
         /// <remarks><para>The method opens (creates) a video files, configure video codec and prepares
         /// the stream for saving video frames with a help of <see cref="AddFrame"/> method.</para></remarks>
@@ -362,7 +362,7 @@ namespace UMapx.Video.VFW
         /// Add new frame to the AVI file.
         /// </summary>
         /// 
-        /// <param name="frameImage">New frame image.</param>
+        /// <param name="frameImage">New frame image</param>
         /// 
         /// <remarks><para>The method adds new video frame to an opened video file. The width and heights
         /// of the frame should be the same as it was specified in <see cref="Open"/> method

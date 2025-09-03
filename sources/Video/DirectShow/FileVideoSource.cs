@@ -215,7 +215,7 @@ namespace UMapx.Video.DirectShow
         /// Initializes a new instance of the <see cref="FileVideoSource"/> class.
         /// </summary>
         /// 
-        /// <param name="fileName">Video file name.</param>
+        /// <param name="fileName">Video file name</param>
         /// 
         public FileVideoSource(string fileName)
         {
@@ -522,7 +522,7 @@ namespace UMapx.Video.DirectShow
         /// Notifies client about new frame.
         /// </summary>
         /// 
-        /// <param name="image">New frame's image.</param>
+        /// <param name="image">New frame's image</param>
         /// 
         protected void OnNewFrame(Bitmap image)
         {

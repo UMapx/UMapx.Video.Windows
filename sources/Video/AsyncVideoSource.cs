@@ -236,7 +236,7 @@
         /// Initializes a new instance of the <see cref="AsyncVideoSource"/> class.
         /// </summary>
         /// 
-        /// <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing.</param>
+        /// <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing</param>
         /// 
         public AsyncVideoSource(IVideoSource nestedVideoSource)
         {
@@ -247,9 +247,9 @@
         /// Initializes a new instance of the <see cref="AsyncVideoSource"/> class.
         /// </summary>
         /// 
-        /// <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing.</param>
+        /// <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing</param>
         /// <param name="skipFramesIfBusy">Specifies if the object should skip frames from the nested video source
-        /// in the case if it is still busy processing the previous video frame.</param>
+        /// in the case if it is still busy processing the previous video frame</param>
         /// 
         public AsyncVideoSource(IVideoSource nestedVideoSource, bool skipFramesIfBusy)
         {

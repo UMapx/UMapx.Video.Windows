@@ -15,10 +15,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the number of input and output pins on the crossbar filter.
         /// </summary>
         /// 
-        /// <param name="outputPinCount">Variable that receives the number of output pins.</param>
-        /// <param name="inputPinCount">Variable that receives the number of input pins.</param>
+        /// <param name="outputPinCount">Variable that receives the number of output pins</param>
+        /// <param name="inputPinCount">Variable that receives the number of input pins</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int get_PinCounts( [Out] out int outputPinCount, [Out] out int inputPinCount );
@@ -27,10 +27,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Queries whether a specified input pin can be routed to a specified output pin.
         /// </summary>
         /// 
-        /// <param name="outputPinIndex">Specifies the index of the output pin.</param>
-        /// <param name="inputPinIndex">Specifies the index of input pin.</param>
+        /// <param name="outputPinIndex">Specifies the index of the output pin</param>
+        /// <param name="inputPinIndex">Specifies the index of input pin</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int CanRoute( [In] int outputPinIndex, [In] int inputPinIndex );
@@ -39,10 +39,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Routes an input pin to an output pin.
         /// </summary>
         /// 
-        /// <param name="outputPinIndex">Specifies the index of the output pin.</param>
-        /// <param name="inputPinIndex">Specifies the index of the input pin.</param>
+        /// <param name="outputPinIndex">Specifies the index of the output pin</param>
+        /// <param name="inputPinIndex">Specifies the index of the input pin</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Route( [In] int outputPinIndex, [In] int inputPinIndex );
@@ -51,10 +51,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the input pin that is currently routed to the specified output pin.
         /// </summary>
         /// 
-        /// <param name="outputPinIndex">Specifies the index of the output pin.</param>
-        /// <param name="inputPinIndex">Variable that receives the index of the input pin, or -1 if no input pin is routed to this output pin.</param>
+        /// <param name="outputPinIndex">Specifies the index of the output pin</param>
+        /// <param name="inputPinIndex">Variable that receives the index of the input pin, or -1 if no input pin is routed to this output pin</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int get_IsRoutedTo( [In] int outputPinIndex, [Out] out int inputPinIndex );
@@ -63,12 +63,12 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves information about a specified pin.
         /// </summary>
         /// 
-        /// <param name="isInputPin">Specifies the direction of the pin. Use one of the following values.</param>
-        /// <param name="pinIndex">Specifies the index of the pin.</param>
-        /// <param name="pinIndexRelated">Variable that receives the index of the related pin, or –1 if no pin is related to this pin.</param>
-        /// <param name="physicalType">Variable that receives a member of the PhysicalConnectorType enumeration, indicating the pin's physical type.</param>
+        /// <param name="isInputPin">Specifies the direction of the pin. Use one of the following values</param>
+        /// <param name="pinIndex">Specifies the index of the pin</param>
+        /// <param name="pinIndexRelated">Variable that receives the index of the related pin, or –1 if no pin is related to this pin</param>
+        /// <param name="physicalType">Variable that receives a member of the PhysicalConnectorType enumeration, indicating the pin's physical type</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int get_CrossbarPinInfo(

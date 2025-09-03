@@ -26,7 +26,7 @@ namespace UMapx.Video.DirectShow
         /// Initializes a new instance of the <see cref="FilterInfo"/> class.
         /// </summary>
         /// 
-        /// <param name="monikerString">Filters's moniker string.</param>
+        /// <param name="monikerString">Filters's moniker string</param>
         /// 
         public FilterInfo(string monikerString)
         {
@@ -38,7 +38,7 @@ namespace UMapx.Video.DirectShow
         /// Initializes a new instance of the <see cref="FilterInfo"/> class.
         /// </summary>
         /// 
-        /// <param name="moniker">Filter's moniker object.</param>
+        /// <param name="moniker">Filter's moniker object</param>
         /// 
         internal FilterInfo(IMoniker moniker)
         {
@@ -50,9 +50,9 @@ namespace UMapx.Video.DirectShow
         /// Compare the object with another instance of this class.
         /// </summary>
         /// 
-        /// <param name="value">Object to compare with.</param>
+        /// <param name="value">Object to compare with</param>
         /// 
-        /// <returns>A signed number indicating the relative values of this instance and <b>value</b>.</returns>
+        /// <returns>A signed number indicating the relative values of this instance and <b>value</b></returns>
         /// 
         public int CompareTo(object value)
         {
@@ -68,9 +68,9 @@ namespace UMapx.Video.DirectShow
         /// Create an instance of the filter.
         /// </summary>
         /// 
-        /// <param name="filterMoniker">Filter's moniker string.</param>
+        /// <param name="filterMoniker">Filter's moniker string</param>
         /// 
-        /// <returns>Returns filter's object, which implements <b>IBaseFilter</b> interface.</returns>
+        /// <returns>Returns filter's object, which implements <b>IBaseFilter</b> interface</returns>
         /// 
         /// <remarks>The returned filter's object should be released using <b>Marshal.ReleaseComObject()</b>.</remarks>
         /// 
@@ -105,7 +105,7 @@ namespace UMapx.Video.DirectShow
         ///   Gets the supported property pages for the filter, if any.
         /// </summary>
         /// 
-        /// <param name="filterMoniker">The filter moniker.</param>
+        /// <param name="filterMoniker">The filter moniker</param>
         /// 
         public static Guid[] GetPropertyPages(string filterMoniker)
         {
@@ -207,7 +207,7 @@ namespace UMapx.Video.DirectShow
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        /// <returns>A <see cref="System.String" /> that represents this instance</returns>
         public override string ToString()
         {
             return String.Format("{0} ({1})", Name, MonikerString);

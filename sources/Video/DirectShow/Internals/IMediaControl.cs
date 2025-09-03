@@ -17,7 +17,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Runs all the filters in the filter graph.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Run( );
@@ -26,7 +26,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Pauses all filters in the filter graph.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Pause( );
@@ -35,7 +35,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Stops all the filters in the filter graph.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Stop( );
@@ -44,10 +44,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the state of the filter graph.
         /// </summary>
         /// 
-        /// <param name="timeout">Duration of the time-out, in milliseconds, or INFINITE to specify an infinite time-out.</param>
-        /// <param name="filterState">Variable that receives a member of the <b>FILTER_STATE</b> enumeration.</param>
+        /// <param name="timeout">Duration of the time-out, in milliseconds, or INFINITE to specify an infinite time-out</param>
+        /// <param name="filterState">Variable that receives a member of the <b>FILTER_STATE</b> enumeration</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetState( int timeout, out int filterState );
@@ -58,7 +58,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// 
         /// <param name="fileName">Name of the file to render</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int RenderFile( string fileName );
@@ -67,10 +67,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Adds a source filter to the filter graph, for a specified file.
         /// </summary>
         /// 
-        /// <param name="fileName">Name of the file containing the source video.</param>
-        /// <param name="filterInfo">Receives interface of filter information object.</param>
+        /// <param name="fileName">Name of the file containing the source video</param>
+        /// <param name="filterInfo">Receives interface of filter information object</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int AddSourceFilter( [In] string fileName, [Out, MarshalAs( UnmanagedType.IDispatch )] out object filterInfo );
@@ -79,9 +79,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves a collection of the filters in the filter graph.
         /// </summary>
         /// 
-        /// <param name="collection">Receives the <b>IAMCollection</b> interface.</param>
+        /// <param name="collection">Receives the <b>IAMCollection</b> interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int get_FilterCollection(
@@ -91,9 +91,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves a collection of all the filters listed in the registry.
         /// </summary>
         /// 
-        /// <param name="collection">Receives the <b>IDispatch</b> interface of <b>IAMCollection</b> object.</param>
+        /// <param name="collection">Receives the <b>IDispatch</b> interface of <b>IAMCollection</b> object</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int get_RegFilterCollection(
@@ -103,7 +103,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Pauses the filter graph, allowing filters to queue data, and then stops the filter graph.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int StopWhenReady( );

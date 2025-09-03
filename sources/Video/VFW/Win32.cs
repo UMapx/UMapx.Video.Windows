@@ -15,11 +15,11 @@ namespace UMapx.Video.VFW
         /// Copy a block of memory.
         /// </summary>
         /// 
-        /// <param name="dst">Destination pointer.</param>
-        /// <param name="src">Source pointer.</param>
-        /// <param name="count">Memory block's length to copy.</param>
+        /// <param name="dst">Destination pointer</param>
+        /// <param name="src">Source pointer</param>
+        /// <param name="count">Memory block's length to copy</param>
         /// 
-        /// <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+        /// <returns>Return's the value of <b>dst</b> - pointer to destination</returns>
         /// 
         [DllImport( "ntdll.dll", CallingConvention = CallingConvention.Cdecl )]
         public static extern int memcpy(
@@ -31,11 +31,11 @@ namespace UMapx.Video.VFW
         /// Copy a block of memory.
         /// </summary>
         /// 
-        /// <param name="dst">Destination pointer.</param>
-        /// <param name="src">Source pointer.</param>
-        /// <param name="count">Memory block's length to copy.</param>
+        /// <param name="dst">Destination pointer</param>
+        /// <param name="src">Source pointer</param>
+        /// <param name="count">Memory block's length to copy</param>
         /// 
-        /// <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+        /// <returns>Return's the value of <b>dst</b> - pointer to destination</returns>
         /// 
         [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int memcpy(IntPtr dst, IntPtr src, int count);
@@ -70,12 +70,12 @@ namespace UMapx.Video.VFW
         /// Open an AVI file.
         /// </summary>
         /// 
-        /// <param name="aviHandler">Opened AVI file interface.</param>
-        /// <param name="fileName">AVI file name.</param>
-        /// <param name="mode">Opening mode (see <see cref="OpenFileMode"/>).</param>
-        /// <param name="handler">Handler to use (<b>null</b> to use default).</param>
+        /// <param name="aviHandler">Opened AVI file interface</param>
+        /// <param name="fileName">AVI file name</param>
+        /// <param name="mode">Opening mode (see <see cref="OpenFileMode"/>)</param>
+        /// <param name="handler">Handler to use (<b>null</b> to use default)</param>
         /// 
-        /// <returns>Returns zero on success or error code otherwise.</returns>
+        /// <returns>Returns zero on success or error code otherwise</returns>
         /// 
         [DllImport( "avifil32.dll", CharSet = CharSet.Unicode )]
         public static extern int AVIFileOpen(
@@ -88,9 +88,9 @@ namespace UMapx.Video.VFW
         /// Release an open AVI stream.
         /// </summary>
         /// 
-        /// <param name="aviHandler">Open AVI file interface.</param>
+        /// <param name="aviHandler">Open AVI file interface</param>
         /// 
-        /// <returns>Returns the reference count of the file.</returns>
+        /// <returns>Returns the reference count of the file</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIFileRelease(
@@ -100,9 +100,9 @@ namespace UMapx.Video.VFW
         /// Get stream interface that is associated with a specified AVI file
         /// </summary>
         /// 
-        /// <param name="aviHandler">Handler to an open AVI file.</param>
-        /// <param name="streamHandler">Stream interface.</param>
-        /// <param name="streamType">Stream type to open.</param>
+        /// <param name="aviHandler">Handler to an open AVI file</param>
+        /// <param name="streamHandler">Stream interface</param>
+        /// <param name="streamType">Stream type to open</param>
         /// <param name="streamNumner">Count of the stream type. Identifies which occurrence of the specified stream type to access. </param>
         /// 
         /// <returns></returns>
@@ -118,11 +118,11 @@ namespace UMapx.Video.VFW
         /// Create a new stream in an existing file and creates an interface to the new stream. 
         /// </summary>
         /// 
-        /// <param name="aviHandler">Handler to an open AVI file.</param>
-        /// <param name="streamHandler">Stream interface.</param>
-        /// <param name="streamInfo">Pointer to a structure containing information about the new stream.</param>
+        /// <param name="aviHandler">Handler to an open AVI file</param>
+        /// <param name="streamHandler">Stream interface</param>
+        /// <param name="streamInfo">Pointer to a structure containing information about the new stream</param>
         /// 
-        /// <returns>Returns zero if successful or an error otherwise.</returns>
+        /// <returns>Returns zero if successful or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIFileCreateStream(
@@ -134,9 +134,9 @@ namespace UMapx.Video.VFW
         /// Release an open AVI stream.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Handle to an open stream.</param>
+        /// <param name="streamHandler">Handle to an open stream</param>
         /// 
-        /// <returns>Returns the current reference count of the stream.</returns>
+        /// <returns>Returns the current reference count of the stream</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIStreamRelease(
@@ -146,12 +146,12 @@ namespace UMapx.Video.VFW
         /// Set the format of a stream at the specified position.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Handle to an open stream.</param>
-        /// <param name="position">Position in the stream to receive the format.</param>
-        /// <param name="format">Pointer to a structure containing the new format.</param>
-        /// <param name="formatSize">Size, in bytes, of the block of memory referenced by <b>format</b>.</param>
+        /// <param name="streamHandler">Handle to an open stream</param>
+        /// <param name="position">Position in the stream to receive the format</param>
+        /// <param name="format">Pointer to a structure containing the new format</param>
+        /// <param name="formatSize">Size, in bytes, of the block of memory referenced by <b>format</b></param>
         /// 
-        /// <returns>Returns zero if successful or an error otherwise.</returns>
+        /// <returns>Returns zero if successful or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIStreamSetFormat(
@@ -164,9 +164,9 @@ namespace UMapx.Video.VFW
         /// Get the starting sample number for the stream.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Handle to an open stream.</param>
+        /// <param name="streamHandler">Handle to an open stream</param>
         /// 
-        /// <returns>Returns the number if successful or – 1 otherwise.</returns>
+        /// <returns>Returns the number if successful or – 1 otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIStreamStart(
@@ -176,7 +176,7 @@ namespace UMapx.Video.VFW
         /// Get the length of the stream.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Handle to an open stream.</param>
+        /// <param name="streamHandler">Handle to an open stream</param>
         /// 
         /// <returns>Returns the stream's length, in samples, if successful or -1 otherwise. </returns>
         /// 
@@ -188,11 +188,11 @@ namespace UMapx.Video.VFW
         /// Obtain stream header information.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Handle to an open stream.</param>
-        /// <param name="streamInfo">Pointer to a structure to contain the stream information.</param>
-        /// <param name="infoSize">Size, in bytes, of the structure used for <b>streamInfo</b>.</param>
+        /// <param name="streamHandler">Handle to an open stream</param>
+        /// <param name="streamInfo">Pointer to a structure to contain the stream information</param>
+        /// <param name="infoSize">Size, in bytes, of the structure used for <b>streamInfo</b></param>
         /// 
-        /// <returns>Returns zero if successful or an error otherwise.</returns>
+        /// <returns>Returns zero if successful or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll", CharSet = CharSet.Unicode )]
         public static extern int AVIStreamInfo(
@@ -204,10 +204,10 @@ namespace UMapx.Video.VFW
         /// Prepare to decompress video frames from the specified video stream
         /// </summary>
         /// 
-        /// <param name="streamHandler">Pointer to the video stream used as the video source.</param>
-        /// <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format.</param>
+        /// <param name="streamHandler">Pointer to the video stream used as the video source</param>
+        /// <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format</param>
         /// 
-        /// <returns>Returns an object that can be used with the <see cref="AVIStreamGetFrame"/> function.</returns>
+        /// <returns>Returns an object that can be used with the <see cref="AVIStreamGetFrame"/> function</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern IntPtr AVIStreamGetFrameOpen(
@@ -218,10 +218,10 @@ namespace UMapx.Video.VFW
         /// Prepare to decompress video frames from the specified video stream.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Pointer to the video stream used as the video source.</param>
-        /// <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format.</param>
+        /// <param name="streamHandler">Pointer to the video stream used as the video source</param>
+        /// <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format</param>
         /// 
-        /// <returns>Returns a <b>GetFrame</b> object that can be used with the <see cref="AVIStreamGetFrame"/> function.</returns>
+        /// <returns>Returns a <b>GetFrame</b> object that can be used with the <see cref="AVIStreamGetFrame"/> function</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern IntPtr AVIStreamGetFrameOpen(
@@ -232,9 +232,9 @@ namespace UMapx.Video.VFW
         /// Releases resources used to decompress video frames.
         /// </summary>
         /// 
-        /// <param name="getFrameObject">Handle returned from the <see cref="AVIStreamGetFrameOpen(IntPtr,int)"/> function.</param>
+        /// <param name="getFrameObject">Handle returned from the <see cref="AVIStreamGetFrameOpen(IntPtr,int)"/> function</param>
         /// 
-        /// <returns>Returns zero if successful or an error otherwise.</returns>
+        /// <returns>Returns zero if successful or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIStreamGetFrameClose(
@@ -244,10 +244,10 @@ namespace UMapx.Video.VFW
         /// Return the address of a decompressed video frame. 
         /// </summary>
         /// 
-        /// <param name="getFrameObject">Pointer to a GetFrame object.</param>
-        /// <param name="position">Position, in samples, within the stream of the desired frame.</param>
+        /// <param name="getFrameObject">Pointer to a GetFrame object</param>
+        /// <param name="position">Position, in samples, within the stream of the desired frame</param>
         /// 
-        /// <returns>Returns a pointer to the frame data if successful or NULL otherwise.</returns>
+        /// <returns>Returns a pointer to the frame data if successful or NULL otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern IntPtr AVIStreamGetFrame(
@@ -258,16 +258,16 @@ namespace UMapx.Video.VFW
         /// Write data to a stream.
         /// </summary>
         /// 
-        /// <param name="streamHandler">Handle to an open stream.</param>
-        /// <param name="start">First sample to write.</param>
-        /// <param name="samples">Number of samples to write.</param>
+        /// <param name="streamHandler">Handle to an open stream</param>
+        /// <param name="start">First sample to write</param>
+        /// <param name="samples">Number of samples to write</param>
         /// <param name="buffer">Pointer to a buffer containing the data to write. </param>
-        /// <param name="bufferSize">Size of the buffer referenced by <b>buffer</b>.</param>
-        /// <param name="flags">Flag associated with this data.</param>
-        /// <param name="samplesWritten">Pointer to a buffer that receives the number of samples written. This can be set to NULL.</param>
-        /// <param name="bytesWritten">Pointer to a buffer that receives the number of bytes written. This can be set to NULL.</param>
+        /// <param name="bufferSize">Size of the buffer referenced by <b>buffer</b></param>
+        /// <param name="flags">Flag associated with this data</param>
+        /// <param name="samplesWritten">Pointer to a buffer that receives the number of samples written. This can be set to NULL</param>
+        /// <param name="bytesWritten">Pointer to a buffer that receives the number of bytes written. This can be set to NULL</param>
         /// 
-        /// <returns>Returns zero if successful or an error otherwise.</returns>
+        /// <returns>Returns zero if successful or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIStreamWrite(
@@ -284,13 +284,13 @@ namespace UMapx.Video.VFW
         /// Retrieve the save options for a file and returns them in a buffer.
         /// </summary>
         /// 
-        /// <param name="window">Handle to the parent window for the Compression Options dialog box.</param>
-        /// <param name="flags">Flags for displaying the Compression Options dialog box.</param>
-        /// <param name="streams">Number of streams that have their options set by the dialog box.</param>
-        /// <param name="streamInterfaces">Pointer to an array of stream interface pointers.</param>
-        /// <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures.</param>
+        /// <param name="window">Handle to the parent window for the Compression Options dialog box</param>
+        /// <param name="flags">Flags for displaying the Compression Options dialog box</param>
+        /// <param name="streams">Number of streams that have their options set by the dialog box</param>
+        /// <param name="streamInterfaces">Pointer to an array of stream interface pointers</param>
+        /// <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures</param>
         /// 
-        /// <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise.</returns>
+        /// <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVISaveOptions(
@@ -304,10 +304,10 @@ namespace UMapx.Video.VFW
         /// Free the resources allocated by the AVISaveOptions function. 
         /// </summary>
         /// 
-        /// <param name="streams">Count of the AVICOMPRESSOPTIONS structures referenced in <b>options</b>.</param>
-        /// <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures.</param>
+        /// <param name="streams">Count of the AVICOMPRESSOPTIONS structures referenced in <b>options</b></param>
+        /// <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures</param>
         /// 
-        /// <returns>Returns 0.</returns>
+        /// <returns>Returns 0</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVISaveOptionsFree(
@@ -320,12 +320,12 @@ namespace UMapx.Video.VFW
         /// the compressed stream.
         /// </summary>
         /// 
-        /// <param name="compressedStream">Pointer to a buffer that receives the compressed stream pointer.</param>
-        /// <param name="sourceStream">Pointer to the stream to be compressed.</param>
-        /// <param name="options">Pointer to a structure that identifies the type of compression to use and the options to apply.</param>
-        /// <param name="clsidHandler">Pointer to a class identifier used to create the stream.</param>
+        /// <param name="compressedStream">Pointer to a buffer that receives the compressed stream pointer</param>
+        /// <param name="sourceStream">Pointer to the stream to be compressed</param>
+        /// <param name="options">Pointer to a structure that identifies the type of compression to use and the options to apply</param>
+        /// <param name="clsidHandler">Pointer to a class identifier used to create the stream</param>
         /// 
-        /// <returns>Returns 0 if successful or an error otherwise.</returns>
+        /// <returns>Returns 0 if successful or an error otherwise</returns>
         /// 
         [DllImport( "avifil32.dll" )]
         public static extern int AVIMakeCompressedStream(
@@ -717,9 +717,9 @@ namespace UMapx.Video.VFW
         /// .NET replacement of mmioFOURCC macros. Converts four characters to code.
         /// </summary>
         /// 
-        /// <param name="str">Four characters string.</param>
+        /// <param name="str">Four characters string</param>
         /// 
-        /// <returns>Returns the code created from provided characters.</returns>
+        /// <returns>Returns the code created from provided characters</returns>
         /// 
         public static int mmioFOURCC( string str )
         {
@@ -734,9 +734,9 @@ namespace UMapx.Video.VFW
         /// Inverse to <see cref="mmioFOURCC"/>. Converts code to fout characters string.
         /// </summary>
         /// 
-        /// <param name="code">Code to convert.</param>
+        /// <param name="code">Code to convert</param>
         /// 
-        /// <returns>Returns four characters string.</returns>
+        /// <returns>Returns four characters string</returns>
         /// 
         public static string decode_mmioFOURCC( int code )
         {
@@ -756,10 +756,10 @@ namespace UMapx.Video.VFW
         /// Version of <see cref="AVISaveOptions(IntPtr, int, int, IntPtr[], IntPtr[])"/> for one stream only.
         /// </summary>
         /// 
-        /// <param name="stream">Stream to configure.</param>
-        /// <param name="options">Stream options.</param>
+        /// <param name="stream">Stream to configure</param>
+        /// <param name="options">Stream options</param>
         /// 
-        /// <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise.</returns>
+        /// <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise</returns>
         /// 
         public static int AVISaveOptions( IntPtr stream, ref AVICOMPRESSOPTIONS options )
         {

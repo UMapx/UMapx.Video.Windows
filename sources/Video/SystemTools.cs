@@ -27,11 +27,11 @@
         /// Copy block of unmanaged memory.
         /// </summary>
         /// 
-        /// <param name="dst">Destination pointer.</param>
-        /// <param name="src">Source pointer.</param>
-        /// <param name="count">Memory block's length to copy.</param>
+        /// <param name="dst">Destination pointer</param>
+        /// <param name="src">Source pointer</param>
+        /// <param name="count">Memory block's length to copy</param>
         /// 
-        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
         /// 
         /// <remarks><para>This function is required because of the fact that .NET does
         /// not provide any way to copy unmanaged blocks, but provides only methods to
@@ -50,11 +50,11 @@
         /// Copy block of unmanaged memory.
         /// </summary>
         /// 
-        /// <param name="dst">Destination pointer.</param>
-        /// <param name="src">Source pointer.</param>
-        /// <param name="count">Memory block's length to copy.</param>
+        /// <param name="dst">Destination pointer</param>
+        /// <param name="src">Source pointer</param>
+        /// <param name="count">Memory block's length to copy</param>
         /// 
-        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
         /// 
         /// <remarks><para>This function is required because of the fact that .NET does
         /// not provide any way to copy unmanaged blocks, but provides only methods to
@@ -69,11 +69,11 @@
         /// Fill memory region with specified value.
         /// </summary>
         /// 
-        /// <param name="dst">Destination pointer.</param>
-        /// <param name="filler">Filler byte's value.</param>
-        /// <param name="count">Memory block's length to fill.</param>
+        /// <param name="dst">Destination pointer</param>
+        /// <param name="filler">Filler byte's value</param>
+        /// <param name="count">Memory block's length to fill</param>
         /// 
-        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
         /// 
         public static IntPtr SetUnmanagedMemory(IntPtr dst, int filler, int count)
         {
@@ -88,11 +88,11 @@
         /// Fill memory region with specified value.
         /// </summary>
         /// 
-        /// <param name="dst">Destination pointer.</param>
-        /// <param name="filler">Filler byte's value.</param>
-        /// <param name="count">Memory block's length to fill.</param>
+        /// <param name="dst">Destination pointer</param>
+        /// <param name="filler">Filler byte's value</param>
+        /// <param name="count">Memory block's length to fill</param>
         /// 
-        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+        /// <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
         /// 
         public static unsafe byte* SetUnmanagedMemory(byte* dst, int filler, int count)
         {

@@ -199,7 +199,7 @@ namespace UMapx.Video.VFW
         /// Initializes a new instance of the <see cref="AVIFileVideoSource"/> class.
         /// </summary>
         /// 
-        /// <param name="source">Video file name.</param>
+        /// <param name="source">Video file name</param>
         /// 
         public AVIFileVideoSource( string source )
         {

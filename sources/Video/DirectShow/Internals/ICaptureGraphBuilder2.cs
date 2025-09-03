@@ -16,9 +16,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Specify filter graph for the capture graph builder to use.
         /// </summary>
         /// 
-        /// <param name="graphBuilder">Filter graph's interface.</param>
+        /// <param name="graphBuilder">Filter graph's interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetFiltergraph( [In] IGraphBuilder graphBuilder );
@@ -27,9 +27,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieve the filter graph that the builder is using.
         /// </summary>
         /// 
-        /// <param name="graphBuilder">Filter graph's interface.</param>
+        /// <param name="graphBuilder">Filter graph's interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetFiltergraph( [Out] out IGraphBuilder graphBuilder );
@@ -39,12 +39,12 @@ namespace UMapx.Video.DirectShow.Internals
         /// </summary>
         /// 
         /// <param name="type">GUID that represents either the media subtype of the output or the
-        /// class identifier (CLSID) of a multiplexer filter or file writer filter.</param>
-        /// <param name="fileName">Output file name.</param>
-        /// <param name="baseFilter">Receives the multiplexer's <see cref="IBaseFilter"/> interface.</param>
-        /// <param name="fileSinkFilter">Receives the file writer's IFileSinkFilter interface. Can be NULL.</param>
+        /// class identifier (CLSID) of a multiplexer filter or file writer filter</param>
+        /// <param name="fileName">Output file name</param>
+        /// <param name="baseFilter">Receives the multiplexer's <see cref="IBaseFilter"/> interface</param>
+        /// <param name="fileSinkFilter">Receives the file writer's IFileSinkFilter interface. Can be NULL</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetOutputFileName(
@@ -58,13 +58,13 @@ namespace UMapx.Video.DirectShow.Internals
         /// Searche the graph for a specified interface, starting from a specified filter.
         /// </summary>
         /// 
-        /// <param name="category">GUID that specifies the search criteria.</param>
-        /// <param name="type">GUID that specifies the major media type of an output pin, or NULL.</param>
-        /// <param name="baseFilter"><see cref="IBaseFilter"/> interface of the filter. The method begins searching from this filter.</param>
-        /// <param name="interfaceID">Interface identifier (IID) of the interface to locate.</param>
-        /// <param name="retInterface">Receives found interface.</param>
+        /// <param name="category">GUID that specifies the search criteria</param>
+        /// <param name="type">GUID that specifies the major media type of an output pin, or NULL</param>
+        /// <param name="baseFilter"><see cref="IBaseFilter"/> interface of the filter. The method begins searching from this filter</param>
+        /// <param name="interfaceID">Interface identifier (IID) of the interface to locate</param>
+        /// <param name="retInterface">Receives found interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int FindInterface(
@@ -79,13 +79,13 @@ namespace UMapx.Video.DirectShow.Internals
         /// Connect an output pin on a source filter to a rendering filter, optionally through a compression filter.
         /// </summary>
         /// 
-        /// <param name="category">Pin category.</param>
-        /// <param name="mediaType">Major-type GUID that specifies the media type of the output pin.</param>
-        /// <param name="source">Starting filter for the connection.</param>
-        /// <param name="compressor">Interface of an intermediate filter, such as a compression filter. Can be NULL.</param>
-        /// <param name="renderer">Sink filter, such as a renderer or mux filter.</param>
+        /// <param name="category">Pin category</param>
+        /// <param name="mediaType">Major-type GUID that specifies the media type of the output pin</param>
+        /// <param name="source">Starting filter for the connection</param>
+        /// <param name="compressor">Interface of an intermediate filter, such as a compression filter. Can be NULL</param>
+        /// <param name="renderer">Sink filter, such as a renderer or mux filter</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int RenderStream(
@@ -100,17 +100,17 @@ namespace UMapx.Video.DirectShow.Internals
         /// Set the start and stop times for one or more streams of captured data.
         /// </summary>
         /// 
-        /// <param name="category">Pin category.</param>
-        /// <param name="mediaType">Major-type GUID that specifies the media type.</param>
-        /// <param name="filter"><see cref="IBaseFilter"/> interface that specifies which filter to control.</param>
-        /// <param name="start">Start time.</param>
-        /// <param name="stop">Stop time.</param>
+        /// <param name="category">Pin category</param>
+        /// <param name="mediaType">Major-type GUID that specifies the media type</param>
+        /// <param name="filter"><see cref="IBaseFilter"/> interface that specifies which filter to control</param>
+        /// <param name="start">Start time</param>
+        /// <param name="stop">Stop time</param>
         /// <param name="startCookie">Value that is sent as the second parameter of the
-        /// EC_STREAM_CONTROL_STARTED event notification.</param>
+        /// EC_STREAM_CONTROL_STARTED event notification</param>
         /// <param name="stopCookie">Value that is sent as the second parameter of the
-        /// EC_STREAM_CONTROL_STOPPED event notification.</param>
+        /// EC_STREAM_CONTROL_STOPPED event notification</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int ControlStream(
@@ -127,10 +127,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Preallocate a capture file to a specified size.
         /// </summary>
         /// 
-        /// <param name="fileName">File name to create or resize.</param>
-        /// <param name="size">Size of the file to allocate, in bytes.</param>
+        /// <param name="fileName">File name to create or resize</param>
+        /// <param name="size">Size of the file to allocate, in bytes</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int AllocCapFile(
@@ -142,12 +142,12 @@ namespace UMapx.Video.DirectShow.Internals
         /// Copy the valid media data from a capture file.
         /// </summary>
         /// 
-        /// <param name="oldFileName">Old file name.</param>
-        /// <param name="newFileName">New file name.</param>
-        /// <param name="allowEscAbort">Boolean value that specifies whether pressing the ESC key cancels the copy operation.</param>
-        /// <param name="callback">IAMCopyCaptureFileProgress interface to display progress information, or NULL.</param>
+        /// <param name="oldFileName">Old file name</param>
+        /// <param name="newFileName">New file name</param>
+        /// <param name="allowEscAbort">Boolean value that specifies whether pressing the ESC key cancels the copy operation</param>
+        /// <param name="callback">IAMCopyCaptureFileProgress interface to display progress information, or NULL</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int CopyCaptureFile(
@@ -161,15 +161,15 @@ namespace UMapx.Video.DirectShow.Internals
         /// 
         /// </summary>
         /// 
-        /// <param name="source">Interface on a filter, or to an interface on a pin.</param>
-        /// <param name="pinDirection">Pin direction (input or output).</param>
-        /// <param name="category">Pin category.</param>
-        /// <param name="mediaType">Media type.</param>
-        /// <param name="unconnected">Boolean value that specifies whether the pin must be unconnected.</param>
-        /// <param name="index">Zero-based index of the pin to retrieve, from the set of matching pins.</param>
-        /// <param name="pin">Interface of the matching pin.</param>
+        /// <param name="source">Interface on a filter, or to an interface on a pin</param>
+        /// <param name="pinDirection">Pin direction (input or output)</param>
+        /// <param name="category">Pin category</param>
+        /// <param name="mediaType">Media type</param>
+        /// <param name="unconnected">Boolean value that specifies whether the pin must be unconnected</param>
+        /// <param name="index">Zero-based index of the pin to retrieve, from the set of matching pins</param>
+        /// <param name="pin">Interface of the matching pin</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int FindPin(

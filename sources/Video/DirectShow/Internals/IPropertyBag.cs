@@ -17,11 +17,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Read a property from property bag.
         /// </summary>
         /// 
-        /// <param name="propertyName">Property name to read.</param>
-        /// <param name="pVar">Property value.</param>
-        /// <param name="pErrorLog">Caller's error log.</param>
+        /// <param name="propertyName">Property name to read</param>
+        /// <param name="pVar">Property value</param>
+        /// <param name="pErrorLog">Caller's error log</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Read(
@@ -33,10 +33,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Write property to property bag.
         /// </summary>
         /// 
-        /// <param name="propertyName">Property name to read.</param>
-        /// <param name="pVar">Property value.</param>
+        /// <param name="propertyName">Property name to read</param>
+        /// <param name="pVar">Property value</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Write(

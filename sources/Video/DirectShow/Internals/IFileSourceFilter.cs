@@ -16,10 +16,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Loads the source filter with the file.
         /// </summary>
         /// 
-        /// <param name="fileName">The name of the file to open.</param>
-        /// <param name="mediaType">Media type of the file. This can be null.</param>
+        /// <param name="fileName">The name of the file to open</param>
+        /// <param name="mediaType">Media type of the file. This can be null</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Load( [In, MarshalAs( UnmanagedType.LPWStr )] string fileName,
@@ -29,10 +29,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the current file.
         /// </summary>
         /// 
-        /// <param name="fileName">Name of media file.</param>
-        /// <param name="mediaType">Receives media type.</param>
+        /// <param name="fileName">Name of media file</param>
+        /// <param name="mediaType">Receives media type</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetCurFile([Out, MarshalAs( UnmanagedType.LPWStr )] out string fileName,

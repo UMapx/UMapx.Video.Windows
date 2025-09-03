@@ -16,10 +16,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Callback method that receives a pointer to the media sample.
         /// </summary>
         /// 
-        /// <param name="sampleTime">Starting time of the sample, in seconds.</param>
-        /// <param name="sample">Pointer to the sample's <b>IMediaSample</b> interface.</param>
+        /// <param name="sampleTime">Starting time of the sample, in seconds</param>
+        /// <param name="sample">Pointer to the sample's <b>IMediaSample</b> interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SampleCB( double sampleTime, IntPtr sample );
@@ -28,11 +28,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Callback method that receives a pointer to the sample buffer.
         /// </summary>
         /// 
-        /// <param name="sampleTime">Starting time of the sample, in seconds.</param>
-        /// <param name="buffer">Pointer to a buffer that contains the sample data.</param>
+        /// <param name="sampleTime">Starting time of the sample, in seconds</param>
+        /// <param name="buffer">Pointer to a buffer that contains the sample data</param>
         /// <param name="bufferLen">Length of the buffer pointed to by <b>buffer</b>, in bytes</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int BufferCB( double sampleTime, IntPtr buffer, int bufferLen );

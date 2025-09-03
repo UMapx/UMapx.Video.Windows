@@ -538,7 +538,7 @@ namespace UMapx.Video.DirectShow
         /// Initializes a new instance of the <see cref="VideoCaptureDevice"/> class.
         /// </summary>
         /// 
-        /// <param name="deviceMoniker">Moniker string of video capture device.</param>
+        /// <param name="deviceMoniker">Moniker string of video capture device</param>
         /// 
         public VideoCaptureDevice(string deviceMoniker)
         {
@@ -549,8 +549,8 @@ namespace UMapx.Video.DirectShow
         /// Initializes a new instance of the <see cref="VideoCaptureDevice"/> class.
         /// </summary>
         /// 
-        /// <param name="deviceMoniker">Moniker string of video capture device.</param>
-        /// <param name="pixelFormat">Pixel format of video.</param>
+        /// <param name="deviceMoniker">Moniker string of video capture device</param>
+        /// <param name="pixelFormat">Pixel format of video</param>
         /// 
         public VideoCaptureDevice(string deviceMoniker, PixelFormat pixelFormat)
         {
@@ -670,7 +670,7 @@ namespace UMapx.Video.DirectShow
         /// capabilities.
         /// </summary>
         /// 
-        /// <param name="parentWindow">Handle of parent window.</param>
+        /// <param name="parentWindow">Handle of parent window</param>
         /// 
         /// <remarks><para><note>If you pass parent window's handle to this method, then the
         /// displayed property page will become modal window and none of the controls from the
@@ -724,7 +724,7 @@ namespace UMapx.Video.DirectShow
         /// Display property page of video crossbar (Analog Video Crossbar filter).
         /// </summary>
         /// 
-        /// <param name="parentWindow">Handle of parent window.</param>
+        /// <param name="parentWindow">Handle of parent window</param>
         /// 
         /// <remarks><para>The Analog Video Crossbar filter is modeled after a general switching matrix,
         /// with n inputs and m outputs. For example, a video card might have two external connectors:
@@ -773,7 +773,7 @@ namespace UMapx.Video.DirectShow
         /// </summary>
         /// 
         /// <returns>Returns <see langword="true"/> if crossbar configuration is available or
-        /// <see langword="false"/> otherwise.</returns>
+        /// <see langword="false"/> otherwise</returns>
         /// 
         /// <remarks><para>The method reports if the video source provides crossbar configuration
         /// using <see cref="DisplayCrossbarPropertyPage"/>.</para>
@@ -825,11 +825,11 @@ namespace UMapx.Video.DirectShow
         /// Sets a specified property on the camera.
         /// </summary>
         /// 
-        /// <param name="property">Specifies the property to set.</param>
-        /// <param name="value">Specifies the new value of the property.</param>
-        /// <param name="controlFlags">Specifies the desired control setting.</param>
+        /// <param name="property">Specifies the property to set</param>
+        /// <param name="value">Specifies the new value of the property</param>
+        /// <param name="controlFlags">Specifies the desired control setting</param>
         /// 
-        /// <returns>Returns true on sucee or false otherwise.</returns>
+        /// <returns>Returns true on sucee or false otherwise</returns>
         /// 
         /// <exception cref="ArgumentException">Video source is not specified - device moniker is not set.</exception>
         /// <exception cref="ApplicationException">Failed creating device object for moniker.</exception>
@@ -879,11 +879,11 @@ namespace UMapx.Video.DirectShow
         /// Gets the current setting of a camera property.
         /// </summary>
         /// 
-        /// <param name="property">Specifies the property to retrieve.</param>
-        /// <param name="value">Receives the value of the property.</param>
+        /// <param name="property">Specifies the property to retrieve</param>
+        /// <param name="value">Receives the value of the property</param>
         /// <param name="controlFlags">Receives the value indicating whether the setting is controlled manually or automatically</param>
         /// 
-        /// <returns>Returns true on sucee or false otherwise.</returns>
+        /// <returns>Returns true on sucee or false otherwise</returns>
         /// 
         /// <exception cref="ArgumentException">Video source is not specified - device moniker is not set.</exception>
         /// <exception cref="ApplicationException">Failed creating device object for moniker.</exception>
@@ -933,14 +933,14 @@ namespace UMapx.Video.DirectShow
         /// Gets the range and default value of a specified camera property.
         /// </summary>
         /// 
-        /// <param name="property">Specifies the property to query.</param>
-        /// <param name="minValue">Receives the minimum value of the property.</param>
-        /// <param name="maxValue">Receives the maximum value of the property.</param>
-        /// <param name="stepSize">Receives the step size for the property.</param>
-        /// <param name="defaultValue">Receives the default value of the property.</param>
-        /// <param name="controlFlags">Receives a member of the <see cref="CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually.</param>
+        /// <param name="property">Specifies the property to query</param>
+        /// <param name="minValue">Receives the minimum value of the property</param>
+        /// <param name="maxValue">Receives the maximum value of the property</param>
+        /// <param name="stepSize">Receives the step size for the property</param>
+        /// <param name="defaultValue">Receives the default value of the property</param>
+        /// <param name="controlFlags">Receives a member of the <see cref="CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually</param>
         /// 
-        /// <returns>Returns true on sucee or false otherwise.</returns>
+        /// <returns>Returns true on sucee or false otherwise</returns>
         /// 
         /// <exception cref="ArgumentException">Video source is not specified - device moniker is not set.</exception>
         /// <exception cref="ApplicationException">Failed creating device object for moniker.</exception>
@@ -990,11 +990,11 @@ namespace UMapx.Video.DirectShow
         /// Sets a specified property on the video signal adjustments.
         /// </summary>
         /// 
-        /// <param name="property">Specifies the property to set.</param>
-        /// <param name="value">Specifies the new value of the property.</param>
-        /// <param name="controlFlags">Specifies the desired control setting.</param>
+        /// <param name="property">Specifies the property to set</param>
+        /// <param name="value">Specifies the new value of the property</param>
+        /// <param name="controlFlags">Specifies the desired control setting</param>
         /// 
-        /// <returns>Returns true on success or false otherwise.</returns>
+        /// <returns>Returns true on success or false otherwise</returns>
         /// 
         /// <exception cref="ArgumentException">Video source is not specified - device moniker is not set.</exception>
         /// <exception cref="ApplicationException">Failed creating device object for moniker.</exception>
@@ -1040,11 +1040,11 @@ namespace UMapx.Video.DirectShow
         /// Gets the current setting of a video signal adjustment property.
         /// </summary>
         /// 
-        /// <param name="property">Specifies the property to retrieve.</param>
-        /// <param name="value">Receives the value of the property.</param>
+        /// <param name="property">Specifies the property to retrieve</param>
+        /// <param name="value">Receives the value of the property</param>
         /// <param name="controlFlags">Receives the value indicating whether the setting is controlled manually or automatically</param>
         /// 
-        /// <returns>Returns true on sucee or false otherwise.</returns>
+        /// <returns>Returns true on sucee or false otherwise</returns>
         /// 
         /// <exception cref="ArgumentException">Video source is not specified - device moniker is not set.</exception>
         /// <exception cref="ApplicationException">Failed creating device object for moniker.</exception>
@@ -1090,14 +1090,14 @@ namespace UMapx.Video.DirectShow
         /// Gets the range and default value of a specified video stream property.
         /// </summary>
         /// 
-        /// <param name="property">Specifies the property to query.</param>
-        /// <param name="minValue">Receives the minimum value of the property.</param>
-        /// <param name="maxValue">Receives the maximum value of the property.</param>
-        /// <param name="stepSize">Receives the step size for the property.</param>
-        /// <param name="defaultValue">Receives the default value of the property.</param>
-        /// <param name="controlFlags">Receives a member of the <see cref="CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually.</param>
+        /// <param name="property">Specifies the property to query</param>
+        /// <param name="minValue">Receives the minimum value of the property</param>
+        /// <param name="maxValue">Receives the maximum value of the property</param>
+        /// <param name="stepSize">Receives the step size for the property</param>
+        /// <param name="defaultValue">Receives the default value of the property</param>
+        /// <param name="controlFlags">Receives a member of the <see cref="CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually</param>
         /// 
-        /// <returns>Returns true on sucee or false otherwise.</returns>
+        /// <returns>Returns true on sucee or false otherwise</returns>
         /// 
         /// <exception cref="ArgumentException">Video source is not specified - device moniker is not set.</exception>
         /// <exception cref="ApplicationException">Failed creating device object for moniker.</exception>
@@ -1731,7 +1731,7 @@ namespace UMapx.Video.DirectShow
         /// Notifies clients about new frame.
         /// </summary>
         /// 
-        /// <param name="image">New frame's image.</param>
+        /// <param name="image">New frame's image</param>
         /// 
         private void OnNewFrame(Bitmap image)
         {
@@ -1746,7 +1746,7 @@ namespace UMapx.Video.DirectShow
         /// Notifies clients about new snapshot frame.
         /// </summary>
         /// 
-        /// <param name="image">New snapshot's image.</param>
+        /// <param name="image">New snapshot's image</param>
         /// 
         private void OnSnapshotFrame(Bitmap image)
         {

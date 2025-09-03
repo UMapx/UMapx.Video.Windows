@@ -16,14 +16,14 @@
         /// Gets the range and default value of a specified camera property.
         /// </summary>
         /// 
-        /// <param name="Property">Specifies the property to query.</param>
-        /// <param name="pMin">Receives the minimum value of the property.</param>
-        /// <param name="pMax">Receives the maximum value of the property.</param>
-        /// <param name="pSteppingDelta">Receives the step size for the property.</param>
+        /// <param name="Property">Specifies the property to query</param>
+        /// <param name="pMin">Receives the minimum value of the property</param>
+        /// <param name="pMax">Receives the maximum value of the property</param>
+        /// <param name="pSteppingDelta">Receives the step size for the property</param>
         /// <param name="pDefault">Receives the default value of the property. </param>
-        /// <param name="pCapsFlags">Receives a member of the CameraControlFlags enumeration, indicating whether the property is controlled automatically or manually.</param>
+        /// <param name="pCapsFlags">Receives a member of the CameraControlFlags enumeration, indicating whether the property is controlled automatically or manually</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetRange(
@@ -39,11 +39,11 @@
         /// Sets a specified property on the camera.
         /// </summary>
         /// 
-        /// <param name="Property">Specifies the property to set.</param>
-        /// <param name="lValue">Specifies the new value of the property.</param>
-        /// <param name="Flags">Specifies the desired control setting, as a member of the CameraControlFlags enumeration.</param>
+        /// <param name="Property">Specifies the property to set</param>
+        /// <param name="lValue">Specifies the new value of the property</param>
+        /// <param name="Flags">Specifies the desired control setting, as a member of the CameraControlFlags enumeration</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Set(
@@ -56,12 +56,12 @@
         /// Gets the current setting of a camera property.
         /// </summary>
         /// 
-        /// <param name="Property">Specifies the property to retrieve.</param>
-        /// <param name="lValue">Receives the value of the property.</param>
+        /// <param name="Property">Specifies the property to retrieve</param>
+        /// <param name="lValue">Receives the value of the property</param>
         /// <param name="Flags">Receives a member of the CameraControlFlags enumeration.
-        /// The returned value indicates whether the setting is controlled manually or automatically.</param>
+        /// The returned value indicates whether the setting is controlled manually or automatically</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Get(

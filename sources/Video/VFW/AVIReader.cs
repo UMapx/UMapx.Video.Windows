@@ -171,7 +171,7 @@ namespace UMapx.Video.VFW
         /// Dispose the object.
         /// </summary>
         /// 
-        /// <param name="disposing">Indicates if disposing was initiated manually.</param>
+        /// <param name="disposing">Indicates if disposing was initiated manually</param>
         /// 
         protected virtual void Dispose( bool disposing )
         {
@@ -188,7 +188,7 @@ namespace UMapx.Video.VFW
         /// Open AVI file.
         /// </summary>
         /// 
-        /// <param name="fileName">AVI file name to open.</param>
+        /// <param name="fileName">AVI file name to open</param>
         /// 
         /// <remarks><para>The method opens a video file and prepares the stream and decoder for
         /// reading video frames with the help of <see cref="GetNextFrame"/> method.</para>
@@ -295,7 +295,7 @@ namespace UMapx.Video.VFW
         /// Get next frame of opened video stream.
         /// </summary>
         /// 
-        /// <returns>Returns next frame as a bitmap.</returns>
+        /// <returns>Returns next frame as a bitmap</returns>
         /// 
         /// <remarks><para>The method reads and returns the next video frame in the opened video stream
         /// at the position, which is set in <see cref="Position"/> property.</para></remarks>

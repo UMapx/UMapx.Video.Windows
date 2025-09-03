@@ -16,14 +16,14 @@
         /// Get the range and default value of a camera property.
         /// </summary>
         ///
-        /// <param name="Property">The property.</param>
-        /// <param name="pMin">The min value.</param>
-        /// <param name="pMax">The max value.</param>
-        /// <param name="pSteppingDelta">The step size.</param>
+        /// <param name="Property">The property</param>
+        /// <param name="pMin">The min value</param>
+        /// <param name="pMax">The max value</param>
+        /// <param name="pSteppingDelta">The step size</param>
         /// <param name="pDefault">The deafult value. </param>
-        /// <param name="pCapsFlags">Shows if it can be controlled automatically and/or manually.</param>
+        /// <param name="pCapsFlags">Shows if it can be controlled automatically and/or manually</param>
         ///
-        /// <returns>Error code.</returns>
+        /// <returns>Error code</returns>
         ///
         [PreserveSig]
         int GetRange(
@@ -39,11 +39,11 @@
         /// Set a specified property on the camera.
         /// </summary>
         ///
-        /// <param name="Property">The property to set.</param>
-        /// <param name="lValue">The new value of the property.</param>
-        /// <param name="Flags">The auto or manual setting.</param>
+        /// <param name="Property">The property to set</param>
+        /// <param name="lValue">The new value of the property</param>
+        /// <param name="Flags">The auto or manual setting</param>
         ///
-        /// <returns>Error code.</returns>
+        /// <returns>Error code</returns>
         ///
         [PreserveSig]
         int Set(
@@ -56,11 +56,11 @@
         /// Get the current setting of a camera property.
         /// </summary>
         ///
-        /// <param name="Property">The property to retrieve.</param>
-        /// <param name="lValue">The current value of the property.</param>
+        /// <param name="Property">The property to retrieve</param>
+        /// <param name="lValue">The current value of the property</param>
         /// <param name="Flags">Is it manual or automatic?</param>
         ///
-        /// <returns>Error code.</returns>
+        /// <returns>Error code</returns>
         ///
         [PreserveSig]
         int Get(

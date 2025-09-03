@@ -179,7 +179,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.AsyncVideoSource"/> class.
             </summary>
             
-            <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing.</param>
+            <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing</param>
             
         </member>
         <member name="M:UMapx.Video.AsyncVideoSource.#ctor(UMapx.Video.IVideoSource,System.Boolean)">
@@ -187,9 +187,9 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.AsyncVideoSource"/> class.
             </summary>
             
-            <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing.</param>
+            <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing</param>
             <param name="skipFramesIfBusy">Specifies if the object should skip frames from the nested video source
-            in the case if it is still busy processing the previous video frame.</param>
+            in the case if it is still busy processing the previous video frame</param>
             
         </member>
         <member name="M:UMapx.Video.AsyncVideoSource.Start">
@@ -449,7 +449,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.DirectShow.FileVideoSource"/> class.
             </summary>
             
-            <param name="fileName">Video file name.</param>
+            <param name="fileName">Video file name</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.FileVideoSource.Start">
@@ -511,7 +511,7 @@
             Notifies client about new frame.
             </summary>
             
-            <param name="image">New frame's image.</param>
+            <param name="image">New frame's image</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.FileVideoSource.Dispose">
@@ -545,7 +545,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.DirectShow.FilterInfo"/> class.
             </summary>
             
-            <param name="monikerString">Filters's moniker string.</param>
+            <param name="monikerString">Filters's moniker string</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.FilterInfo.#ctor(System.Runtime.InteropServices.ComTypes.IMoniker)">
@@ -553,7 +553,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.DirectShow.FilterInfo"/> class.
             </summary>
             
-            <param name="moniker">Filter's moniker object.</param>
+            <param name="moniker">Filter's moniker object</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.FilterInfo.CompareTo(System.Object)">
@@ -561,9 +561,9 @@
             Compare the object with another instance of this class.
             </summary>
             
-            <param name="value">Object to compare with.</param>
+            <param name="value">Object to compare with</param>
             
-            <returns>A signed number indicating the relative values of this instance and <b>value</b>.</returns>
+            <returns>A signed number indicating the relative values of this instance and <b>value</b></returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.FilterInfo.CreateFilter(System.String)">
@@ -571,9 +571,9 @@
             Create an instance of the filter.
             </summary>
             
-            <param name="filterMoniker">Filter's moniker string.</param>
+            <param name="filterMoniker">Filter's moniker string</param>
             
-            <returns>Returns filter's object, which implements <b>IBaseFilter</b> interface.</returns>
+            <returns>Returns filter's object, which implements <b>IBaseFilter</b> interface</returns>
             
             <remarks>The returned filter's object should be released using <b>Marshal.ReleaseComObject()</b>.</remarks>
             
@@ -583,14 +583,14 @@
               Gets the supported property pages for the filter, if any.
             </summary>
             
-            <param name="filterMoniker">The filter moniker.</param>
+            <param name="filterMoniker">The filter moniker</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.FilterInfo.ToString">
             <summary>
             Returns a <see cref="T:System.String" /> that represents this instance.
             </summary>
-            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
         </member>
         <member name="T:UMapx.Video.DirectShow.FilterInfoCollection">
             <summary>
@@ -624,7 +624,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.DirectShow.FilterInfoCollection"/> class.
             </summary>
             
-            <param name="category">Guid of DirectShow filter category. See <see cref="T:UMapx.Video.DirectShow.FilterCategory"/>.</param>
+            <param name="category">Guid of DirectShow filter category. See <see cref="T:UMapx.Video.DirectShow.FilterCategory"/></param>
             
             <remarks>Build collection of filters' information objects for the
             specified filter category.</remarks>
@@ -641,14 +641,14 @@
             Gets the range and default value of a specified camera property.
             </summary>
             
-            <param name="Property">Specifies the property to query.</param>
-            <param name="pMin">Receives the minimum value of the property.</param>
-            <param name="pMax">Receives the maximum value of the property.</param>
-            <param name="pSteppingDelta">Receives the step size for the property.</param>
+            <param name="Property">Specifies the property to query</param>
+            <param name="pMin">Receives the minimum value of the property</param>
+            <param name="pMax">Receives the maximum value of the property</param>
+            <param name="pSteppingDelta">Receives the step size for the property</param>
             <param name="pDefault">Receives the default value of the property. </param>
-            <param name="pCapsFlags">Receives a member of the CameraControlFlags enumeration, indicating whether the property is controlled automatically or manually.</param>
+            <param name="pCapsFlags">Receives a member of the CameraControlFlags enumeration, indicating whether the property is controlled automatically or manually</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMCameraControl.Set(UMapx.Video.DirectShow.CameraControlProperty,System.Int32,UMapx.Video.DirectShow.CameraControlFlags)">
@@ -656,11 +656,11 @@
             Sets a specified property on the camera.
             </summary>
             
-            <param name="Property">Specifies the property to set.</param>
-            <param name="lValue">Specifies the new value of the property.</param>
-            <param name="Flags">Specifies the desired control setting, as a member of the CameraControlFlags enumeration.</param>
+            <param name="Property">Specifies the property to set</param>
+            <param name="lValue">Specifies the new value of the property</param>
+            <param name="Flags">Specifies the desired control setting, as a member of the CameraControlFlags enumeration</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMCameraControl.Get(UMapx.Video.DirectShow.CameraControlProperty,System.Int32@,UMapx.Video.DirectShow.CameraControlFlags@)">
@@ -668,12 +668,12 @@
             Gets the current setting of a camera property.
             </summary>
             
-            <param name="Property">Specifies the property to retrieve.</param>
-            <param name="lValue">Receives the value of the property.</param>
+            <param name="Property">Specifies the property to retrieve</param>
+            <param name="lValue">Receives the value of the property</param>
             <param name="Flags">Receives a member of the CameraControlFlags enumeration.
-            The returned value indicates whether the setting is controlled manually or automatically.</param>
+            The returned value indicates whether the setting is controlled manually or automatically</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IAMCrossbar">
@@ -686,10 +686,10 @@
             Retrieves the number of input and output pins on the crossbar filter.
             </summary>
             
-            <param name="outputPinCount">Variable that receives the number of output pins.</param>
-            <param name="inputPinCount">Variable that receives the number of input pins.</param>
+            <param name="outputPinCount">Variable that receives the number of output pins</param>
+            <param name="inputPinCount">Variable that receives the number of input pins</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMCrossbar.CanRoute(System.Int32,System.Int32)">
@@ -697,10 +697,10 @@
             Queries whether a specified input pin can be routed to a specified output pin.
             </summary>
             
-            <param name="outputPinIndex">Specifies the index of the output pin.</param>
-            <param name="inputPinIndex">Specifies the index of input pin.</param>
+            <param name="outputPinIndex">Specifies the index of the output pin</param>
+            <param name="inputPinIndex">Specifies the index of input pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMCrossbar.Route(System.Int32,System.Int32)">
@@ -708,10 +708,10 @@
             Routes an input pin to an output pin.
             </summary>
             
-            <param name="outputPinIndex">Specifies the index of the output pin.</param>
-            <param name="inputPinIndex">Specifies the index of the input pin.</param>
+            <param name="outputPinIndex">Specifies the index of the output pin</param>
+            <param name="inputPinIndex">Specifies the index of the input pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMCrossbar.get_IsRoutedTo(System.Int32,System.Int32@)">
@@ -719,10 +719,10 @@
             Retrieves the input pin that is currently routed to the specified output pin.
             </summary>
             
-            <param name="outputPinIndex">Specifies the index of the output pin.</param>
-            <param name="inputPinIndex">Variable that receives the index of the input pin, or -1 if no input pin is routed to this output pin.</param>
+            <param name="outputPinIndex">Specifies the index of the output pin</param>
+            <param name="inputPinIndex">Variable that receives the index of the input pin, or -1 if no input pin is routed to this output pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMCrossbar.get_CrossbarPinInfo(System.Boolean,System.Int32,System.Int32@,UMapx.Video.DirectShow.PhysicalConnectorType@)">
@@ -730,12 +730,12 @@
             Retrieves information about a specified pin.
             </summary>
             
-            <param name="isInputPin">Specifies the direction of the pin. Use one of the following values.</param>
-            <param name="pinIndex">Specifies the index of the pin.</param>
-            <param name="pinIndexRelated">Variable that receives the index of the related pin, or –1 if no pin is related to this pin.</param>
-            <param name="physicalType">Variable that receives a member of the PhysicalConnectorType enumeration, indicating the pin's physical type.</param>
+            <param name="isInputPin">Specifies the direction of the pin. Use one of the following values</param>
+            <param name="pinIndex">Specifies the index of the pin</param>
+            <param name="pinIndexRelated">Variable that receives the index of the related pin, or –1 if no pin is related to this pin</param>
+            <param name="physicalType">Variable that receives a member of the PhysicalConnectorType enumeration, indicating the pin's physical type</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IAMStreamConfig">
@@ -750,9 +750,9 @@
             Set the output format on the pin.
             </summary>
             
-            <param name="mediaType">Media type to set.</param>
+            <param name="mediaType">Media type to set</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetFormat(UMapx.Video.DirectShow.Internals.AMMediaType@)">
@@ -760,9 +760,9 @@
             Retrieves the audio or video stream's format.
             </summary>
             
-            <param name="mediaType">Retrieved media type.</param>
+            <param name="mediaType">Retrieved media type</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetNumberOfCapabilities(System.Int32@,System.Int32@)">
@@ -770,10 +770,10 @@
             Retrieve the number of format capabilities that this pin supports.
             </summary>
             
-            <param name="count">Variable that receives the number of format capabilities.</param>
-            <param name="size">Variable that receives the size of the configuration structure in bytes.</param>
+            <param name="count">Variable that receives the number of format capabilities</param>
+            <param name="size">Variable that receives the size of the configuration structure in bytes</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetStreamCaps(System.Int32,UMapx.Video.DirectShow.Internals.AMMediaType@,UMapx.Video.DirectShow.Internals.VideoStreamConfigCaps)">
@@ -781,11 +781,11 @@
             Retrieve a set of format capabilities.
             </summary>
             
-            <param name="index">Specifies the format capability to retrieve, indexed from zero.</param>
-            <param name="mediaType">Retrieved media type.</param>
-            <param name="streamConfigCaps">Byte array, which receives information about capabilities.</param>
+            <param name="index">Specifies the format capability to retrieve, indexed from zero</param>
+            <param name="mediaType">Retrieved media type</param>
+            <param name="streamConfigCaps">Byte array, which receives information about capabilities</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IAMVideoControl">
@@ -800,10 +800,10 @@
             Retrieves the capabilities of the underlying hardware.
             </summary>
             
-            <param name="pin">Pin to query capabilities from.</param>
-            <param name="flags">Get capabilities of the specified pin.</param>
+            <param name="pin">Pin to query capabilities from</param>
+            <param name="flags">Get capabilities of the specified pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoControl.SetMode(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.VideoControlFlags)">
@@ -811,10 +811,10 @@
             Sets the video control mode of operation.
             </summary>
             
-            <param name="pin">The pin to set the video control mode on.</param>
-            <param name="mode">Value specifying a combination of the flags to set the video control mode.</param>
+            <param name="pin">The pin to set the video control mode on</param>
+            <param name="mode">Value specifying a combination of the flags to set the video control mode</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoControl.GetMode(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.VideoControlFlags@)">
@@ -822,10 +822,10 @@
             Retrieves the video control mode of operation.
             </summary>
             
-            <param name="pin">The pin to retrieve the video control mode from.</param>
-            <param name="mode">Gets combination of flags, which specify the video control mode.</param>
+            <param name="pin">The pin to retrieve the video control mode from</param>
+            <param name="mode">Gets combination of flags, which specify the video control mode</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoControl.GetCurrentActualFrameRate(UMapx.Video.DirectShow.Internals.IPin,System.Int64@)">
@@ -835,10 +835,10 @@
             because of bandwidth availability. This is only available during video streaming.
             </summary>
             
-            <param name="pin">The pin to retrieve the frame rate from.</param>
-            <param name="actualFrameRate">Gets frame rate in frame duration in 100-nanosecond units.</param>
+            <param name="pin">The pin to retrieve the frame rate from</param>
+            <param name="actualFrameRate">Gets frame rate in frame duration in 100-nanosecond units</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoControl.GetMaxAvailableFrameRate(UMapx.Video.DirectShow.Internals.IPin,System.Int32,System.Drawing.Size,System.Int64@)">
@@ -848,13 +848,13 @@
             availability.
             </summary>
             
-            <param name="pin">The pin to retrieve the maximum frame rate from.</param>
+            <param name="pin">The pin to retrieve the maximum frame rate from</param>
             <param name="index">Index of the format to query for maximum frame rate. This index corresponds
-            to the order in which formats are enumerated by <see cref="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetStreamCaps(System.Int32,UMapx.Video.DirectShow.Internals.AMMediaType@,UMapx.Video.DirectShow.Internals.VideoStreamConfigCaps)"/>.</param>
-            <param name="dimensions">Frame image size (width and height) in pixels.</param>
-            <param name="maxAvailableFrameRate">Gets maximum available frame rate. The frame rate is expressed as frame duration in 100-nanosecond units.</param>
+            to the order in which formats are enumerated by <see cref="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetStreamCaps(System.Int32,UMapx.Video.DirectShow.Internals.AMMediaType@,UMapx.Video.DirectShow.Internals.VideoStreamConfigCaps)"/></param>
+            <param name="dimensions">Frame image size (width and height) in pixels</param>
+            <param name="maxAvailableFrameRate">Gets maximum available frame rate. The frame rate is expressed as frame duration in 100-nanosecond units</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoControl.GetFrameRateList(UMapx.Video.DirectShow.Internals.IPin,System.Int32,System.Drawing.Size,System.Int32@,System.IntPtr@)">
@@ -862,14 +862,14 @@
             Retrieves a list of available frame rates.
             </summary>
             
-            <param name="pin">The pin to retrieve the maximum frame rate from.</param>
+            <param name="pin">The pin to retrieve the maximum frame rate from</param>
             <param name="index">Index of the format to query for maximum frame rate. This index corresponds
-            to the order in which formats are enumerated by <see cref="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetStreamCaps(System.Int32,UMapx.Video.DirectShow.Internals.AMMediaType@,UMapx.Video.DirectShow.Internals.VideoStreamConfigCaps)"/>.</param>
-            <param name="dimensions">Frame image size (width and height) in pixels.</param>
-            <param name="listSize">Number of elements in the list of frame rates.</param>
-            <param name="frameRate">Array of frame rates in 100-nanosecond units.</param>
+            to the order in which formats are enumerated by <see cref="M:UMapx.Video.DirectShow.Internals.IAMStreamConfig.GetStreamCaps(System.Int32,UMapx.Video.DirectShow.Internals.AMMediaType@,UMapx.Video.DirectShow.Internals.VideoStreamConfigCaps)"/></param>
+            <param name="dimensions">Frame image size (width and height) in pixels</param>
+            <param name="listSize">Number of elements in the list of frame rates</param>
+            <param name="frameRate">Array of frame rates in 100-nanosecond units</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp">
@@ -883,14 +883,14 @@
              Get the range and default value of a camera property.
              </summary>
             
-             <param name="Property">The property.</param>
-             <param name="pMin">The min value.</param>
-             <param name="pMax">The max value.</param>
-             <param name="pSteppingDelta">The step size.</param>
+             <param name="Property">The property</param>
+             <param name="pMin">The min value</param>
+             <param name="pMax">The max value</param>
+             <param name="pSteppingDelta">The step size</param>
              <param name="pDefault">The deafult value. </param>
-             <param name="pCapsFlags">Shows if it can be controlled automatically and/or manually.</param>
+             <param name="pCapsFlags">Shows if it can be controlled automatically and/or manually</param>
             
-             <returns>Error code.</returns>
+             <returns>Error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp.Set(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32,UMapx.Video.DirectShow.VideoProcAmpFlags)">
@@ -898,11 +898,11 @@
              Set a specified property on the camera.
              </summary>
             
-             <param name="Property">The property to set.</param>
-             <param name="lValue">The new value of the property.</param>
-             <param name="Flags">The auto or manual setting.</param>
+             <param name="Property">The property to set</param>
+             <param name="lValue">The new value of the property</param>
+             <param name="Flags">The auto or manual setting</param>
             
-             <returns>Error code.</returns>
+             <returns>Error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IAMVideoProcAmp.Get(UMapx.Video.DirectShow.VideoProcAmpProperty,System.Int32@,UMapx.Video.DirectShow.VideoProcAmpFlags@)">
@@ -910,11 +910,11 @@
              Get the current setting of a camera property.
              </summary>
             
-             <param name="Property">The property to retrieve.</param>
-             <param name="lValue">The current value of the property.</param>
+             <param name="Property">The property to retrieve</param>
+             <param name="lValue">The current value of the property</param>
              <param name="Flags">Is it manual or automatic?</param>
             
-             <returns>Error code.</returns>
+             <returns>Error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IBaseFilter">
@@ -929,9 +929,9 @@
             Returns the class identifier (CLSID) for the component object.
             </summary>
             
-            <param name="ClassID">Points to the location of the CLSID on return.</param>
+            <param name="ClassID">Points to the location of the CLSID on return</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.Stop">
@@ -939,7 +939,7 @@
             Stops the filter.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.Pause">
@@ -947,7 +947,7 @@
             Pauses the filter.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.Run(System.Int64)">
@@ -955,9 +955,9 @@
             Runs the filter.
             </summary>
             
-            <param name="start">Reference time corresponding to stream time 0.</param>
+            <param name="start">Reference time corresponding to stream time 0</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.GetState(System.Int32,System.Int32@)">
@@ -965,10 +965,10 @@
             Retrieves the state of the filter (running, stopped, or paused).
             </summary>
             
-            <param name="milliSecsTimeout">Time-out interval, in milliseconds.</param>
-            <param name="filterState">Pointer to a variable that receives filter's state.</param>
+            <param name="milliSecsTimeout">Time-out interval, in milliseconds</param>
+            <param name="filterState">Pointer to a variable that receives filter's state</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.SetSyncSource(System.IntPtr)">
@@ -978,7 +978,7 @@
             
             <param name="clock">Pointer to the clock's <b>IReferenceClock</b> interface, or NULL. </param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.GetSyncSource(System.IntPtr@)">
@@ -986,9 +986,9 @@
             Retrieves the current reference clock.
             </summary>
             
-            <param name="clock">Address of a variable that receives a pointer to the clock's IReferenceClock interface.</param>
+            <param name="clock">Address of a variable that receives a pointer to the clock's IReferenceClock interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.EnumPins(UMapx.Video.DirectShow.Internals.IEnumPins@)">
@@ -996,9 +996,9 @@
             Enumerates the pins on this filter.
             </summary>
             
-            <param name="enumPins">Address of a variable that receives a pointer to the IEnumPins interface.</param>
+            <param name="enumPins">Address of a variable that receives a pointer to the IEnumPins interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.FindPin(System.String,UMapx.Video.DirectShow.Internals.IPin@)">
@@ -1006,10 +1006,10 @@
             Retrieves the pin with the specified identifier.
             </summary>
             
-            <param name="id">Pointer to a constant wide-character string that identifies the pin.</param>
-            <param name="pin">Address of a variable that receives a pointer to the pin's IPin interface.</param>
+            <param name="id">Pointer to a constant wide-character string that identifies the pin</param>
+            <param name="pin">Address of a variable that receives a pointer to the pin's IPin interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.QueryFilterInfo(UMapx.Video.DirectShow.Internals.FilterInfo@)">
@@ -1017,9 +1017,9 @@
             Retrieves information about the filter.
             </summary>
             
-            <param name="filterInfo">Pointer to <b>FilterInfo</b> structure.</param>
+            <param name="filterInfo">Pointer to <b>FilterInfo</b> structure</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.JoinFilterGraph(UMapx.Video.DirectShow.Internals.IFilterGraph,System.String)">
@@ -1028,10 +1028,10 @@
             </summary>
             
             <param name="graph">Pointer to the Filter Graph Manager's <b>IFilterGraph</b> interface, or NULL
-            if the filter is leaving the graph.</param>
-            <param name="name">String that specifies a name for the filter.</param>
+            if the filter is leaving the graph</param>
+            <param name="name">String that specifies a name for the filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IBaseFilter.QueryVendorInfo(System.String@)">
@@ -1039,9 +1039,9 @@
             Retrieves a string containing vendor information.
             </summary>
             
-            <param name="vendorInfo">Receives a string containing the vendor information.</param>
+            <param name="vendorInfo">Receives a string containing the vendor information</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2">
@@ -1055,9 +1055,9 @@
             Specify filter graph for the capture graph builder to use.
             </summary>
             
-            <param name="graphBuilder">Filter graph's interface.</param>
+            <param name="graphBuilder">Filter graph's interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.GetFiltergraph(UMapx.Video.DirectShow.Internals.IGraphBuilder@)">
@@ -1065,9 +1065,9 @@
             Retrieve the filter graph that the builder is using.
             </summary>
             
-            <param name="graphBuilder">Filter graph's interface.</param>
+            <param name="graphBuilder">Filter graph's interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.SetOutputFileName(System.Guid,System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@,System.IntPtr@)">
@@ -1076,12 +1076,12 @@
             </summary>
             
             <param name="type">GUID that represents either the media subtype of the output or the
-            class identifier (CLSID) of a multiplexer filter or file writer filter.</param>
-            <param name="fileName">Output file name.</param>
-            <param name="baseFilter">Receives the multiplexer's <see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interface.</param>
-            <param name="fileSinkFilter">Receives the file writer's IFileSinkFilter interface. Can be NULL.</param>
+            class identifier (CLSID) of a multiplexer filter or file writer filter</param>
+            <param name="fileName">Output file name</param>
+            <param name="baseFilter">Receives the multiplexer's <see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interface</param>
+            <param name="fileSinkFilter">Receives the file writer's IFileSinkFilter interface. Can be NULL</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.FindInterface(System.Guid,System.Guid,UMapx.Video.DirectShow.Internals.IBaseFilter,System.Guid,System.Object@)">
@@ -1089,13 +1089,13 @@
             Searche the graph for a specified interface, starting from a specified filter.
             </summary>
             
-            <param name="category">GUID that specifies the search criteria.</param>
-            <param name="type">GUID that specifies the major media type of an output pin, or NULL.</param>
-            <param name="baseFilter"><see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interface of the filter. The method begins searching from this filter.</param>
-            <param name="interfaceID">Interface identifier (IID) of the interface to locate.</param>
-            <param name="retInterface">Receives found interface.</param>
+            <param name="category">GUID that specifies the search criteria</param>
+            <param name="type">GUID that specifies the major media type of an output pin, or NULL</param>
+            <param name="baseFilter"><see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interface of the filter. The method begins searching from this filter</param>
+            <param name="interfaceID">Interface identifier (IID) of the interface to locate</param>
+            <param name="retInterface">Receives found interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.RenderStream(System.Guid,System.Guid,System.Object,UMapx.Video.DirectShow.Internals.IBaseFilter,UMapx.Video.DirectShow.Internals.IBaseFilter)">
@@ -1103,13 +1103,13 @@
             Connect an output pin on a source filter to a rendering filter, optionally through a compression filter.
             </summary>
             
-            <param name="category">Pin category.</param>
-            <param name="mediaType">Major-type GUID that specifies the media type of the output pin.</param>
-            <param name="source">Starting filter for the connection.</param>
-            <param name="compressor">Interface of an intermediate filter, such as a compression filter. Can be NULL.</param>
-            <param name="renderer">Sink filter, such as a renderer or mux filter.</param>
+            <param name="category">Pin category</param>
+            <param name="mediaType">Major-type GUID that specifies the media type of the output pin</param>
+            <param name="source">Starting filter for the connection</param>
+            <param name="compressor">Interface of an intermediate filter, such as a compression filter. Can be NULL</param>
+            <param name="renderer">Sink filter, such as a renderer or mux filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.ControlStream(System.Guid,System.Guid,UMapx.Video.DirectShow.Internals.IBaseFilter,System.Int64,System.Int64,System.Int16,System.Int16)">
@@ -1117,17 +1117,17 @@
             Set the start and stop times for one or more streams of captured data.
             </summary>
             
-            <param name="category">Pin category.</param>
-            <param name="mediaType">Major-type GUID that specifies the media type.</param>
-            <param name="filter"><see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interface that specifies which filter to control.</param>
-            <param name="start">Start time.</param>
-            <param name="stop">Stop time.</param>
+            <param name="category">Pin category</param>
+            <param name="mediaType">Major-type GUID that specifies the media type</param>
+            <param name="filter"><see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interface that specifies which filter to control</param>
+            <param name="start">Start time</param>
+            <param name="stop">Stop time</param>
             <param name="startCookie">Value that is sent as the second parameter of the
-            EC_STREAM_CONTROL_STARTED event notification.</param>
+            EC_STREAM_CONTROL_STARTED event notification</param>
             <param name="stopCookie">Value that is sent as the second parameter of the
-            EC_STREAM_CONTROL_STOPPED event notification.</param>
+            EC_STREAM_CONTROL_STOPPED event notification</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.AllocCapFile(System.String,System.Int64)">
@@ -1135,10 +1135,10 @@
             Preallocate a capture file to a specified size.
             </summary>
             
-            <param name="fileName">File name to create or resize.</param>
-            <param name="size">Size of the file to allocate, in bytes.</param>
+            <param name="fileName">File name to create or resize</param>
+            <param name="size">Size of the file to allocate, in bytes</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.CopyCaptureFile(System.String,System.String,System.Boolean,System.IntPtr)">
@@ -1146,12 +1146,12 @@
             Copy the valid media data from a capture file.
             </summary>
             
-            <param name="oldFileName">Old file name.</param>
-            <param name="newFileName">New file name.</param>
-            <param name="allowEscAbort">Boolean value that specifies whether pressing the ESC key cancels the copy operation.</param>
-            <param name="callback">IAMCopyCaptureFileProgress interface to display progress information, or NULL.</param>
+            <param name="oldFileName">Old file name</param>
+            <param name="newFileName">New file name</param>
+            <param name="allowEscAbort">Boolean value that specifies whether pressing the ESC key cancels the copy operation</param>
+            <param name="callback">IAMCopyCaptureFileProgress interface to display progress information, or NULL</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ICaptureGraphBuilder2.FindPin(System.Object,UMapx.Video.DirectShow.Internals.PinDirection,System.Guid,System.Guid,System.Boolean,System.Int32,UMapx.Video.DirectShow.Internals.IPin@)">
@@ -1159,15 +1159,15 @@
             
             </summary>
             
-            <param name="source">Interface on a filter, or to an interface on a pin.</param>
-            <param name="pinDirection">Pin direction (input or output).</param>
-            <param name="category">Pin category.</param>
-            <param name="mediaType">Media type.</param>
-            <param name="unconnected">Boolean value that specifies whether the pin must be unconnected.</param>
-            <param name="index">Zero-based index of the pin to retrieve, from the set of matching pins.</param>
-            <param name="pin">Interface of the matching pin.</param>
+            <param name="source">Interface on a filter, or to an interface on a pin</param>
+            <param name="pinDirection">Pin direction (input or output)</param>
+            <param name="category">Pin category</param>
+            <param name="mediaType">Media type</param>
+            <param name="unconnected">Boolean value that specifies whether the pin must be unconnected</param>
+            <param name="index">Zero-based index of the pin to retrieve, from the set of matching pins</param>
+            <param name="pin">Interface of the matching pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.ICreateDevEnum">
@@ -1182,11 +1182,11 @@
             Creates a class enumerator for a specified device category.
             </summary>
             
-            <param name="type">Specifies the class identifier of the device category.</param>
+            <param name="type">Specifies the class identifier of the device category</param>
             <param name="enumMoniker">Address of a variable that receives an <b>IEnumMoniker</b> interface pointer</param>
-            <param name="flags">Bitwise combination of zero or more flags. If zero, the method enumerates every filter in the category.</param>
+            <param name="flags">Bitwise combination of zero or more flags. If zero, the method enumerates every filter in the category</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IEnumFilters">
@@ -1201,11 +1201,11 @@
             Retrieves the specified number of filters in the enumeration sequence.
             </summary>
             
-            <param name="cFilters">Number of filters to retrieve.</param>
-            <param name="filters">Array in which to place <see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interfaces.</param>
-            <param name="filtersFetched">Actual number of filters placed in the array.</param>
+            <param name="cFilters">Number of filters to retrieve</param>
+            <param name="filters">Array in which to place <see cref="T:UMapx.Video.DirectShow.Internals.IBaseFilter"/> interfaces</param>
+            <param name="filtersFetched">Actual number of filters placed in the array</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IEnumFilters.Skip(System.Int32)">
@@ -1213,9 +1213,9 @@
             Skips a specified number of filters in the enumeration sequence.
             </summary>
             
-            <param name="cFilters">Number of filters to skip.</param>
+            <param name="cFilters">Number of filters to skip</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IEnumFilters.Reset">
@@ -1223,7 +1223,7 @@
             Resets the enumeration sequence to the beginning.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IEnumFilters.Clone(UMapx.Video.DirectShow.Internals.IEnumFilters@)">
@@ -1231,10 +1231,10 @@
             Makes a copy of the enumerator with the same enumeration state.
             </summary>
             
-            <param name="enumFilters">Duplicate of the enumerator.</param>
+            <param name="enumFilters">Duplicate of the enumerator</param>
             
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
             
         </member>
@@ -1249,11 +1249,11 @@
             Retrieves a specified number of pins.
             </summary>
             
-            <param name="cPins">Number of pins to retrieve.</param>
-            <param name="pins">Array of size <b>cPins</b> that is filled with <b>IPin</b> pointers.</param>
-            <param name="pinsFetched">Receives the number of pins retrieved.</param>
+            <param name="cPins">Number of pins to retrieve</param>
+            <param name="pins">Array of size <b>cPins</b> that is filled with <b>IPin</b> pointers</param>
+            <param name="pinsFetched">Receives the number of pins retrieved</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IEnumPins.Skip(System.Int32)">
@@ -1261,9 +1261,9 @@
             Skips a specified number of pins in the enumeration sequence.
             </summary>
             
-            <param name="cPins">Number of pins to skip.</param>
+            <param name="cPins">Number of pins to skip</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IEnumPins.Reset">
@@ -1271,7 +1271,7 @@
             Resets the enumeration sequence to the beginning.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IEnumPins.Clone(UMapx.Video.DirectShow.Internals.IEnumPins@)">
@@ -1279,9 +1279,9 @@
             Makes a copy of the enumerator with the same enumeration state. 
             </summary>
             
-            <param name="enumPins">Duplicate of the enumerator.</param>
+            <param name="enumPins">Duplicate of the enumerator</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IFileSourceFilter">
@@ -1295,10 +1295,10 @@
             Loads the source filter with the file.
             </summary>
             
-            <param name="fileName">The name of the file to open.</param>
-            <param name="mediaType">Media type of the file. This can be null.</param>
+            <param name="fileName">The name of the file to open</param>
+            <param name="mediaType">Media type of the file. This can be null</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFileSourceFilter.GetCurFile(System.String@,UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -1306,10 +1306,10 @@
             Retrieves the current file.
             </summary>
             
-            <param name="fileName">Name of media file.</param>
-            <param name="mediaType">Receives media type.</param>
+            <param name="fileName">Name of media file</param>
+            <param name="mediaType">Receives media type</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IFilterGraph">
@@ -1324,10 +1324,10 @@
             Adds a filter to the graph and gives it a name.
             </summary>
             
-            <param name="filter">Filter to add to the graph.</param>
-            <param name="name">Name of the filter.</param>
+            <param name="filter">Filter to add to the graph</param>
+            <param name="name">Name of the filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.RemoveFilter(UMapx.Video.DirectShow.Internals.IBaseFilter)">
@@ -1335,9 +1335,9 @@
             Removes a filter from the graph.
             </summary>
             
-            <param name="filter">Filter to be removed from the graph.</param>
+            <param name="filter">Filter to be removed from the graph</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.EnumFilters(System.IntPtr@)">
@@ -1345,9 +1345,9 @@
             Provides an enumerator for all filters in the graph.
             </summary>
             
-            <param name="enumerator">Filter enumerator.</param>
+            <param name="enumerator">Filter enumerator</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.FindFilterByName(System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@)">
@@ -1355,10 +1355,10 @@
             Finds a filter that was added with a specified name.
             </summary>
             
-            <param name="name">Name of filter to search for.</param>
-            <param name="filter">Interface of found filter.</param>
+            <param name="name">Name of filter to search for</param>
+            <param name="filter">Interface of found filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.ConnectDirect(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -1366,11 +1366,11 @@
             Connects two pins directly (without intervening filters).
             </summary>
             
-            <param name="pinOut">Output pin.</param>
-            <param name="pinIn">Input pin.</param>
-            <param name="mediaType">Media type to use for the connection.</param>
+            <param name="pinOut">Output pin</param>
+            <param name="pinIn">Input pin</param>
+            <param name="mediaType">Media type to use for the connection</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.Reconnect(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1378,9 +1378,9 @@
             Breaks the existing pin connection and reconnects it to the same pin.
             </summary>
             
-            <param name="pin">Pin to disconnect and reconnect.</param>
+            <param name="pin">Pin to disconnect and reconnect</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.Disconnect(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1388,9 +1388,9 @@
             Disconnects a specified pin.
             </summary>
             
-            <param name="pin">Pin to disconnect.</param>
+            <param name="pin">Pin to disconnect</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph.SetDefaultSyncSource">
@@ -1398,7 +1398,7 @@
             Sets the reference clock to the default clock.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IFilterGraph2">
@@ -1413,10 +1413,10 @@
             Adds a filter to the graph and gives it a name.
             </summary>
             
-            <param name="filter">Filter to add to the graph.</param>
-            <param name="name">Name of the filter.</param>
+            <param name="filter">Filter to add to the graph</param>
+            <param name="name">Name of the filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.RemoveFilter(UMapx.Video.DirectShow.Internals.IBaseFilter)">
@@ -1424,9 +1424,9 @@
             Removes a filter from the graph.
             </summary>
             
-            <param name="filter">Filter to be removed from the graph.</param>
+            <param name="filter">Filter to be removed from the graph</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.EnumFilters(UMapx.Video.DirectShow.Internals.IEnumFilters@)">
@@ -1434,9 +1434,9 @@
             Provides an enumerator for all filters in the graph.
             </summary>
             
-            <param name="enumerator">Filter enumerator.</param>
+            <param name="enumerator">Filter enumerator</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.FindFilterByName(System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@)">
@@ -1444,10 +1444,10 @@
             Finds a filter that was added with a specified name.
             </summary>
             
-            <param name="name">Name of filter to search for.</param>
-            <param name="filter">Interface of found filter.</param>
+            <param name="name">Name of filter to search for</param>
+            <param name="filter">Interface of found filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.ConnectDirect(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -1455,11 +1455,11 @@
             Connects two pins directly (without intervening filters).
             </summary>
             
-            <param name="pinOut">Output pin.</param>
-            <param name="pinIn">Input pin.</param>
-            <param name="mediaType">Media type to use for the connection.</param>
+            <param name="pinOut">Output pin</param>
+            <param name="pinIn">Input pin</param>
+            <param name="mediaType">Media type to use for the connection</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.Reconnect(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1467,9 +1467,9 @@
             Breaks the existing pin connection and reconnects it to the same pin.
             </summary>
             
-            <param name="pin">Pin to disconnect and reconnect.</param>
+            <param name="pin">Pin to disconnect and reconnect</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.Disconnect(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1477,9 +1477,9 @@
             Disconnects a specified pin.
             </summary>
             
-            <param name="pin">Pin to disconnect.</param>
+            <param name="pin">Pin to disconnect</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.SetDefaultSyncSource">
@@ -1487,7 +1487,7 @@
             Sets the reference clock to the default clock.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.Connect(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.IPin)">
@@ -1495,10 +1495,10 @@
             Connects two pins. If they will not connect directly, this method connects them with intervening transforms.
             </summary>
             
-            <param name="pinOut">Output pin.</param>
-            <param name="pinIn">Input pin.</param>
+            <param name="pinOut">Output pin</param>
+            <param name="pinIn">Input pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.Render(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1506,9 +1506,9 @@
             Adds a chain of filters to a specified output pin to render it.
             </summary>
             
-            <param name="pinOut">Output pin.</param>
+            <param name="pinOut">Output pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.RenderFile(System.String,System.String)">
@@ -1516,10 +1516,10 @@
             Builds a filter graph that renders the specified file.
             </summary>
             
-            <param name="file">Specifies a string that contains file name or device moniker.</param>
-            <param name="playList">Reserved.</param>
+            <param name="file">Specifies a string that contains file name or device moniker</param>
+            <param name="playList">Reserved</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.AddSourceFilter(System.String,System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@)">
@@ -1527,11 +1527,11 @@
             Adds a source filter to the filter graph for a specific file.
             </summary>
             
-            <param name="fileName">Specifies the name of the file to load.</param>
-            <param name="filterName">Specifies a name for the source filter.</param>
-            <param name="filter">Variable that receives the interface of the source filter.</param>
+            <param name="fileName">Specifies the name of the file to load</param>
+            <param name="filterName">Specifies a name for the source filter</param>
+            <param name="filter">Variable that receives the interface of the source filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.SetLogFile(System.IntPtr)">
@@ -1539,9 +1539,9 @@
             Sets the file for logging actions taken when attempting to perform an operation.
             </summary>
             
-            <param name="hFile">Handle to the log file.</param>
+            <param name="hFile">Handle to the log file</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.Abort">
@@ -1549,7 +1549,7 @@
             Requests that the graph builder return as soon as possible from its current task.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.ShouldOperationContinue">
@@ -1557,7 +1557,7 @@
             Queries whether the current operation should continue.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.AddSourceFilterForMoniker(System.Runtime.InteropServices.ComTypes.IMoniker,System.Runtime.InteropServices.ComTypes.IBindCtx,System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@)">
@@ -1565,13 +1565,13 @@
             
             </summary>
             
-            <param name="moniker">Moniker interface.</param>
-            <param name="bindContext">Bind context interface.</param>
-            <param name="filterName">Name for the filter.</param>
+            <param name="moniker">Moniker interface</param>
+            <param name="bindContext">Bind context interface</param>
+            <param name="filterName">Name for the filter</param>
             <param name="filter"> Receives source filter's IBaseFilter interface.
-            The caller must release the interface.</param>
+            The caller must release the interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.ReconnectEx(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -1580,10 +1580,10 @@
             using a specified media type.
             </summary>
             
-            <param name="pin">Pin to disconnect and reconnect.</param>
-            <param name="mediaType">Media type to reconnect with.</param>
+            <param name="pin">Pin to disconnect and reconnect</param>
+            <param name="mediaType">Media type to reconnect with</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IFilterGraph2.RenderEx(UMapx.Video.DirectShow.Internals.IPin,System.Int32,System.IntPtr)">
@@ -1591,11 +1591,11 @@
             Render an output pin, with an option to use existing renderers only.
             </summary>
             
-            <param name="outputPin">Interface of the output pin.</param>
-            <param name="flags">Flag that specifies how to render the pin.</param>
-            <param name="context">Reserved.</param>
+            <param name="outputPin">Interface of the output pin</param>
+            <param name="flags">Flag that specifies how to render the pin</param>
+            <param name="context">Reserved</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IGraphBuilder">
@@ -1609,10 +1609,10 @@
             Adds a filter to the graph and gives it a name.
             </summary>
             
-            <param name="filter">Filter to add to the graph.</param>
-            <param name="name">Name of the filter.</param>
+            <param name="filter">Filter to add to the graph</param>
+            <param name="name">Name of the filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.RemoveFilter(UMapx.Video.DirectShow.Internals.IBaseFilter)">
@@ -1620,9 +1620,9 @@
             Removes a filter from the graph.
             </summary>
             
-            <param name="filter">Filter to be removed from the graph.</param>
+            <param name="filter">Filter to be removed from the graph</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.EnumFilters(UMapx.Video.DirectShow.Internals.IEnumFilters@)">
@@ -1630,9 +1630,9 @@
             Provides an enumerator for all filters in the graph.
             </summary>
             
-            <param name="enumerator">Filter enumerator.</param>
+            <param name="enumerator">Filter enumerator</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.FindFilterByName(System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@)">
@@ -1640,10 +1640,10 @@
             Finds a filter that was added with a specified name.
             </summary>
             
-            <param name="name">Name of filter to search for.</param>
-            <param name="filter">Interface of found filter.</param>
+            <param name="name">Name of filter to search for</param>
+            <param name="filter">Interface of found filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.ConnectDirect(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -1651,11 +1651,11 @@
             Connects two pins directly (without intervening filters).
             </summary>
             
-            <param name="pinOut">Output pin.</param>
-            <param name="pinIn">Input pin.</param>
-            <param name="mediaType">Media type to use for the connection.</param>
+            <param name="pinOut">Output pin</param>
+            <param name="pinIn">Input pin</param>
+            <param name="mediaType">Media type to use for the connection</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.Reconnect(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1663,9 +1663,9 @@
             Breaks the existing pin connection and reconnects it to the same pin.
             </summary>
             
-            <param name="pin">Pin to disconnect and reconnect.</param>
+            <param name="pin">Pin to disconnect and reconnect</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.Disconnect(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1673,9 +1673,9 @@
             Disconnects a specified pin.
             </summary>
             
-            <param name="pin">Pin to disconnect.</param>
+            <param name="pin">Pin to disconnect</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.SetDefaultSyncSource">
@@ -1683,7 +1683,7 @@
             Sets the reference clock to the default clock.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.Connect(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.IPin)">
@@ -1691,10 +1691,10 @@
             Connects two pins. If they will not connect directly, this method connects them with intervening transforms.
             </summary>
             
-            <param name="pinOut">Output pin.</param>
-            <param name="pinIn">Input pin.</param>
+            <param name="pinOut">Output pin</param>
+            <param name="pinIn">Input pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.Render(UMapx.Video.DirectShow.Internals.IPin)">
@@ -1702,9 +1702,9 @@
             Adds a chain of filters to a specified output pin to render it.
             </summary>
             
-            <param name="pinOut">Output pin.</param>
+            <param name="pinOut">Output pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.RenderFile(System.String,System.String)">
@@ -1712,10 +1712,10 @@
             Builds a filter graph that renders the specified file.
             </summary>
             
-            <param name="file">Specifies a string that contains file name or device moniker.</param>
-            <param name="playList">Reserved.</param>
+            <param name="file">Specifies a string that contains file name or device moniker</param>
+            <param name="playList">Reserved</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.AddSourceFilter(System.String,System.String,UMapx.Video.DirectShow.Internals.IBaseFilter@)">
@@ -1723,11 +1723,11 @@
             Adds a source filter to the filter graph for a specific file.
             </summary>
             
-            <param name="fileName">Specifies the name of the file to load.</param>
-            <param name="filterName">Specifies a name for the source filter.</param>
-            <param name="filter">Variable that receives the interface of the source filter.</param>
+            <param name="fileName">Specifies the name of the file to load</param>
+            <param name="filterName">Specifies a name for the source filter</param>
+            <param name="filter">Variable that receives the interface of the source filter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.SetLogFile(System.IntPtr)">
@@ -1735,9 +1735,9 @@
             Sets the file for logging actions taken when attempting to perform an operation.
             </summary>
             
-            <param name="hFile">Handle to the log file.</param>
+            <param name="hFile">Handle to the log file</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.Abort">
@@ -1745,7 +1745,7 @@
             Requests that the graph builder return as soon as possible from its current task.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IGraphBuilder.ShouldOperationContinue">
@@ -1753,7 +1753,7 @@
             Queries whether the current operation should continue.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IMediaControl">
@@ -1768,7 +1768,7 @@
             Runs all the filters in the filter graph.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.Pause">
@@ -1776,7 +1776,7 @@
             Pauses all filters in the filter graph.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.Stop">
@@ -1784,7 +1784,7 @@
             Stops all the filters in the filter graph.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.GetState(System.Int32,System.Int32@)">
@@ -1792,10 +1792,10 @@
             Retrieves the state of the filter graph.
             </summary>
             
-            <param name="timeout">Duration of the time-out, in milliseconds, or INFINITE to specify an infinite time-out.</param>
-            <param name="filterState">Variable that receives a member of the <b>FILTER_STATE</b> enumeration.</param>
+            <param name="timeout">Duration of the time-out, in milliseconds, or INFINITE to specify an infinite time-out</param>
+            <param name="filterState">Variable that receives a member of the <b>FILTER_STATE</b> enumeration</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.RenderFile(System.String)">
@@ -1805,7 +1805,7 @@
             
             <param name="fileName">Name of the file to render</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.AddSourceFilter(System.String,System.Object@)">
@@ -1813,10 +1813,10 @@
             Adds a source filter to the filter graph, for a specified file.
             </summary>
             
-            <param name="fileName">Name of the file containing the source video.</param>
-            <param name="filterInfo">Receives interface of filter information object.</param>
+            <param name="fileName">Name of the file containing the source video</param>
+            <param name="filterInfo">Receives interface of filter information object</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.get_FilterCollection(System.Object@)">
@@ -1824,9 +1824,9 @@
             Retrieves a collection of the filters in the filter graph.
             </summary>
             
-            <param name="collection">Receives the <b>IAMCollection</b> interface.</param>
+            <param name="collection">Receives the <b>IAMCollection</b> interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.get_RegFilterCollection(System.Object@)">
@@ -1834,9 +1834,9 @@
             Retrieves a collection of all the filters listed in the registry.
             </summary>
             
-            <param name="collection">Receives the <b>IDispatch</b> interface of <b>IAMCollection</b> object.</param>
+            <param name="collection">Receives the <b>IDispatch</b> interface of <b>IAMCollection</b> object</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaControl.StopWhenReady">
@@ -1844,7 +1844,7 @@
             Pauses the filter graph, allowing filters to queue data, and then stops the filter graph.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IMediaEventEx">
@@ -1857,9 +1857,9 @@
             <summary>
             Retrieves a handle to a manual-reset event that remains signaled while the queue contains event notifications.
             </summary>
-            <param name="hEvent">Pointer to a variable that receives the event handle.</param>
+            <param name="hEvent">Pointer to a variable that receives the event handle</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.GetEvent(UMapx.Video.DirectShow.Internals.DsEvCode@,System.IntPtr@,System.IntPtr@,System.Int32)">
@@ -1867,12 +1867,12 @@
             Retrieves the next event notification from the event queue.
             </summary>
             
-            <param name="lEventCode">Variable that receives the event code.</param>
-            <param name="lParam1">Pointer to a variable that receives the first event parameter.</param>
-            <param name="lParam2">Pointer to a variable that receives the second event parameter.</param>
-            <param name="msTimeout">Time-out interval, in milliseconds.</param>
+            <param name="lEventCode">Variable that receives the event code</param>
+            <param name="lParam1">Pointer to a variable that receives the first event parameter</param>
+            <param name="lParam2">Pointer to a variable that receives the second event parameter</param>
+            <param name="msTimeout">Time-out interval, in milliseconds</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.WaitForCompletion(System.Int32,System.Int32@)">
@@ -1880,10 +1880,10 @@
             Waits for the filter graph to render all available data.
             </summary>
             
-            <param name="msTimeout">Time-out interval, in milliseconds. Pass zero to return immediately.</param>
-            <param name="pEvCode">Pointer to a variable that receives an event code.</param>
+            <param name="msTimeout">Time-out interval, in milliseconds. Pass zero to return immediately</param>
+            <param name="pEvCode">Pointer to a variable that receives an event code</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.CancelDefaultHandling(System.Int32)">
@@ -1891,29 +1891,29 @@
             Cancels the Filter Graph Manager's default handling for a specified event.
             </summary>
             
-            <param name="lEvCode">Event code for which to cancel default handling.</param>
+            <param name="lEvCode">Event code for which to cancel default handling</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.RestoreDefaultHandling(System.Int32)">
             <summary>
             Restores the Filter Graph Manager's default handling for a specified event.
             </summary>
-            <param name="lEvCode">Event code for which to restore default handling.</param>
+            <param name="lEvCode">Event code for which to restore default handling</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.FreeEventParams(UMapx.Video.DirectShow.Internals.DsEvCode,System.IntPtr,System.IntPtr)">
             <summary>
             Frees resources associated with the parameters of an event.
             </summary>
-            <param name="lEvCode">Event code.</param>
-            <param name="lParam1">First event parameter.</param>
-            <param name="lParam2">Second event parameter.</param>
+            <param name="lEvCode">Event code</param>
+            <param name="lParam1">First event parameter</param>
+            <param name="lParam2">Second event parameter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.SetNotifyWindow(System.IntPtr,System.Int32,System.IntPtr)">
@@ -1921,11 +1921,11 @@
             Registers a window to process event notifications.
             </summary>
             
-            <param name="hwnd">Handle to the window, or <see cref="F:System.IntPtr.Zero"/> to stop receiving event messages.</param>
-            <param name="lMsg">Window message to be passed as the notification.</param>
-            <param name="lInstanceData">Value to be passed as the <i>lParam</i> parameter for the <i>lMsg</i> message.</param>
+            <param name="hwnd">Handle to the window, or <see cref="F:System.IntPtr.Zero"/> to stop receiving event messages</param>
+            <param name="lMsg">Window message to be passed as the notification</param>
+            <param name="lInstanceData">Value to be passed as the <i>lParam</i> parameter for the <i>lMsg</i> message</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.SetNotifyFlags(System.Int32)">
@@ -1933,9 +1933,9 @@
             Enables or disables event notifications.
             </summary>
             
-            <param name="lNoNotifyFlags">Value indicating whether to enable or disable event notifications.</param>
+            <param name="lNoNotifyFlags">Value indicating whether to enable or disable event notifications</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaEventEx.GetNotifyFlags(System.Int32@)">
@@ -1943,9 +1943,9 @@
             Determines whether event notifications are enabled.
             </summary>
             
-            <param name="lplNoNotifyFlags">Variable that receives current notification status.</param>
+            <param name="lplNoNotifyFlags">Variable that receives current notification status</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IMediaFilter">
@@ -1960,7 +1960,7 @@
             This method informs the filter to transition to the new state. 
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaFilter.Pause">
@@ -1968,7 +1968,7 @@
             This method informs the filter to transition to the new state. 
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaFilter.Run(System.Int64)">
@@ -1976,9 +1976,9 @@
             This method informs the filter to transition to the new (running) state. Passes a time value to synchronize independent streams. 
             </summary>
             
-            <param name="tStart">Time value of the reference clock.  The amount to be added to the IMediaSample  time stamp to determine the time at which that sample should be rendered UMapxing to the reference clock. That is, it is the reference time at which a sample with a stream time of zero should be rendered.</param>
+            <param name="tStart">Time value of the reference clock.  The amount to be added to the IMediaSample  time stamp to determine the time at which that sample should be rendered UMapxing to the reference clock. That is, it is the reference time at which a sample with a stream time of zero should be rendered</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaFilter.GetState(System.Int32,UMapx.Video.DirectShow.Internals.FilterState@)">
@@ -1989,7 +1989,7 @@
             <param name="dwMilliSecsTimeout">Duration of the time-out, in milliseconds. To block indefinitely, pass INFINITE. </param>
             <param name="filtState">Returned state of the filter. States include stopped, paused, running, or intermediate (in the process of changing). </param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaFilter.SetSyncSource(UMapx.Video.DirectShow.Internals.IReferenceClock)">
@@ -1997,9 +1997,9 @@
             This method identifies the reference clock to which the filter should synchronize activity.
             </summary>
             
-            <param name="pClock">Pointer to the IReferenceClock  interface.</param>
+            <param name="pClock">Pointer to the IReferenceClock  interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IMediaFilter.GetSyncSource(UMapx.Video.DirectShow.Internals.IReferenceClock@)">
@@ -2010,7 +2010,7 @@
             <param name="pClock">Pointer to a reference clock; it will be set to the IReferenceClock  interface. </param>
             
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IPersist">
@@ -2037,10 +2037,10 @@
             Connects the pin to another pin.
             </summary>
             
-            <param name="receivePin">Other pin to connect to.</param>
-            <param name="mediaType">Type to use for the connections (optional).</param>
+            <param name="receivePin">Other pin to connect to</param>
+            <param name="mediaType">Type to use for the connections (optional)</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.ReceiveConnection(UMapx.Video.DirectShow.Internals.IPin,UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -2048,10 +2048,10 @@
             Makes a connection to this pin and is called by a connecting pin.
             </summary>
             
-            <param name="receivePin">Connecting pin.</param>
-            <param name="mediaType">Media type of the samples to be streamed.</param>
+            <param name="receivePin">Connecting pin</param>
+            <param name="mediaType">Media type of the samples to be streamed</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.Disconnect">
@@ -2059,7 +2059,7 @@
             Breaks the current pin connection.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.ConnectedTo(UMapx.Video.DirectShow.Internals.IPin@)">
@@ -2067,9 +2067,9 @@
             Returns a pointer to the connecting pin.
             </summary>
             
-            <param name="pin">Receives <b>IPin</b> interface of connected pin (if any).</param>
+            <param name="pin">Receives <b>IPin</b> interface of connected pin (if any)</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.ConnectionMediaType(UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -2080,9 +2080,9 @@
             <param name="mediaType">Pointer to an <see cref="T:UMapx.Video.DirectShow.Internals.AMMediaType"/> structure. If the pin is connected,
             the media type is returned. Otherwise, the structure is initialized to a default state in which
             all elements are 0, with the exception of <b>lSampleSize</b>, which is set to 1, and
-            <b>FixedSizeSamples</b>, which is set to <b>true</b>.</param>
+            <b>FixedSizeSamples</b>, which is set to <b>true</b></param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.QueryPinInfo(UMapx.Video.DirectShow.Internals.PinInfo@)">
@@ -2090,9 +2090,9 @@
             Retrieves information about this pin (for example, the name, owning filter, and direction).
             </summary>
             
-            <param name="pinInfo"><see cref="T:UMapx.Video.DirectShow.Internals.PinInfo"/> structure that receives the pin information.</param>
+            <param name="pinInfo"><see cref="T:UMapx.Video.DirectShow.Internals.PinInfo"/> structure that receives the pin information</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.QueryDirection(UMapx.Video.DirectShow.Internals.PinDirection@)">
@@ -2100,9 +2100,9 @@
             Retrieves the direction for this pin.
             </summary>
             
-            <param name="pinDirection">Receives direction of the pin.</param>
+            <param name="pinDirection">Receives direction of the pin</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.QueryId(System.String@)">
@@ -2110,9 +2110,9 @@
             Retrieves an identifier for the pin.
             </summary>
             
-            <param name="id">Pin identifier.</param>
+            <param name="id">Pin identifier</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.QueryAccept(UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -2120,9 +2120,9 @@
             Queries whether a given media type is acceptable by the pin.
             </summary>
             
-            <param name="mediaType"><see cref="T:UMapx.Video.DirectShow.Internals.AMMediaType"/> structure that specifies the media type.</param>
+            <param name="mediaType"><see cref="T:UMapx.Video.DirectShow.Internals.AMMediaType"/> structure that specifies the media type</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.EnumMediaTypes(System.IntPtr)">
@@ -2130,9 +2130,9 @@
             Provides an enumerator for this pin's preferred media types.
             </summary>
             
-            <param name="enumerator">Address of a variable that receives a pointer to the <b>IEnumMediaTypes</b> interface.</param>
+            <param name="enumerator">Address of a variable that receives a pointer to the <b>IEnumMediaTypes</b> interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.QueryInternalConnections(System.IntPtr,System.Int32@)">
@@ -2140,11 +2140,11 @@
             Provides an array of the pins to which this pin internally connects.
             </summary>
             
-            <param name="apPin">Address of an array of <b>IPin</b> pointers.</param>
+            <param name="apPin">Address of an array of <b>IPin</b> pointers</param>
             <param name="nPin">On input, specifies the size of the array. When the method returns,
-            the value is set to the number of pointers returned in the array.</param>
+            the value is set to the number of pointers returned in the array</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.EndOfStream">
@@ -2152,7 +2152,7 @@
             Notifies the pin that no additional data is expected.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.BeginFlush">
@@ -2160,7 +2160,7 @@
             Begins a flush operation.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.EndFlush">
@@ -2168,7 +2168,7 @@
             Ends a flush operation.
             </summary>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPin.NewSegment(System.Int64,System.Int64,System.Double)">
@@ -2176,11 +2176,11 @@
             Specifies that samples following this call are grouped as a segment with a given start time, stop time, and rate.
             </summary>
             
-            <param name="start">Start time of the segment, relative to the original source, in 100-nanosecond units.</param>
-            <param name="stop">End time of the segment, relative to the original source, in 100-nanosecond units.</param>
-            <param name="rate">Rate at which this segment should be processed, as a percentage of the original rate.</param>
+            <param name="start">Start time of the segment, relative to the original source, in 100-nanosecond units</param>
+            <param name="stop">End time of the segment, relative to the original source, in 100-nanosecond units</param>
+            <param name="rate">Rate at which this segment should be processed, as a percentage of the original rate</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IPropertyBag">
@@ -2195,11 +2195,11 @@
             Read a property from property bag.
             </summary>
             
-            <param name="propertyName">Property name to read.</param>
-            <param name="pVar">Property value.</param>
-            <param name="pErrorLog">Caller's error log.</param>
+            <param name="propertyName">Property name to read</param>
+            <param name="pVar">Property value</param>
+            <param name="pErrorLog">Caller's error log</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IPropertyBag.Write(System.String,System.Object@)">
@@ -2207,10 +2207,10 @@
             Write property to property bag.
             </summary>
             
-            <param name="propertyName">Property name to read.</param>
-            <param name="pVar">Property value.</param>
+            <param name="propertyName">Property name to read</param>
+            <param name="pVar">Property value</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IReferenceClock">
@@ -2227,9 +2227,9 @@
             The GetTime method retrieves the current reference time.
             </summary>
             
-            <param name="pTime">Pointer to a variable that receives the current time, in 100-nanosecond units.</param>
+            <param name="pTime">Pointer to a variable that receives the current time, in 100-nanosecond units</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IReferenceClock.AdviseTime(System.Int64,System.Int64,System.IntPtr,System.Int32@)">
@@ -2237,12 +2237,12 @@
             The AdviseTime method creates a one-shot advise request.
             </summary>
             
-            <param name="baseTime">Base reference time, in 100-nanosecond units. See Remarks.</param>
-            <param name="streamTime">Stream offset time, in 100-nanosecond units. See Remarks.</param>
-            <param name="hEvent">Handle to an event, created by the caller.</param>
-            <param name="pdwAdviseCookie">Pointer to a variable that receives an identifier for the advise request.</param>
+            <param name="baseTime">Base reference time, in 100-nanosecond units. See Remarks</param>
+            <param name="streamTime">Stream offset time, in 100-nanosecond units. See Remarks</param>
+            <param name="hEvent">Handle to an event, created by the caller</param>
+            <param name="pdwAdviseCookie">Pointer to a variable that receives an identifier for the advise request</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IReferenceClock.AdvisePeriodic(System.Int64,System.Int64,System.IntPtr,System.Int32@)">
@@ -2250,12 +2250,12 @@
             The AdvisePeriodic method creates a periodic advise request.
             </summary>
             
-            <param name="startTime">Time of the first notification, in 100-nanosecond units. Must be greater than zero and less than MAX_TIME.</param>
-            <param name="periodTime">Time between notifications, in 100-nanosecond units. Must be greater than zero.</param>
-            <param name="hSemaphore">Handle to a semaphore, created by the caller.</param>
-            <param name="pdwAdviseCookie">Pointer to a variable that receives an identifier for the advise request.</param>
+            <param name="startTime">Time of the first notification, in 100-nanosecond units. Must be greater than zero and less than MAX_TIME</param>
+            <param name="periodTime">Time between notifications, in 100-nanosecond units. Must be greater than zero</param>
+            <param name="hSemaphore">Handle to a semaphore, created by the caller</param>
+            <param name="pdwAdviseCookie">Pointer to a variable that receives an identifier for the advise request</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IReferenceClock.Unadvise(System.Int32)">
@@ -2263,9 +2263,9 @@
             The Unadvise method removes a pending advise request.
             </summary>
             
-            <param name="dwAdviseCookie">Identifier of the request to remove. Use the value returned by IReferenceClock::AdviseTime  or IReferenceClock::AdvisePeriodic  in the pdwAdviseToken parameter.</param>
+            <param name="dwAdviseCookie">Identifier of the request to remove. Use the value returned by IReferenceClock::AdviseTime  or IReferenceClock::AdvisePeriodic  in the pdwAdviseToken parameter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.ISampleGrabber">
@@ -2280,9 +2280,9 @@
             Specifies whether the filter should stop the graph after receiving one sample.
             </summary>
             
-            <param name="oneShot">Boolean value specifying whether the filter should stop the graph after receiving one sample.</param>
+            <param name="oneShot">Boolean value specifying whether the filter should stop the graph after receiving one sample</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabber.SetMediaType(UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -2290,9 +2290,9 @@
             Specifies the media type for the connection on the Sample Grabber's input pin.
             </summary>
             
-            <param name="mediaType">Specifies the required media type.</param>
+            <param name="mediaType">Specifies the required media type</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabber.GetConnectedMediaType(UMapx.Video.DirectShow.Internals.AMMediaType)">
@@ -2300,9 +2300,9 @@
             Retrieves the media type for the connection on the Sample Grabber's input pin.
             </summary>
             
-            <param name="mediaType"><see cref="T:UMapx.Video.DirectShow.Internals.AMMediaType"/> structure, which receives media type.</param>
+            <param name="mediaType"><see cref="T:UMapx.Video.DirectShow.Internals.AMMediaType"/> structure, which receives media type</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabber.SetBufferSamples(System.Boolean)">
@@ -2311,9 +2311,9 @@
             </summary>
             
             <param name="bufferThem">Boolean value specifying whether to buffer sample data.
-            If <b>true</b>, the filter copies sample data into an internal buffer.</param>
+            If <b>true</b>, the filter copies sample data into an internal buffer</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabber.GetCurrentBuffer(System.Int32@,System.IntPtr)">
@@ -2321,10 +2321,10 @@
             Retrieves a copy of the sample that the filter received most recently.
             </summary>
             
-            <param name="bufferSize">Pointer to the size of the buffer. If pBuffer is NULL, this parameter receives the required size.</param>
-            <param name="buffer">Pointer to a buffer to receive a copy of the sample, or NULL.</param>
+            <param name="bufferSize">Pointer to the size of the buffer. If pBuffer is NULL, this parameter receives the required size</param>
+            <param name="buffer">Pointer to a buffer to receive a copy of the sample, or NULL</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabber.GetCurrentSample(System.IntPtr)">
@@ -2334,7 +2334,7 @@
             
             <param name="sample"></param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabber.SetCallback(UMapx.Video.DirectShow.Internals.ISampleGrabberCB,System.Int32)">
@@ -2342,10 +2342,10 @@
             Specifies a callback method to call on incoming samples.
             </summary>
             
-            <param name="callback"><see cref="T:UMapx.Video.DirectShow.Internals.ISampleGrabberCB"/> interface containing the callback method, or NULL to cancel the callback.</param>
-            <param name="whichMethodToCallback">Index specifying the callback method.</param>
+            <param name="callback"><see cref="T:UMapx.Video.DirectShow.Internals.ISampleGrabberCB"/> interface containing the callback method, or NULL to cancel the callback</param>
+            <param name="whichMethodToCallback">Index specifying the callback method</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.ISampleGrabberCB">
@@ -2359,10 +2359,10 @@
             Callback method that receives a pointer to the media sample.
             </summary>
             
-            <param name="sampleTime">Starting time of the sample, in seconds.</param>
-            <param name="sample">Pointer to the sample's <b>IMediaSample</b> interface.</param>
+            <param name="sampleTime">Starting time of the sample, in seconds</param>
+            <param name="sample">Pointer to the sample's <b>IMediaSample</b> interface</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.ISampleGrabberCB.BufferCB(System.Double,System.IntPtr,System.Int32)">
@@ -2370,11 +2370,11 @@
             Callback method that receives a pointer to the sample buffer.
             </summary>
             
-            <param name="sampleTime">Starting time of the sample, in seconds.</param>
-            <param name="buffer">Pointer to a buffer that contains the sample data.</param>
+            <param name="sampleTime">Starting time of the sample, in seconds</param>
+            <param name="buffer">Pointer to a buffer that contains the sample data</param>
             <param name="bufferLen">Length of the buffer pointed to by <b>buffer</b>, in bytes</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.ISpecifyPropertyPages">
@@ -2391,9 +2391,9 @@
             </summary>
             
             <param name="pPages">Pointer to a CAUUID structure that must be initialized
-            and filled before returning.</param>
+            and filled before returning</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.IVideoWindow">
@@ -2407,9 +2407,9 @@
             Sets the video window caption.
             </summary>
             
-            <param name="caption">Caption.</param>
+            <param name="caption">Caption</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Caption(System.String@)">
@@ -2417,9 +2417,9 @@
             Retrieves the video window caption.
             </summary>
             
-            <param name="caption">Caption.</param>
+            <param name="caption">Caption</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_WindowStyle(System.Int32)">
@@ -2427,9 +2427,9 @@
             Sets the window style on the video window.
             </summary>
             
-            <param name="windowStyle">Window style flags.</param>
+            <param name="windowStyle">Window style flags</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_WindowStyle(System.Int32@)">
@@ -2437,9 +2437,9 @@
             Retrieves the window style on the video window.
             </summary>
             
-            <param name="windowStyle">Window style flags.</param>
+            <param name="windowStyle">Window style flags</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_WindowStyleEx(System.Int32)">
@@ -2447,9 +2447,9 @@
             Sets the extended window style on the video window.
             </summary>
             
-            <param name="windowStyleEx">Window extended style flags.</param>
+            <param name="windowStyleEx">Window extended style flags</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_WindowStyleEx(System.Int32@)">
@@ -2457,9 +2457,9 @@
             Retrieves the extended window style on the video window.
             </summary>
             
-            <param name="windowStyleEx">Window extended style flags.</param>
+            <param name="windowStyleEx">Window extended style flags</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_AutoShow(System.Boolean)">
@@ -2467,9 +2467,9 @@
             Specifies whether the video renderer automatically shows the video window when it receives video data.
             </summary>
             
-            <param name="autoShow">Specifies whether the video renderer automatically shows the video window.</param>
+            <param name="autoShow">Specifies whether the video renderer automatically shows the video window</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_AutoShow(System.Boolean@)">
@@ -2477,9 +2477,9 @@
             Queries whether the video renderer automatically shows the video window when it receives video data.
             </summary>
             
-            <param name="autoShow">REceives window auto show flag.</param>
+            <param name="autoShow">REceives window auto show flag</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_WindowState(System.Int32)">
@@ -2487,9 +2487,9 @@
             Shows, hides, minimizes, or maximizes the video window.
             </summary>
             
-            <param name="windowState">Window state.</param>
+            <param name="windowState">Window state</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_WindowState(System.Int32@)">
@@ -2497,9 +2497,9 @@
             Queries whether the video window is visible, hidden, minimized, or maximized.
             </summary>
             
-            <param name="windowState">Window state.</param>
+            <param name="windowState">Window state</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_BackgroundPalette(System.Boolean)">
@@ -2507,9 +2507,9 @@
             Specifies whether the video window realizes its palette in the background.
             </summary>
             
-            <param name="backgroundPalette">Value that specifies whether the video renderer realizes it palette in the background.</param>
+            <param name="backgroundPalette">Value that specifies whether the video renderer realizes it palette in the background</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_BackgroundPalette(System.Boolean@)">
@@ -2517,9 +2517,9 @@
             Queries whether the video window realizes its palette in the background.
             </summary>
             
-            <param name="backgroundPalette">Receives state of background palette flag.</param>
+            <param name="backgroundPalette">Receives state of background palette flag</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Visible(System.Boolean)">
@@ -2527,9 +2527,9 @@
             Shows or hides the video window.
             </summary>
             
-            <param name="visible">Value that specifies whether to show or hide the window.</param>
+            <param name="visible">Value that specifies whether to show or hide the window</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Visible(System.Boolean@)">
@@ -2537,9 +2537,9 @@
             Queries whether the video window is visible.
             </summary>
             
-            <param name="visible">Visibility flag.</param>
+            <param name="visible">Visibility flag</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Left(System.Int32)">
@@ -2547,9 +2547,9 @@
             Sets the video window's x-coordinate.
             </summary>
             
-            <param name="left">Specifies the x-coordinate, in pixels.</param>
+            <param name="left">Specifies the x-coordinate, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Left(System.Int32@)">
@@ -2557,9 +2557,9 @@
             Retrieves the video window's x-coordinate.
             </summary>
             
-            <param name="left">x-coordinate, in pixels.</param>
+            <param name="left">x-coordinate, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Width(System.Int32)">
@@ -2567,9 +2567,9 @@
             Sets the width of the video window.
             </summary>
             
-            <param name="width">Specifies the width, in pixels.</param>
+            <param name="width">Specifies the width, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Width(System.Int32@)">
@@ -2577,9 +2577,9 @@
             Retrieves the width of the video window.
             </summary>
             
-            <param name="width">Width, in pixels.</param>
+            <param name="width">Width, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Top(System.Int32)">
@@ -2587,9 +2587,9 @@
             Sets the video window's y-coordinate.
             </summary>
             
-            <param name="top">Specifies the y-coordinate, in pixels.</param>
+            <param name="top">Specifies the y-coordinate, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Top(System.Int32@)">
@@ -2597,9 +2597,9 @@
             Retrieves the video window's y-coordinate.
             </summary>
             
-            <param name="top">y-coordinate, in pixels.</param>
+            <param name="top">y-coordinate, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Height(System.Int32)">
@@ -2607,9 +2607,9 @@
             Sets the height of the video window.
             </summary>
             
-            <param name="height">Specifies the height, in pixels.</param>
+            <param name="height">Specifies the height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Height(System.Int32@)">
@@ -2617,9 +2617,9 @@
             Retrieves the height of the video window.
             </summary>
             
-            <param name="height">Height, in pixels.</param>
+            <param name="height">Height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_Owner(System.IntPtr)">
@@ -2627,9 +2627,9 @@
             Specifies a parent window for the video window.
             </summary>
             
-            <param name="owner">Specifies a handle to the parent window.</param>
+            <param name="owner">Specifies a handle to the parent window</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_Owner(System.IntPtr@)">
@@ -2637,9 +2637,9 @@
             Retrieves the video window's parent window, if any.
             </summary>
             
-            <param name="owner">Parent window's handle.</param>
+            <param name="owner">Parent window's handle</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_MessageDrain(System.IntPtr)">
@@ -2647,9 +2647,9 @@
             Specifies a window to receive mouse and keyboard messages from the video window.
             </summary>
             
-            <param name="drain">Specifies a handle to the window.</param>
+            <param name="drain">Specifies a handle to the window</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_MessageDrain(System.IntPtr@)">
@@ -2657,9 +2657,9 @@
             Retrieves the window that receives mouse and keyboard messages from the video window, if any.
             </summary>
             
-            <param name="drain">Window's handle.</param>
+            <param name="drain">Window's handle</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_BorderColor(System.Int32@)">
@@ -2667,9 +2667,9 @@
             Retrieves the color that appears around the edges of the destination rectangle.
             </summary>
             
-            <param name="color">Border's color.</param>
+            <param name="color">Border's color</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_BorderColor(System.Int32)">
@@ -2677,9 +2677,9 @@
             Sets the color that appears around the edges of the destination rectangle.
             </summary>
             
-            <param name="color">Specifies the border color.</param>
+            <param name="color">Specifies the border color</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.get_FullScreenMode(System.Boolean@)">
@@ -2687,9 +2687,9 @@
             Queries whether the video renderer is in full-screen mode.
             </summary>
             
-            <param name="fullScreenMode">Full-screen mode.</param>
+            <param name="fullScreenMode">Full-screen mode</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.put_FullScreenMode(System.Boolean)">
@@ -2697,9 +2697,9 @@
             Enables or disables full-screen mode.
             </summary>
             
-            <param name="fullScreenMode">Boolean value that specifies whether to enable or disable full-screen mode.</param>
+            <param name="fullScreenMode">Boolean value that specifies whether to enable or disable full-screen mode</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.SetWindowForeground(System.Int32)">
@@ -2707,9 +2707,9 @@
             Places the video window at the top of the Z order.
             </summary>
             
-            <param name="focus">Value that specifies whether to give the window focus.</param>
+            <param name="focus">Value that specifies whether to give the window focus</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.NotifyOwnerMessage(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
@@ -2717,12 +2717,12 @@
             Forwards a message to the video window.
             </summary>
             
-            <param name="hwnd">Handle to the window.</param>
-            <param name="msg">Specifies the message.</param>
-            <param name="wParam">Message parameter.</param>
-            <param name="lParam">Message parameter.</param>
+            <param name="hwnd">Handle to the window</param>
+            <param name="msg">Specifies the message</param>
+            <param name="wParam">Message parameter</param>
+            <param name="lParam">Message parameter</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.SetWindowPosition(System.Int32,System.Int32,System.Int32,System.Int32)">
@@ -2730,12 +2730,12 @@
             Sets the position of the video window.
             </summary>
             
-            <param name="left">Specifies the x-coordinate, in pixels.</param>
-            <param name="top">Specifies the y-coordinate, in pixels.</param>
-            <param name="width">Specifies the width, in pixels.</param>
-            <param name="height">Specifies the height, in pixels.</param>
+            <param name="left">Specifies the x-coordinate, in pixels</param>
+            <param name="top">Specifies the y-coordinate, in pixels</param>
+            <param name="width">Specifies the width, in pixels</param>
+            <param name="height">Specifies the height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.GetWindowPosition(System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
@@ -2743,12 +2743,12 @@
             Retrieves the position of the video window.
             </summary>
             
-            <param name="left">x-coordinate, in pixels.</param>
-            <param name="top">y-coordinate, in pixels.</param>
-            <param name="width">Width, in pixels.</param>
-            <param name="height">Height, in pixels.</param>
+            <param name="left">x-coordinate, in pixels</param>
+            <param name="top">y-coordinate, in pixels</param>
+            <param name="width">Width, in pixels</param>
+            <param name="height">Height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.GetMinIdealImageSize(System.Int32@,System.Int32@)">
@@ -2756,10 +2756,10 @@
             Retrieves the minimum ideal size for the video image.
             </summary>
             
-            <param name="width">Receives the minimum ideal width, in pixels.</param>
-            <param name="height">Receives the minimum ideal height, in pixels.</param>
+            <param name="width">Receives the minimum ideal width, in pixels</param>
+            <param name="height">Receives the minimum ideal height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.GetMaxIdealImageSize(System.Int32@,System.Int32@)">
@@ -2767,10 +2767,10 @@
             Retrieves the maximum ideal size for the video image.
             </summary>
             
-            <param name="width">Receives the maximum ideal width, in pixels.</param>
-            <param name="height">Receives the maximum ideal height, in pixels.</param>
+            <param name="width">Receives the maximum ideal width, in pixels</param>
+            <param name="height">Receives the maximum ideal height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.GetRestorePosition(System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
@@ -2778,12 +2778,12 @@
             Retrieves the restored window position.
             </summary>
             
-            <param name="left">x-coordinate, in pixels.</param>
-            <param name="top">y-coordinate, in pixels.</param>
-            <param name="width">Width, in pixels.</param>
-            <param name="height">Height, in pixels.</param>
+            <param name="left">x-coordinate, in pixels</param>
+            <param name="top">y-coordinate, in pixels</param>
+            <param name="width">Width, in pixels</param>
+            <param name="height">Height, in pixels</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.HideCursor(System.Boolean)">
@@ -2791,9 +2791,9 @@
             Hides the cursor.
             </summary>
             
-            <param name="hideCursor">Specifies whether to hide or display the cursor.</param>
+            <param name="hideCursor">Specifies whether to hide or display the cursor</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.IVideoWindow.IsCursorHidden(System.Boolean@)">
@@ -2801,9 +2801,9 @@
             Queries whether the cursor is hidden.
             </summary>
             
-            <param name="hideCursor">Specifies if cursor is hidden or not.</param>
+            <param name="hideCursor">Specifies if cursor is hidden or not</param>
             
-            <returns>Return's <b>HRESULT</b> error code.</returns>
+            <returns>Return's <b>HRESULT</b> error code</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.PinDirection">
@@ -2890,7 +2890,7 @@
             Dispose the object
             </summary>
             
-            <param name="disposing">Indicates if disposing was initiated manually.</param>
+            <param name="disposing">Indicates if disposing was initiated manually</param>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.PinInfo">
@@ -3138,7 +3138,7 @@
             Performs manual marshaling of <b>pElems</b> to retrieve an array of Guid objects.
             </summary>
             
-            <returns>A managed representation of <b>pElems</b>.</returns>
+            <returns>A managed representation of <b>pElems</b></returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.DsEvCode">
@@ -3177,11 +3177,11 @@
             Get filter's pin.
             </summary>
             
-            <param name="filter">Filter to get pin of.</param>
-            <param name="dir">Pin's direction.</param>
-            <param name="num">Pin's number.</param>
+            <param name="filter">Filter to get pin of</param>
+            <param name="dir">Pin's direction</param>
+            <param name="num">Pin's number</param>
             
-            <returns>Returns filter's pin.</returns>
+            <returns>Returns filter's pin</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.Tools.GetInPin(UMapx.Video.DirectShow.Internals.IBaseFilter,System.Int32)">
@@ -3189,10 +3189,10 @@
             Get filter's input pin.
             </summary>
             
-            <param name="filter">Filter to get pin of.</param>
-            <param name="num">Pin's number.</param>
+            <param name="filter">Filter to get pin of</param>
+            <param name="num">Pin's number</param>
             
-            <returns>Returns filter's pin.</returns>
+            <returns>Returns filter's pin</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.Tools.GetOutPin(UMapx.Video.DirectShow.Internals.IBaseFilter,System.Int32)">
@@ -3200,10 +3200,10 @@
             Get filter's output pin.
             </summary>
             
-            <param name="filter">Filter to get pin of.</param>
-            <param name="num">Pin's number.</param>
+            <param name="filter">Filter to get pin of</param>
+            <param name="num">Pin's number</param>
             
-            <returns>Returns filter's pin.</returns>
+            <returns>Returns filter's pin</returns>
             
         </member>
         <member name="T:UMapx.Video.DirectShow.Internals.Clsid">
@@ -3468,11 +3468,11 @@
             This object stores information about a particular moniker-binding operation.
             </summary>
             
-            <param name="reserved">Reserved for future use; must be zero.</param>
+            <param name="reserved">Reserved for future use; must be zero</param>
             <param name="ppbc">Address of <b>IBindCtx*</b> pointer variable that receives the
-            interface pointer to the new bind context object.</param>
+            interface pointer to the new bind context object</param>
             
-            <returns>Returns <b>S_OK</b> on success.</returns>
+            <returns>Returns <b>S_OK</b> on success</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.Win32.MkParseDisplayName(System.Runtime.InteropServices.ComTypes.IBindCtx,System.String,System.Int32@,System.Runtime.InteropServices.ComTypes.IMoniker@)">
@@ -3480,13 +3480,13 @@
             Converts a string into a moniker that identifies the object named by the string.
             </summary>
             
-            <param name="pbc">Pointer to the IBindCtx interface on the bind context object to be used in this binding operation.</param>
+            <param name="pbc">Pointer to the IBindCtx interface on the bind context object to be used in this binding operation</param>
             <param name="szUserName">Pointer to a zero-terminated wide character string containing the display name to be parsed. </param>
-            <param name="pchEaten">Pointer to the number of characters of szUserName that were consumed.</param>
+            <param name="pchEaten">Pointer to the number of characters of szUserName that were consumed</param>
             <param name="ppmk">Address of <b>IMoniker*</b> pointer variable that receives the interface pointer
-            to the moniker that was built from <b>szUserName</b>.</param>
+            to the moniker that was built from <b>szUserName</b></param>
             
-            <returns>Returns <b>S_OK</b> on success.</returns>
+            <returns>Returns <b>S_OK</b> on success</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.Win32.memcpy(System.Byte*,System.Byte*,System.Int32)">
@@ -3494,11 +3494,11 @@
             Copy a block of memory.
             </summary>
             
-            <param name="dst">Destination pointer.</param>
-            <param name="src">Source pointer.</param>
-            <param name="count">Memory block's length to copy.</param>
+            <param name="dst">Destination pointer</param>
+            <param name="src">Source pointer</param>
+            <param name="count">Memory block's length to copy</param>
             
-            <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+            <returns>Return's the value of <b>dst</b> - pointer to destination</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.Win32.OleCreatePropertyFrame(System.IntPtr,System.Int32,System.Int32,System.String,System.Int32,System.Object@,System.Int32,System.IntPtr,System.Int32,System.Int32,System.IntPtr)">
@@ -3506,19 +3506,19 @@
             Invokes a new property frame, that is, a property sheet dialog box.
             </summary>
             
-            <param name="hwndOwner">Parent window of property sheet dialog box.</param>
-            <param name="x">Horizontal position for dialog box.</param>
-            <param name="y">Vertical position for dialog box.</param>
-            <param name="caption">Dialog box caption.</param>
-            <param name="cObjects">Number of object pointers in <b>ppUnk</b>.</param>
-            <param name="ppUnk">Pointer to the objects for property sheet.</param>
-            <param name="cPages">Number of property pages in <b>lpPageClsID</b>.</param>
-            <param name="lpPageClsID">Array of CLSIDs for each property page.</param>
-            <param name="lcid">Locale identifier for property sheet locale.</param>
-            <param name="dwReserved">Reserved.</param>
-            <param name="lpvReserved">Reserved.</param>
+            <param name="hwndOwner">Parent window of property sheet dialog box</param>
+            <param name="x">Horizontal position for dialog box</param>
+            <param name="y">Vertical position for dialog box</param>
+            <param name="caption">Dialog box caption</param>
+            <param name="cObjects">Number of object pointers in <b>ppUnk</b></param>
+            <param name="ppUnk">Pointer to the objects for property sheet</param>
+            <param name="cPages">Number of property pages in <b>lpPageClsID</b></param>
+            <param name="lpPageClsID">Array of CLSIDs for each property page</param>
+            <param name="lcid">Locale identifier for property sheet locale</param>
+            <param name="dwReserved">Reserved</param>
+            <param name="lpvReserved">Reserved</param>
             
-            <returns>Returns <b>S_OK</b> on success.</returns>
+            <returns>Returns <b>S_OK</b> on success</returns>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.Internals.Win32.ProgIDFromCLSID(System.Guid@)">
@@ -3994,7 +3994,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.DirectShow.VideoCaptureDevice"/> class.
             </summary>
             
-            <param name="deviceMoniker">Moniker string of video capture device.</param>
+            <param name="deviceMoniker">Moniker string of video capture device</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.#ctor(System.String,System.Drawing.Imaging.PixelFormat)">
@@ -4002,8 +4002,8 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.DirectShow.VideoCaptureDevice"/> class.
             </summary>
             
-            <param name="deviceMoniker">Moniker string of video capture device.</param>
-            <param name="pixelFormat">Pixel format of video.</param>
+            <param name="deviceMoniker">Moniker string of video capture device</param>
+            <param name="pixelFormat">Pixel format of video</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.Start">
@@ -4060,7 +4060,7 @@
             capabilities.
             </summary>
             
-            <param name="parentWindow">Handle of parent window.</param>
+            <param name="parentWindow">Handle of parent window</param>
             
             <remarks><para><note>If you pass parent window's handle to this method, then the
             displayed property page will become modal window and none of the controls from the
@@ -4077,7 +4077,7 @@
             Display property page of video crossbar (Analog Video Crossbar filter).
             </summary>
             
-            <param name="parentWindow">Handle of parent window.</param>
+            <param name="parentWindow">Handle of parent window</param>
             
             <remarks><para>The Analog Video Crossbar filter is modeled after a general switching matrix,
             with n inputs and m outputs. For example, a video card might have two external connectors:
@@ -4102,7 +4102,7 @@
              </summary>
              
              <returns>Returns <see langword="true"/> if crossbar configuration is available or
-             <see langword="false"/> otherwise.</returns>
+             <see langword="false"/> otherwise</returns>
              
              <remarks><para>The method reports if the video source provides crossbar configuration
              using <see cref="M:UMapx.Video.DirectShow.VideoCaptureDevice.DisplayCrossbarPropertyPage(System.IntPtr)"/>.</para>
@@ -4128,11 +4128,11 @@
             Sets a specified property on the camera.
             </summary>
             
-            <param name="property">Specifies the property to set.</param>
-            <param name="value">Specifies the new value of the property.</param>
-            <param name="controlFlags">Specifies the desired control setting.</param>
+            <param name="property">Specifies the property to set</param>
+            <param name="value">Specifies the new value of the property</param>
+            <param name="controlFlags">Specifies the desired control setting</param>
             
-            <returns>Returns true on sucee or false otherwise.</returns>
+            <returns>Returns true on sucee or false otherwise</returns>
             
             <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
             <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
@@ -4144,11 +4144,11 @@
             Gets the current setting of a camera property.
             </summary>
             
-            <param name="property">Specifies the property to retrieve.</param>
-            <param name="value">Receives the value of the property.</param>
+            <param name="property">Specifies the property to retrieve</param>
+            <param name="value">Receives the value of the property</param>
             <param name="controlFlags">Receives the value indicating whether the setting is controlled manually or automatically</param>
             
-            <returns>Returns true on sucee or false otherwise.</returns>
+            <returns>Returns true on sucee or false otherwise</returns>
             
             <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
             <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
@@ -4160,14 +4160,14 @@
             Gets the range and default value of a specified camera property.
             </summary>
             
-            <param name="property">Specifies the property to query.</param>
-            <param name="minValue">Receives the minimum value of the property.</param>
-            <param name="maxValue">Receives the maximum value of the property.</param>
-            <param name="stepSize">Receives the step size for the property.</param>
-            <param name="defaultValue">Receives the default value of the property.</param>
-            <param name="controlFlags">Receives a member of the <see cref="T:UMapx.Video.DirectShow.CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually.</param>
+            <param name="property">Specifies the property to query</param>
+            <param name="minValue">Receives the minimum value of the property</param>
+            <param name="maxValue">Receives the maximum value of the property</param>
+            <param name="stepSize">Receives the step size for the property</param>
+            <param name="defaultValue">Receives the default value of the property</param>
+            <param name="controlFlags">Receives a member of the <see cref="T:UMapx.Video.DirectShow.CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually</param>
             
-            <returns>Returns true on sucee or false otherwise.</returns>
+            <returns>Returns true on sucee or false otherwise</returns>
             
             <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
             <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
@@ -4179,11 +4179,11 @@
             Sets a specified property on the video signal adjustments.
             </summary>
             
-            <param name="property">Specifies the property to set.</param>
-            <param name="value">Specifies the new value of the property.</param>
-            <param name="controlFlags">Specifies the desired control setting.</param>
+            <param name="property">Specifies the property to set</param>
+            <param name="value">Specifies the new value of the property</param>
+            <param name="controlFlags">Specifies the desired control setting</param>
             
-            <returns>Returns true on success or false otherwise.</returns>
+            <returns>Returns true on success or false otherwise</returns>
             
             <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
             <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
@@ -4195,11 +4195,11 @@
             Gets the current setting of a video signal adjustment property.
             </summary>
             
-            <param name="property">Specifies the property to retrieve.</param>
-            <param name="value">Receives the value of the property.</param>
+            <param name="property">Specifies the property to retrieve</param>
+            <param name="value">Receives the value of the property</param>
             <param name="controlFlags">Receives the value indicating whether the setting is controlled manually or automatically</param>
             
-            <returns>Returns true on sucee or false otherwise.</returns>
+            <returns>Returns true on sucee or false otherwise</returns>
             
             <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
             <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
@@ -4211,14 +4211,14 @@
             Gets the range and default value of a specified video stream property.
             </summary>
             
-            <param name="property">Specifies the property to query.</param>
-            <param name="minValue">Receives the minimum value of the property.</param>
-            <param name="maxValue">Receives the maximum value of the property.</param>
-            <param name="stepSize">Receives the step size for the property.</param>
-            <param name="defaultValue">Receives the default value of the property.</param>
-            <param name="controlFlags">Receives a member of the <see cref="T:UMapx.Video.DirectShow.CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually.</param>
+            <param name="property">Specifies the property to query</param>
+            <param name="minValue">Receives the minimum value of the property</param>
+            <param name="maxValue">Receives the maximum value of the property</param>
+            <param name="stepSize">Receives the step size for the property</param>
+            <param name="defaultValue">Receives the default value of the property</param>
+            <param name="controlFlags">Receives a member of the <see cref="T:UMapx.Video.DirectShow.CameraControlFlags"/> enumeration, indicating whether the property is controlled automatically or manually</param>
             
-            <returns>Returns true on sucee or false otherwise.</returns>
+            <returns>Returns true on sucee or false otherwise</returns>
             
             <exception cref="T:System.ArgumentException">Video source is not specified - device moniker is not set.</exception>
             <exception cref="T:System.ApplicationException">Failed creating device object for moniker.</exception>
@@ -4236,7 +4236,7 @@
             Notifies clients about new frame.
             </summary>
             
-            <param name="image">New frame's image.</param>
+            <param name="image">New frame's image</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.OnSnapshotFrame(System.Drawing.Bitmap)">
@@ -4244,7 +4244,7 @@
             Notifies clients about new snapshot frame.
             </summary>
             
-            <param name="image">New snapshot's image.</param>
+            <param name="image">New snapshot's image</param>
             
         </member>
         <member name="M:UMapx.Video.DirectShow.VideoCaptureDevice.Dispose">
@@ -4519,7 +4519,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.VFW.AVIFileVideoSource"/> class.
             </summary>
             
-            <param name="source">Video file name.</param>
+            <param name="source">Video file name</param>
             
         </member>
         <member name="M:UMapx.Video.VFW.AVIFileVideoSource.Start">
@@ -4695,7 +4695,7 @@
             Dispose the object.
             </summary>
             
-            <param name="disposing">Indicates if disposing was initiated manually.</param>
+            <param name="disposing">Indicates if disposing was initiated manually</param>
             
         </member>
         <member name="M:UMapx.Video.VFW.AVIReader.Open(System.String)">
@@ -4703,7 +4703,7 @@
              Open AVI file.
              </summary>
              
-             <param name="fileName">AVI file name to open.</param>
+             <param name="fileName">AVI file name to open</param>
              
              <remarks><para>The method opens a video file and prepares the stream and decoder for
              reading video frames with the help of <see cref="M:UMapx.Video.VFW.AVIReader.GetNextFrame"/> method.</para>
@@ -4725,7 +4725,7 @@
             Get next frame of opened video stream.
             </summary>
             
-            <returns>Returns next frame as a bitmap.</returns>
+            <returns>Returns next frame as a bitmap</returns>
             
             <remarks><para>The method reads and returns the next video frame in the opened video stream
             at the position, which is set in <see cref="P:UMapx.Video.VFW.AVIReader.Position"/> property.</para></remarks>
@@ -4843,7 +4843,7 @@
             Initializes a new instance of the <see cref="T:UMapx.Video.VFW.AVIWriter"/> class.
             </summary>
             
-            <param name="codec">Codec to use for compression.</param>
+            <param name="codec">Codec to use for compression</param>
             
             <remarks>Initializes Video for Windows library.</remarks>
             
@@ -4868,7 +4868,7 @@
             Dispose the object.
             </summary>
             
-            <param name="disposing">Indicates if disposing was initiated manually.</param>
+            <param name="disposing">Indicates if disposing was initiated manually</param>
             
         </member>
         <member name="M:UMapx.Video.VFW.AVIWriter.Open(System.String,System.Int32,System.Int32)">
@@ -4876,9 +4876,9 @@
             Create new AVI file and open it for writing.
             </summary>
             
-            <param name="fileName">AVI file name to create.</param>
-            <param name="width">Video width.</param>
-            <param name="height">Video height.</param>
+            <param name="fileName">AVI file name to create</param>
+            <param name="width">Video width</param>
+            <param name="height">Video height</param>
             
             <remarks><para>The method opens (creates) a video files, configure video codec and prepares
             the stream for saving video frames with a help of <see cref="M:UMapx.Video.VFW.AVIWriter.AddFrame(System.Drawing.Bitmap)"/> method.</para></remarks>
@@ -4900,7 +4900,7 @@
             Add new frame to the AVI file.
             </summary>
             
-            <param name="frameImage">New frame image.</param>
+            <param name="frameImage">New frame image</param>
             
             <remarks><para>The method adds new video frame to an opened video file. The width and heights
             of the frame should be the same as it was specified in <see cref="M:UMapx.Video.VFW.AVIWriter.Open(System.String,System.Int32,System.Int32)"/> method
@@ -4924,11 +4924,11 @@
             Copy a block of memory.
             </summary>
             
-            <param name="dst">Destination pointer.</param>
-            <param name="src">Source pointer.</param>
-            <param name="count">Memory block's length to copy.</param>
+            <param name="dst">Destination pointer</param>
+            <param name="src">Source pointer</param>
+            <param name="count">Memory block's length to copy</param>
             
-            <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+            <returns>Return's the value of <b>dst</b> - pointer to destination</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.memcpy(System.IntPtr,System.IntPtr,System.Int32)">
@@ -4936,11 +4936,11 @@
             Copy a block of memory.
             </summary>
             
-            <param name="dst">Destination pointer.</param>
-            <param name="src">Source pointer.</param>
-            <param name="count">Memory block's length to copy.</param>
+            <param name="dst">Destination pointer</param>
+            <param name="src">Source pointer</param>
+            <param name="count">Memory block's length to copy</param>
             
-            <returns>Return's the value of <b>dst</b> - pointer to destination.</returns>
+            <returns>Return's the value of <b>dst</b> - pointer to destination</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.Add(System.IntPtr,System.Int32)">
@@ -4967,12 +4967,12 @@
             Open an AVI file.
             </summary>
             
-            <param name="aviHandler">Opened AVI file interface.</param>
-            <param name="fileName">AVI file name.</param>
-            <param name="mode">Opening mode (see <see cref="T:UMapx.Video.VFW.Win32.OpenFileMode"/>).</param>
-            <param name="handler">Handler to use (<b>null</b> to use default).</param>
+            <param name="aviHandler">Opened AVI file interface</param>
+            <param name="fileName">AVI file name</param>
+            <param name="mode">Opening mode (see <see cref="T:UMapx.Video.VFW.Win32.OpenFileMode"/>)</param>
+            <param name="handler">Handler to use (<b>null</b> to use default)</param>
             
-            <returns>Returns zero on success or error code otherwise.</returns>
+            <returns>Returns zero on success or error code otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIFileRelease(System.IntPtr)">
@@ -4980,9 +4980,9 @@
             Release an open AVI stream.
             </summary>
             
-            <param name="aviHandler">Open AVI file interface.</param>
+            <param name="aviHandler">Open AVI file interface</param>
             
-            <returns>Returns the reference count of the file.</returns>
+            <returns>Returns the reference count of the file</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIFileGetStream(System.IntPtr,System.IntPtr@,System.Int32,System.Int32)">
@@ -4990,9 +4990,9 @@
             Get stream interface that is associated with a specified AVI file
             </summary>
             
-            <param name="aviHandler">Handler to an open AVI file.</param>
-            <param name="streamHandler">Stream interface.</param>
-            <param name="streamType">Stream type to open.</param>
+            <param name="aviHandler">Handler to an open AVI file</param>
+            <param name="streamHandler">Stream interface</param>
+            <param name="streamType">Stream type to open</param>
             <param name="streamNumner">Count of the stream type. Identifies which occurrence of the specified stream type to access. </param>
             
             <returns></returns>
@@ -5003,11 +5003,11 @@
             Create a new stream in an existing file and creates an interface to the new stream. 
             </summary>
             
-            <param name="aviHandler">Handler to an open AVI file.</param>
-            <param name="streamHandler">Stream interface.</param>
-            <param name="streamInfo">Pointer to a structure containing information about the new stream.</param>
+            <param name="aviHandler">Handler to an open AVI file</param>
+            <param name="streamHandler">Stream interface</param>
+            <param name="streamInfo">Pointer to a structure containing information about the new stream</param>
             
-            <returns>Returns zero if successful or an error otherwise.</returns>
+            <returns>Returns zero if successful or an error otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamRelease(System.IntPtr)">
@@ -5015,9 +5015,9 @@
             Release an open AVI stream.
             </summary>
             
-            <param name="streamHandler">Handle to an open stream.</param>
+            <param name="streamHandler">Handle to an open stream</param>
             
-            <returns>Returns the current reference count of the stream.</returns>
+            <returns>Returns the current reference count of the stream</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamSetFormat(System.IntPtr,System.Int32,UMapx.Video.VFW.Win32.BITMAPINFOHEADER@,System.Int32)">
@@ -5025,12 +5025,12 @@
             Set the format of a stream at the specified position.
             </summary>
             
-            <param name="streamHandler">Handle to an open stream.</param>
-            <param name="position">Position in the stream to receive the format.</param>
-            <param name="format">Pointer to a structure containing the new format.</param>
-            <param name="formatSize">Size, in bytes, of the block of memory referenced by <b>format</b>.</param>
+            <param name="streamHandler">Handle to an open stream</param>
+            <param name="position">Position in the stream to receive the format</param>
+            <param name="format">Pointer to a structure containing the new format</param>
+            <param name="formatSize">Size, in bytes, of the block of memory referenced by <b>format</b></param>
             
-            <returns>Returns zero if successful or an error otherwise.</returns>
+            <returns>Returns zero if successful or an error otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamStart(System.IntPtr)">
@@ -5038,9 +5038,9 @@
             Get the starting sample number for the stream.
             </summary>
             
-            <param name="streamHandler">Handle to an open stream.</param>
+            <param name="streamHandler">Handle to an open stream</param>
             
-            <returns>Returns the number if successful or – 1 otherwise.</returns>
+            <returns>Returns the number if successful or – 1 otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamLength(System.IntPtr)">
@@ -5048,7 +5048,7 @@
             Get the length of the stream.
             </summary>
             
-            <param name="streamHandler">Handle to an open stream.</param>
+            <param name="streamHandler">Handle to an open stream</param>
             
             <returns>Returns the stream's length, in samples, if successful or -1 otherwise. </returns>
             
@@ -5058,11 +5058,11 @@
             Obtain stream header information.
             </summary>
             
-            <param name="streamHandler">Handle to an open stream.</param>
-            <param name="streamInfo">Pointer to a structure to contain the stream information.</param>
-            <param name="infoSize">Size, in bytes, of the structure used for <b>streamInfo</b>.</param>
+            <param name="streamHandler">Handle to an open stream</param>
+            <param name="streamInfo">Pointer to a structure to contain the stream information</param>
+            <param name="infoSize">Size, in bytes, of the structure used for <b>streamInfo</b></param>
             
-            <returns>Returns zero if successful or an error otherwise.</returns>
+            <returns>Returns zero if successful or an error otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamGetFrameOpen(System.IntPtr,UMapx.Video.VFW.Win32.BITMAPINFOHEADER@)">
@@ -5070,10 +5070,10 @@
             Prepare to decompress video frames from the specified video stream
             </summary>
             
-            <param name="streamHandler">Pointer to the video stream used as the video source.</param>
-            <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format.</param>
+            <param name="streamHandler">Pointer to the video stream used as the video source</param>
+            <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format</param>
             
-            <returns>Returns an object that can be used with the <see cref="M:UMapx.Video.VFW.Win32.AVIStreamGetFrame(System.IntPtr,System.Int32)"/> function.</returns>
+            <returns>Returns an object that can be used with the <see cref="M:UMapx.Video.VFW.Win32.AVIStreamGetFrame(System.IntPtr,System.Int32)"/> function</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamGetFrameOpen(System.IntPtr,System.Int32)">
@@ -5081,10 +5081,10 @@
             Prepare to decompress video frames from the specified video stream.
             </summary>
             
-            <param name="streamHandler">Pointer to the video stream used as the video source.</param>
-            <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format.</param>
+            <param name="streamHandler">Pointer to the video stream used as the video source</param>
+            <param name="wantedFormat">Pointer to a structure that defines the desired video format. Specify NULL to use a default format</param>
             
-            <returns>Returns a <b>GetFrame</b> object that can be used with the <see cref="M:UMapx.Video.VFW.Win32.AVIStreamGetFrame(System.IntPtr,System.Int32)"/> function.</returns>
+            <returns>Returns a <b>GetFrame</b> object that can be used with the <see cref="M:UMapx.Video.VFW.Win32.AVIStreamGetFrame(System.IntPtr,System.Int32)"/> function</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamGetFrameClose(System.IntPtr)">
@@ -5092,9 +5092,9 @@
             Releases resources used to decompress video frames.
             </summary>
             
-            <param name="getFrameObject">Handle returned from the <see cref="M:UMapx.Video.VFW.Win32.AVIStreamGetFrameOpen(System.IntPtr,System.Int32)"/> function.</param>
+            <param name="getFrameObject">Handle returned from the <see cref="M:UMapx.Video.VFW.Win32.AVIStreamGetFrameOpen(System.IntPtr,System.Int32)"/> function</param>
             
-            <returns>Returns zero if successful or an error otherwise.</returns>
+            <returns>Returns zero if successful or an error otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamGetFrame(System.IntPtr,System.Int32)">
@@ -5102,10 +5102,10 @@
             Return the address of a decompressed video frame. 
             </summary>
             
-            <param name="getFrameObject">Pointer to a GetFrame object.</param>
-            <param name="position">Position, in samples, within the stream of the desired frame.</param>
+            <param name="getFrameObject">Pointer to a GetFrame object</param>
+            <param name="position">Position, in samples, within the stream of the desired frame</param>
             
-            <returns>Returns a pointer to the frame data if successful or NULL otherwise.</returns>
+            <returns>Returns a pointer to the frame data if successful or NULL otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIStreamWrite(System.IntPtr,System.Int32,System.Int32,System.IntPtr,System.Int32,System.Int32,System.IntPtr,System.IntPtr)">
@@ -5113,16 +5113,16 @@
             Write data to a stream.
             </summary>
             
-            <param name="streamHandler">Handle to an open stream.</param>
-            <param name="start">First sample to write.</param>
-            <param name="samples">Number of samples to write.</param>
+            <param name="streamHandler">Handle to an open stream</param>
+            <param name="start">First sample to write</param>
+            <param name="samples">Number of samples to write</param>
             <param name="buffer">Pointer to a buffer containing the data to write. </param>
-            <param name="bufferSize">Size of the buffer referenced by <b>buffer</b>.</param>
-            <param name="flags">Flag associated with this data.</param>
-            <param name="samplesWritten">Pointer to a buffer that receives the number of samples written. This can be set to NULL.</param>
-            <param name="bytesWritten">Pointer to a buffer that receives the number of bytes written. This can be set to NULL.</param>
+            <param name="bufferSize">Size of the buffer referenced by <b>buffer</b></param>
+            <param name="flags">Flag associated with this data</param>
+            <param name="samplesWritten">Pointer to a buffer that receives the number of samples written. This can be set to NULL</param>
+            <param name="bytesWritten">Pointer to a buffer that receives the number of bytes written. This can be set to NULL</param>
             
-            <returns>Returns zero if successful or an error otherwise.</returns>
+            <returns>Returns zero if successful or an error otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVISaveOptions(System.IntPtr,System.Int32,System.Int32,System.IntPtr[],System.IntPtr[])">
@@ -5130,13 +5130,13 @@
             Retrieve the save options for a file and returns them in a buffer.
             </summary>
             
-            <param name="window">Handle to the parent window for the Compression Options dialog box.</param>
-            <param name="flags">Flags for displaying the Compression Options dialog box.</param>
-            <param name="streams">Number of streams that have their options set by the dialog box.</param>
-            <param name="streamInterfaces">Pointer to an array of stream interface pointers.</param>
-            <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures.</param>
+            <param name="window">Handle to the parent window for the Compression Options dialog box</param>
+            <param name="flags">Flags for displaying the Compression Options dialog box</param>
+            <param name="streams">Number of streams that have their options set by the dialog box</param>
+            <param name="streamInterfaces">Pointer to an array of stream interface pointers</param>
+            <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures</param>
             
-            <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise.</returns>
+            <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVISaveOptionsFree(System.Int32,System.IntPtr[])">
@@ -5144,10 +5144,10 @@
             Free the resources allocated by the AVISaveOptions function. 
             </summary>
             
-            <param name="streams">Count of the AVICOMPRESSOPTIONS structures referenced in <b>options</b>.</param>
-            <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures.</param>
+            <param name="streams">Count of the AVICOMPRESSOPTIONS structures referenced in <b>options</b></param>
+            <param name="options">Pointer to an array of pointers to AVICOMPRESSOPTIONS structures</param>
             
-            <returns>Returns 0.</returns>
+            <returns>Returns 0</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVIMakeCompressedStream(System.IntPtr@,System.IntPtr,UMapx.Video.VFW.Win32.AVICOMPRESSOPTIONS@,System.IntPtr)">
@@ -5157,12 +5157,12 @@
             the compressed stream.
             </summary>
             
-            <param name="compressedStream">Pointer to a buffer that receives the compressed stream pointer.</param>
-            <param name="sourceStream">Pointer to the stream to be compressed.</param>
-            <param name="options">Pointer to a structure that identifies the type of compression to use and the options to apply.</param>
-            <param name="clsidHandler">Pointer to a class identifier used to create the stream.</param>
+            <param name="compressedStream">Pointer to a buffer that receives the compressed stream pointer</param>
+            <param name="sourceStream">Pointer to the stream to be compressed</param>
+            <param name="options">Pointer to a structure that identifies the type of compression to use and the options to apply</param>
+            <param name="clsidHandler">Pointer to a class identifier used to create the stream</param>
             
-            <returns>Returns 0 if successful or an error otherwise.</returns>
+            <returns>Returns 0 if successful or an error otherwise</returns>
             
         </member>
         <member name="T:UMapx.Video.VFW.Win32.RECT">
@@ -5474,9 +5474,9 @@
             .NET replacement of mmioFOURCC macros. Converts four characters to code.
             </summary>
             
-            <param name="str">Four characters string.</param>
+            <param name="str">Four characters string</param>
             
-            <returns>Returns the code created from provided characters.</returns>
+            <returns>Returns the code created from provided characters</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.decode_mmioFOURCC(System.Int32)">
@@ -5484,9 +5484,9 @@
             Inverse to <see cref="M:UMapx.Video.VFW.Win32.mmioFOURCC(System.String)"/>. Converts code to fout characters string.
             </summary>
             
-            <param name="code">Code to convert.</param>
+            <param name="code">Code to convert</param>
             
-            <returns>Returns four characters string.</returns>
+            <returns>Returns four characters string</returns>
             
         </member>
         <member name="M:UMapx.Video.VFW.Win32.AVISaveOptions(System.IntPtr,UMapx.Video.VFW.Win32.AVICOMPRESSOPTIONS@)">
@@ -5494,10 +5494,10 @@
             Version of <see cref="M:UMapx.Video.VFW.Win32.AVISaveOptions(System.IntPtr,System.Int32,System.Int32,System.IntPtr[],System.IntPtr[])"/> for one stream only.
             </summary>
             
-            <param name="stream">Stream to configure.</param>
-            <param name="options">Stream options.</param>
+            <param name="stream">Stream to configure</param>
+            <param name="options">Stream options</param>
             
-            <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise.</returns>
+            <returns>Returns TRUE if the user pressed OK, FALSE for CANCEL, or an error otherwise</returns>
             
         </member>
         <member name="T:UMapx.SystemTools">
@@ -5522,11 +5522,11 @@
              Copy block of unmanaged memory.
              </summary>
              
-             <param name="dst">Destination pointer.</param>
-             <param name="src">Source pointer.</param>
-             <param name="count">Memory block's length to copy.</param>
+             <param name="dst">Destination pointer</param>
+             <param name="src">Source pointer</param>
+             <param name="count">Memory block's length to copy</param>
              
-             <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+             <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
              
              <remarks><para>This function is required because of the fact that .NET does
              not provide any way to copy unmanaged blocks, but provides only methods to
@@ -5538,11 +5538,11 @@
             Copy block of unmanaged memory.
             </summary>
             
-            <param name="dst">Destination pointer.</param>
-            <param name="src">Source pointer.</param>
-            <param name="count">Memory block's length to copy.</param>
+            <param name="dst">Destination pointer</param>
+            <param name="src">Source pointer</param>
+            <param name="count">Memory block's length to copy</param>
             
-            <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+            <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
             
             <remarks><para>This function is required because of the fact that .NET does
             not provide any way to copy unmanaged blocks, but provides only methods to
@@ -5554,11 +5554,11 @@
             Fill memory region with specified value.
             </summary>
             
-            <param name="dst">Destination pointer.</param>
-            <param name="filler">Filler byte's value.</param>
-            <param name="count">Memory block's length to fill.</param>
+            <param name="dst">Destination pointer</param>
+            <param name="filler">Filler byte's value</param>
+            <param name="count">Memory block's length to fill</param>
             
-            <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+            <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
             
         </member>
         <member name="M:UMapx.SystemTools.SetUnmanagedMemory(System.Byte*,System.Int32,System.Int32)">
@@ -5566,11 +5566,11 @@
             Fill memory region with specified value.
             </summary>
             
-            <param name="dst">Destination pointer.</param>
-            <param name="filler">Filler byte's value.</param>
-            <param name="count">Memory block's length to fill.</param>
+            <param name="dst">Destination pointer</param>
+            <param name="filler">Filler byte's value</param>
+            <param name="count">Memory block's length to fill</param>
             
-            <returns>Return's value of <paramref name="dst"/> - pointer to destination.</returns>
+            <returns>Return's value of <paramref name="dst"/> - pointer to destination</returns>
             
         </member>
     </members>

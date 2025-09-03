@@ -37,7 +37,7 @@ namespace UMapx.Video.DirectShow
         /// Initializes a new instance of the <see cref="FilterInfoCollection"/> class.
         /// </summary>
         /// 
-        /// <param name="category">Guid of DirectShow filter category. See <see cref="FilterCategory"/>.</param>
+        /// <param name="category">Guid of DirectShow filter category. See <see cref="FilterCategory"/></param>
         /// 
         /// <remarks>Build collection of filters' information objects for the
         /// specified filter category.</remarks>

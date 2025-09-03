@@ -105,7 +105,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Dispose the object
         /// </summary>
         /// 
-        /// <param name="disposing">Indicates if disposing was initiated manually.</param>
+        /// <param name="disposing">Indicates if disposing was initiated manually</param>
         /// 
         protected virtual void Dispose( bool disposing )
         {
@@ -403,7 +403,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Performs manual marshaling of <b>pElems</b> to retrieve an array of Guid objects.
         /// </summary>
         /// 
-        /// <returns>A managed representation of <b>pElems</b>.</returns>
+        /// <returns>A managed representation of <b>pElems</b></returns>
         /// 
         public Guid[] ToGuidArray( )
         {

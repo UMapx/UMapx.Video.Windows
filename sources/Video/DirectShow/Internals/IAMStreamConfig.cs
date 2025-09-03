@@ -17,9 +17,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Set the output format on the pin.
         /// </summary>
         /// 
-        /// <param name="mediaType">Media type to set.</param>
+        /// <param name="mediaType">Media type to set</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetFormat( [In, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -28,9 +28,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the audio or video stream's format.
         /// </summary>
         /// 
-        /// <param name="mediaType">Retrieved media type.</param>
+        /// <param name="mediaType">Retrieved media type</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetFormat( [Out, MarshalAs( UnmanagedType.LPStruct )] out AMMediaType mediaType );
@@ -39,10 +39,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieve the number of format capabilities that this pin supports.
         /// </summary>
         /// 
-        /// <param name="count">Variable that receives the number of format capabilities.</param>
-        /// <param name="size">Variable that receives the size of the configuration structure in bytes.</param>
+        /// <param name="count">Variable that receives the number of format capabilities</param>
+        /// <param name="size">Variable that receives the size of the configuration structure in bytes</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetNumberOfCapabilities( out int count, out int size );
@@ -51,11 +51,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieve a set of format capabilities.
         /// </summary>
         /// 
-        /// <param name="index">Specifies the format capability to retrieve, indexed from zero.</param>
-        /// <param name="mediaType">Retrieved media type.</param>
-        /// <param name="streamConfigCaps">Byte array, which receives information about capabilities.</param>
+        /// <param name="index">Specifies the format capability to retrieve, indexed from zero</param>
+        /// <param name="mediaType">Retrieved media type</param>
+        /// <param name="streamConfigCaps">Byte array, which receives information about capabilities</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetStreamCaps(

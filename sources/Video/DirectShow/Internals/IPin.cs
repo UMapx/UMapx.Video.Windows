@@ -16,10 +16,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Connects the pin to another pin.
         /// </summary>
         /// 
-        /// <param name="receivePin">Other pin to connect to.</param>
-        /// <param name="mediaType">Type to use for the connections (optional).</param>
+        /// <param name="receivePin">Other pin to connect to</param>
+        /// <param name="mediaType">Type to use for the connections (optional)</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Connect( [In] IPin receivePin, [In, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -28,10 +28,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Makes a connection to this pin and is called by a connecting pin.
         /// </summary>
         /// 
-        /// <param name="receivePin">Connecting pin.</param>
-        /// <param name="mediaType">Media type of the samples to be streamed.</param>
+        /// <param name="receivePin">Connecting pin</param>
+        /// <param name="mediaType">Media type of the samples to be streamed</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int ReceiveConnection( [In] IPin receivePin, [In, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -40,7 +40,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Breaks the current pin connection.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int Disconnect( );
@@ -49,9 +49,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Returns a pointer to the connecting pin.
         /// </summary>
         /// 
-        /// <param name="pin">Receives <b>IPin</b> interface of connected pin (if any).</param>
+        /// <param name="pin">Receives <b>IPin</b> interface of connected pin (if any)</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int ConnectedTo( [Out] out IPin pin );
@@ -63,9 +63,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// <param name="mediaType">Pointer to an <see cref="AMMediaType"/> structure. If the pin is connected,
         /// the media type is returned. Otherwise, the structure is initialized to a default state in which
         /// all elements are 0, with the exception of <b>lSampleSize</b>, which is set to 1, and
-        /// <b>FixedSizeSamples</b>, which is set to <b>true</b>.</param>
+        /// <b>FixedSizeSamples</b>, which is set to <b>true</b></param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int ConnectionMediaType( [Out, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -74,9 +74,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves information about this pin (for example, the name, owning filter, and direction).
         /// </summary>
         /// 
-        /// <param name="pinInfo"><see cref="PinInfo"/> structure that receives the pin information.</param>
+        /// <param name="pinInfo"><see cref="PinInfo"/> structure that receives the pin information</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryPinInfo( [Out] out PinInfo pinInfo );
@@ -85,9 +85,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the direction for this pin.
         /// </summary>
         /// 
-        /// <param name="pinDirection">Receives direction of the pin.</param>
+        /// <param name="pinDirection">Receives direction of the pin</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryDirection( out PinDirection pinDirection );
@@ -96,9 +96,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves an identifier for the pin.
         /// </summary>
         /// 
-        /// <param name="id">Pin identifier.</param>
+        /// <param name="id">Pin identifier</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryId( [Out, MarshalAs( UnmanagedType.LPWStr )] out string id );
@@ -107,9 +107,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Queries whether a given media type is acceptable by the pin.
         /// </summary>
         /// 
-        /// <param name="mediaType"><see cref="AMMediaType"/> structure that specifies the media type.</param>
+        /// <param name="mediaType"><see cref="AMMediaType"/> structure that specifies the media type</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryAccept( [In, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -118,9 +118,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Provides an enumerator for this pin's preferred media types.
         /// </summary>
         /// 
-        /// <param name="enumerator">Address of a variable that receives a pointer to the <b>IEnumMediaTypes</b> interface.</param>
+        /// <param name="enumerator">Address of a variable that receives a pointer to the <b>IEnumMediaTypes</b> interface</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int EnumMediaTypes( IntPtr enumerator );
@@ -129,11 +129,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Provides an array of the pins to which this pin internally connects.
         /// </summary>
         /// 
-        /// <param name="apPin">Address of an array of <b>IPin</b> pointers.</param>
+        /// <param name="apPin">Address of an array of <b>IPin</b> pointers</param>
         /// <param name="nPin">On input, specifies the size of the array. When the method returns,
-        /// the value is set to the number of pointers returned in the array.</param>
+        /// the value is set to the number of pointers returned in the array</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int QueryInternalConnections( IntPtr apPin, [In, Out] ref int nPin );
@@ -142,7 +142,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Notifies the pin that no additional data is expected.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int EndOfStream( );
@@ -151,7 +151,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Begins a flush operation.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int BeginFlush( );
@@ -160,7 +160,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// Ends a flush operation.
         /// </summary>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int EndFlush( );
@@ -169,11 +169,11 @@ namespace UMapx.Video.DirectShow.Internals
         /// Specifies that samples following this call are grouped as a segment with a given start time, stop time, and rate.
         /// </summary>
         /// 
-        /// <param name="start">Start time of the segment, relative to the original source, in 100-nanosecond units.</param>
-        /// <param name="stop">End time of the segment, relative to the original source, in 100-nanosecond units.</param>
-        /// <param name="rate">Rate at which this segment should be processed, as a percentage of the original rate.</param>
+        /// <param name="start">Start time of the segment, relative to the original source, in 100-nanosecond units</param>
+        /// <param name="stop">End time of the segment, relative to the original source, in 100-nanosecond units</param>
+        /// <param name="rate">Rate at which this segment should be processed, as a percentage of the original rate</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int NewSegment(

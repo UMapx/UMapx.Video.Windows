@@ -19,9 +19,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// </summary>
         /// 
         /// <param name="pPages">Pointer to a CAUUID structure that must be initialized
-        /// and filled before returning.</param>
+        /// and filled before returning</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetPages(out CAUUID pPages);

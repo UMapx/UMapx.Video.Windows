@@ -17,10 +17,10 @@
         /// Retrieves the capabilities of the underlying hardware.
         /// </summary>
         /// 
-        /// <param name="pin">Pin to query capabilities from.</param>
-        /// <param name="flags">Get capabilities of the specified pin.</param>
+        /// <param name="pin">Pin to query capabilities from</param>
+        /// <param name="flags">Get capabilities of the specified pin</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetCaps( [In] IPin pin, [Out, MarshalAs( UnmanagedType.I4 )] out VideoControlFlags flags );
@@ -29,10 +29,10 @@
         /// Sets the video control mode of operation.
         /// </summary>
         /// 
-        /// <param name="pin">The pin to set the video control mode on.</param>
-        /// <param name="mode">Value specifying a combination of the flags to set the video control mode.</param>
+        /// <param name="pin">The pin to set the video control mode on</param>
+        /// <param name="mode">Value specifying a combination of the flags to set the video control mode</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetMode( [In] IPin pin, [In, MarshalAs( UnmanagedType.I4 )] VideoControlFlags mode );
@@ -41,10 +41,10 @@
         /// Retrieves the video control mode of operation.
         /// </summary>
         /// 
-        /// <param name="pin">The pin to retrieve the video control mode from.</param>
-        /// <param name="mode">Gets combination of flags, which specify the video control mode.</param>
+        /// <param name="pin">The pin to retrieve the video control mode from</param>
+        /// <param name="mode">Gets combination of flags, which specify the video control mode</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetMode( [In] IPin pin, [Out, MarshalAs( UnmanagedType.I4 )] out VideoControlFlags mode );
@@ -55,10 +55,10 @@
         /// because of bandwidth availability. This is only available during video streaming.
         /// </summary>
         /// 
-        /// <param name="pin">The pin to retrieve the frame rate from.</param>
-        /// <param name="actualFrameRate">Gets frame rate in frame duration in 100-nanosecond units.</param>
+        /// <param name="pin">The pin to retrieve the frame rate from</param>
+        /// <param name="actualFrameRate">Gets frame rate in frame duration in 100-nanosecond units</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetCurrentActualFrameRate( [In] IPin pin, [Out, MarshalAs( UnmanagedType.I8 )] out long actualFrameRate );
@@ -69,13 +69,13 @@
         /// availability.
         /// </summary>
         /// 
-        /// <param name="pin">The pin to retrieve the maximum frame rate from.</param>
+        /// <param name="pin">The pin to retrieve the maximum frame rate from</param>
         /// <param name="index">Index of the format to query for maximum frame rate. This index corresponds
-        /// to the order in which formats are enumerated by <see cref="IAMStreamConfig.GetStreamCaps"/>.</param>
-        /// <param name="dimensions">Frame image size (width and height) in pixels.</param>
-        /// <param name="maxAvailableFrameRate">Gets maximum available frame rate. The frame rate is expressed as frame duration in 100-nanosecond units.</param>
+        /// to the order in which formats are enumerated by <see cref="IAMStreamConfig.GetStreamCaps"/></param>
+        /// <param name="dimensions">Frame image size (width and height) in pixels</param>
+        /// <param name="maxAvailableFrameRate">Gets maximum available frame rate. The frame rate is expressed as frame duration in 100-nanosecond units</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetMaxAvailableFrameRate( [In] IPin pin, [In] int index, 
@@ -86,14 +86,14 @@
         /// Retrieves a list of available frame rates.
         /// </summary>
         /// 
-        /// <param name="pin">The pin to retrieve the maximum frame rate from.</param>
+        /// <param name="pin">The pin to retrieve the maximum frame rate from</param>
         /// <param name="index">Index of the format to query for maximum frame rate. This index corresponds
-        /// to the order in which formats are enumerated by <see cref="IAMStreamConfig.GetStreamCaps"/>.</param>
-        /// <param name="dimensions">Frame image size (width and height) in pixels.</param>
-        /// <param name="listSize">Number of elements in the list of frame rates.</param>
-        /// <param name="frameRate">Array of frame rates in 100-nanosecond units.</param>
+        /// to the order in which formats are enumerated by <see cref="IAMStreamConfig.GetStreamCaps"/></param>
+        /// <param name="dimensions">Frame image size (width and height) in pixels</param>
+        /// <param name="listSize">Number of elements in the list of frame rates</param>
+        /// <param name="frameRate">Array of frame rates in 100-nanosecond units</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetFrameRateList( [In] IPin pin, [In] int index,

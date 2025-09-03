@@ -24,9 +24,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Specifies whether the filter should stop the graph after receiving one sample.
         /// </summary>
         /// 
-        /// <param name="oneShot">Boolean value specifying whether the filter should stop the graph after receiving one sample.</param>
+        /// <param name="oneShot">Boolean value specifying whether the filter should stop the graph after receiving one sample</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetOneShot( [In, MarshalAs( UnmanagedType.Bool )] bool oneShot );
@@ -35,9 +35,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Specifies the media type for the connection on the Sample Grabber's input pin.
         /// </summary>
         /// 
-        /// <param name="mediaType">Specifies the required media type.</param>
+        /// <param name="mediaType">Specifies the required media type</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetMediaType( [In, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -46,9 +46,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves the media type for the connection on the Sample Grabber's input pin.
         /// </summary>
         /// 
-        /// <param name="mediaType"><see cref="AMMediaType"/> structure, which receives media type.</param>
+        /// <param name="mediaType"><see cref="AMMediaType"/> structure, which receives media type</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetConnectedMediaType( [Out, MarshalAs( UnmanagedType.LPStruct )] AMMediaType mediaType );
@@ -58,9 +58,9 @@ namespace UMapx.Video.DirectShow.Internals
         /// </summary>
         /// 
         /// <param name="bufferThem">Boolean value specifying whether to buffer sample data.
-        /// If <b>true</b>, the filter copies sample data into an internal buffer.</param>
+        /// If <b>true</b>, the filter copies sample data into an internal buffer</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetBufferSamples( [In, MarshalAs( UnmanagedType.Bool )] bool bufferThem );
@@ -69,10 +69,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Retrieves a copy of the sample that the filter received most recently.
         /// </summary>
         /// 
-        /// <param name="bufferSize">Pointer to the size of the buffer. If pBuffer is NULL, this parameter receives the required size.</param>
-        /// <param name="buffer">Pointer to a buffer to receive a copy of the sample, or NULL.</param>
+        /// <param name="bufferSize">Pointer to the size of the buffer. If pBuffer is NULL, this parameter receives the required size</param>
+        /// <param name="buffer">Pointer to a buffer to receive a copy of the sample, or NULL</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetCurrentBuffer( ref int bufferSize, IntPtr buffer );
@@ -83,7 +83,7 @@ namespace UMapx.Video.DirectShow.Internals
         /// 
         /// <param name="sample"></param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int GetCurrentSample( IntPtr sample );
@@ -92,10 +92,10 @@ namespace UMapx.Video.DirectShow.Internals
         /// Specifies a callback method to call on incoming samples.
         /// </summary>
         /// 
-        /// <param name="callback"><see cref="ISampleGrabberCB"/> interface containing the callback method, or NULL to cancel the callback.</param>
-        /// <param name="whichMethodToCallback">Index specifying the callback method.</param>
+        /// <param name="callback"><see cref="ISampleGrabberCB"/> interface containing the callback method, or NULL to cancel the callback</param>
+        /// <param name="whichMethodToCallback">Index specifying the callback method</param>
         /// 
-        /// <returns>Return's <b>HRESULT</b> error code.</returns>
+        /// <returns>Return's <b>HRESULT</b> error code</returns>
         /// 
         [PreserveSig]
         int SetCallback( ISampleGrabberCB callback, int whichMethodToCallback );
