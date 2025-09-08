@@ -572,7 +572,7 @@ namespace UMapx.Video.DirectShow
             {
                 // check source
                 if (string.IsNullOrEmpty(deviceMoniker))
-                    throw new ArgumentException("Video source is not specified.");
+                    throw new ArgumentException("Video source is not specified");
 
                 framesReceived = 0;
                 bytesReceived = 0;
@@ -685,7 +685,7 @@ namespace UMapx.Video.DirectShow
         {
             // check source
             if ((deviceMoniker == null) || (deviceMoniker == string.Empty))
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
 
             lock (sync)
             {
@@ -706,12 +706,12 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is ISpecifyPropertyPages))
                 {
-                    throw new NotSupportedException("The video source does not support configuration property page.");
+                    throw new NotSupportedException("The video source does not support configuration property page");
                 }
 
                 DisplayPropertyPage(parentWindow, tempSourceObject);
@@ -754,12 +754,12 @@ namespace UMapx.Video.DirectShow
 
                 if ((!IsRunning) || (!isCrossbarAvailable.HasValue))
                 {
-                    throw new ApplicationException("The video source must be running in order to display crossbar property page.");
+                    throw new ApplicationException("The video source must be running in order to display crossbar property page");
                 }
 
                 if (!isCrossbarAvailable.Value)
                 {
-                    throw new NotSupportedException("Crossbar configuration is not supported by currently running video source.");
+                    throw new NotSupportedException("Crossbar configuration is not supported by currently running video source");
                 }
 
                 // pass the request to background thread if video source is running
@@ -842,7 +842,7 @@ namespace UMapx.Video.DirectShow
             // check if source was set
             if ((deviceMoniker == null) || (string.IsNullOrEmpty(deviceMoniker)))
             {
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
             }
 
             lock (sync)
@@ -856,12 +856,12 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is IAMCameraControl))
                 {
-                    throw new NotSupportedException("The video source does not support camera control.");
+                    throw new NotSupportedException("The video source does not support camera control");
                 }
 
                 IAMCameraControl pCamControl = (IAMCameraControl)tempSourceObject;
@@ -896,7 +896,7 @@ namespace UMapx.Video.DirectShow
             // check if source was set
             if ((deviceMoniker == null) || (string.IsNullOrEmpty(deviceMoniker)))
             {
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
             }
 
             lock (sync)
@@ -910,12 +910,12 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is IAMCameraControl))
                 {
-                    throw new NotSupportedException("The video source does not support camera control.");
+                    throw new NotSupportedException("The video source does not support camera control");
                 }
 
                 IAMCameraControl pCamControl = (IAMCameraControl)tempSourceObject;
@@ -953,7 +953,7 @@ namespace UMapx.Video.DirectShow
             // check if source was set
             if ((deviceMoniker == null) || (string.IsNullOrEmpty(deviceMoniker)))
             {
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
             }
 
             lock (sync)
@@ -967,12 +967,12 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is IAMCameraControl))
                 {
-                    throw new NotSupportedException("The video source does not support camera control.");
+                    throw new NotSupportedException("The video source does not support camera control");
                 }
 
                 IAMCameraControl pCamControl = (IAMCameraControl)tempSourceObject;
@@ -1006,7 +1006,7 @@ namespace UMapx.Video.DirectShow
 
             // check if source was set
             if (String.IsNullOrEmpty(deviceMoniker))
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
 
             lock (sync)
             {
@@ -1019,11 +1019,11 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is IAMVideoProcAmp))
-                    throw new NotSupportedException("The video source does not support video signal adjustments.");
+                    throw new NotSupportedException("The video source does not support video signal adjustments");
 
                 IAMVideoProcAmp pVideoProcAmp = (IAMVideoProcAmp)tempSourceObject;
                 int hr = pVideoProcAmp.Set(property, value, controlFlags);
@@ -1056,7 +1056,7 @@ namespace UMapx.Video.DirectShow
 
             // check if source was set
             if (String.IsNullOrEmpty(deviceMoniker))
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
 
             lock (sync)
             {
@@ -1069,11 +1069,11 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is IAMVideoProcAmp))
-                    throw new NotSupportedException("The video source does not support video signal adjustments.");
+                    throw new NotSupportedException("The video source does not support video signal adjustments");
 
                 IAMVideoProcAmp pVideoProcAmp = (IAMVideoProcAmp)tempSourceObject;
                 int hr = pVideoProcAmp.Get(property, out value, out controlFlags);
@@ -1109,7 +1109,7 @@ namespace UMapx.Video.DirectShow
 
             // check if source was set
             if (String.IsNullOrEmpty(deviceMoniker))
-                throw new ArgumentException("Video source is not specified.");
+                throw new ArgumentException("Video source is not specified");
 
             lock (sync)
             {
@@ -1122,11 +1122,11 @@ namespace UMapx.Video.DirectShow
                 }
                 catch
                 {
-                    throw new ApplicationException("Failed creating device object for moniker.");
+                    throw new ApplicationException("Failed creating device object for moniker");
                 }
 
                 if (!(tempSourceObject is IAMVideoProcAmp))
-                    throw new NotSupportedException("The video source does not support video signal adjustments.");
+                    throw new NotSupportedException("The video source does not support video signal adjustments");
 
                 IAMVideoProcAmp pVideoProcAmp = (IAMVideoProcAmp)tempSourceObject;
                 int hr = pVideoProcAmp.GetRange(property, out minValue, out maxValue, out stepSize, out defaultValue, out controlFlags);

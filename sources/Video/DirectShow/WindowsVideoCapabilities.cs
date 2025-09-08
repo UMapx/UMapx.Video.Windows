@@ -25,10 +25,10 @@ namespace UMapx.Video.DirectShow
                 Marshal.ThrowExceptionForHR(hr);
 
             if (count <= 0)
-                throw new NotSupportedException("This video device does not report capabilities.");
+                throw new NotSupportedException("This video device does not report capabilities");
 
             if (size > Marshal.SizeOf(typeof(VideoStreamConfigCaps)))
-                throw new NotSupportedException("Unable to retrieve video device capabilities. This video device requires a larger VideoStreamConfigCaps structure.");
+                throw new NotSupportedException("Unable to retrieve video device capabilities. This video device requires a larger VideoStreamConfigCaps structure");
 
             // group capabilities with similar parameters
             Dictionary<ulong, WindowsVideoCapabilities> videocapsList = new Dictionary<ulong, WindowsVideoCapabilities>();
@@ -100,7 +100,7 @@ namespace UMapx.Video.DirectShow
                 }
                 else
                 {
-                    throw new ApplicationException("Unsupported format found.");
+                    throw new ApplicationException("Unsupported format found");
                 }
 
                 // ignore 12 bpp formats for now, since it was noticed they cause issues on Windows 8
@@ -108,7 +108,7 @@ namespace UMapx.Video.DirectShow
                 // on such formats
                 //if (BitCount <= 12)
                 //{
-                //    throw new ApplicationException("Unsupported format found.");
+                //    throw new ApplicationException("Unsupported format found");
                 //}
             }
             finally

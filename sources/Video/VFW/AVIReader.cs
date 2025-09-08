@@ -211,11 +211,11 @@ namespace UMapx.Video.VFW
                 {
                     // open AVI file
                     if ( Win32.AVIFileOpen( out file, fileName, Win32.OpenFileMode.ShareDenyWrite, IntPtr.Zero ) != 0 )
-                        throw new System.IO.IOException( "Failed opening the specified AVI file." );
+                        throw new System.IO.IOException( "Failed opening the specified AVI file" );
 
                     // get first video stream
                     if ( Win32.AVIFileGetStream( file, out stream, Win32.mmioFOURCC( "vids" ), 0 ) != 0 )
-                        throw new VideoException( "Failed getting video stream." );
+                        throw new VideoException( "Failed getting video stream" );
 
                     // get stream info
                     Win32.AVISTREAMINFO info = new Win32.AVISTREAMINFO( );
@@ -245,7 +245,7 @@ namespace UMapx.Video.VFW
                         bitmapInfoHeader.height = -height;
 
                         if ( ( getFrame = Win32.AVIStreamGetFrameOpen( stream, ref bitmapInfoHeader ) ) == IntPtr.Zero )
-                            throw new VideoException( "Failed initializing decompressor." );
+                            throw new VideoException( "Failed initializing decompressor" );
                     }
 
                     success = true;
@@ -309,13 +309,13 @@ namespace UMapx.Video.VFW
             {
                 if ( file == IntPtr.Zero )
                 {
-                    throw new System.IO.IOException( "Cannot read video frames since video file is not open." );
+                    throw new System.IO.IOException( "Cannot read video frames since video file is not open" );
                 }
 
                 // get frame at specified position
                 IntPtr DIB = Win32.AVIStreamGetFrame( getFrame, position );
                 if ( DIB == IntPtr.Zero )
-                    throw new VideoException( "Failed getting frame." );
+                    throw new VideoException( "Failed getting frame" );
 
                 Win32.BITMAPINFOHEADER bitmapInfoHeader;
 

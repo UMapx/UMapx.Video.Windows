@@ -222,7 +222,7 @@ namespace UMapx.Video.VFW
 			{
                 // check source
                 if ( string.IsNullOrEmpty( source ) )
-                    throw new ArgumentException( "Video source is not specified." );
+                    throw new ArgumentException( "Video source is not specified" );
                 
                 framesReceived = 0;
                 bytesReceived = 0;
