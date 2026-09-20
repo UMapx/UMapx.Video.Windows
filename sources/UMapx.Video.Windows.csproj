@@ -2,60 +2,71 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>8.0</LangVersion>
 	<Version>8.0.0.1</Version>
 	<AssemblyVersion>8.0.0.1</AssemblyVersion>
 	<FileVersion>8.0.0.1</FileVersion>
-    <Description>UMapx extensions for video streaming and processing on Windows.</Description>
-    <Copyright>Valery Asiryan, © 2015-2026</Copyright>
+	<PackageId>UMapx.Video.Windows</PackageId>
+	<Company>Valery Asiryan</Company>
+	<Authors>Valery Asiryan</Authors>
+	<Copyright>Valery Asiryan, © 2015-2026</Copyright>
+	<Description>UMapx extensions for video streaming and processing on Windows.</Description>
+	<PackageProjectUrl>https://github.com/UMapx/UMapx.Video.Windows</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/UMapx/UMapx.Video.Windows</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>image video signal processing camera umapx windows</PackageTags>
+	<NeutralLanguage>en</NeutralLanguage>  
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>umapxnet.png</PackageIcon>
-    <PackageIconUrl />
-    <PackageProjectUrl>https://github.com/asiryan/UMapx</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/asiryan/UMapx.Video.Windows</RepositoryUrl>
-    <RepositoryType>Open-source</RepositoryType>
-    <PackageTags>image video signal processing camera umapx windows</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>True</Optimize>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>UMapx.Video.Windows.xml</DocumentationFile>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>True</Optimize>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>UMapx.Video.Windows.xml</DocumentationFile>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <Optimize>True</Optimize>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<Optimize>true</Optimize>
+	<DebugType>none</DebugType>
+	<DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <Optimize>True</Optimize>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<Optimize>true</Optimize>
+	<DebugType>none</DebugType>
+	<DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="LICENSE.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="umapxnet.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="UMapx" Version="8.0.0.1" />
   </ItemGroup>
 
+	<ItemGroup>
+		<None Include="../README.md" Pack="true" PackagePath="/" />
+		<None Include="LICENSE.md">
+		  <Pack>True</Pack>
+		  <PackagePath></PackagePath>
+		</None>
+		<None Include="umapxnet.png">
+		  <Pack>True</Pack>
+		  <PackagePath></PackagePath>
+		</None>
+	  </ItemGroup>
+	
 </Project>
