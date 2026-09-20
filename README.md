@@ -1,5 +1,5 @@
 <p align="center"><img width="25%" src="https://raw.githubusercontent.com/UMapx/UMapx.Video.Windows/main/docs/umapxnet_big.png" /></p>
-<p align="center">Video capture and AVI processing for Windows</p>
+<p align="center">UMapx sub-library for video capturing and AVI processing on Windows</p>
 
 # Installation
 Install **UMapx.Video.Windows** to your project using [NuGet](https://www.nuget.org/packages/UMapx.Video.Windows/) package manager.
