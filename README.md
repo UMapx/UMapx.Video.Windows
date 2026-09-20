@@ -11,9 +11,9 @@ using UMapx.Video.VFW;
 
 See the [WPF camera example](https://github.com/UMapx/UMapx.Video.Windows/tree/main/examples).
 
-# Requirements and compatibility
+# Platform support
 
-The library targets .NET Standard 2.0 but requires Windows: it uses DirectShow,
+The library targets **.NET Standard 2.0** but requires Windows: it uses DirectShow,
 Video for Windows (VFW), COM and System.Drawing.Common. It is not supported on Linux or macOS.
 
 Regression tests cover Windows with .NET 8, in x64 and x86 processes.
@@ -65,7 +65,7 @@ Accepted frames are drained before `PlayingFinished` is raised on the processing
 thread. Exceptions from `NewFrame` handlers are reported through `VideoSourceError`
 and stop processing. Event handlers should return promptly and should not throw.
 
-# Building and testing
+# Build and test
 
 Run on Windows:
 
