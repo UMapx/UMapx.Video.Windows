@@ -70,7 +70,7 @@ and stop processing. Event handlers should return promptly and should not throw.
 Run on Windows:
 
 ```powershell
-dotnet build sources/UMapx.Video.Windows.sln -c Release
+dotnet build UMapx.Video.Windows.sln -c Release
 dotnet build examples/UMapx.Video.Windows.Example.sln -c Release
 dotnet test tests/UMapx.Video.Windows.Tests.csproj -c Release
 ```
