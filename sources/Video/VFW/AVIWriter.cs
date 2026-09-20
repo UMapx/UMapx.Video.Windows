@@ -14,11 +14,11 @@ namespace UMapx.Video.VFW
     /// <para>Sample usage:</para>
     /// <code>
     /// // instantiate AVI writer, use WMV3 codec
-    /// AVIWriter writer = new AVIWriter( "wmv3" );
+    /// using AVIWriter writer = new AVIWriter( "wmv3" );
     /// // create new AVI file and open it
     /// writer.Open( "test.avi", 320, 240 );
     /// // create frame image
-    /// Bitmap image = new Bitmap( 320, 240 );
+    /// using Bitmap image = new Bitmap( 320, 240 );
     /// 
     /// for ( int i = 0; i &lt; 240; i++ )
     /// {
@@ -138,7 +138,7 @@ namespace UMapx.Video.VFW
         /// </summary>
         /// 
         /// <remarks><para>The property sets video quality used by codec in order to balance compression rate
-        /// and image quality. The quality is measured usually in the [0, 100] range.</para>
+        /// and image quality. The VFW quality range is [0, 10000].</para>
         /// 
         /// <para><note>The property should be set befor opening new file to take effect.</note></para>
         /// 

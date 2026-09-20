@@ -14,14 +14,14 @@ namespace UMapx.Video.VFW
     /// <para>Sample usage:</para>
     /// <code>
     /// // instantiate AVI reader
-    /// AVIReader reader = new AVIReader( );
+    /// using AVIReader reader = new AVIReader( );
     /// // open video file
     /// reader.Open( "test.avi" );
     /// // read the video file
     /// while ( reader.Position - reader.Start &lt; reader.Length )
     /// {
     ///     // get next frame
-    ///     Bitmap image = reader.GetNextFrame( );
+    ///     using Bitmap image = reader.GetNextFrame( );
     ///     // .. process the frame somehow or display it
     /// }
     /// reader.Close( );

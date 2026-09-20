@@ -56,7 +56,8 @@ that never returns can still delay shutdown; `Thread.Abort()` is not used.
 The capture constructor accepts `Format24bppRgb` (default) and `Format32bppRgb`.
 Other pixel formats throw `ArgumentException` before a device starts. Incoming RGB
 frames are checked against their buffer length, and both DIB orientations are handled.
-`SnapshotFrame` requires only its own subscription on devices that support snapshots.
+To receive `SnapshotFrame` events on supported devices, set `ProvideSnapshots = true`
+before `Start()` and subscribe to `SnapshotFrame`. A `NewFrame` subscription is not required.
 
 `AsyncVideoSource` owns its nested source and disposes it when the wrapper is
 disposed. With `SkipFramesIfBusy = false`, acquisition waits while a frame is being
