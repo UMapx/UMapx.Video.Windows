@@ -11,7 +11,7 @@
 	<Authors>Valery Asiryan</Authors>
 	<Product>UMapx</Product>
 	<Copyright>Valery Asiryan, © 2015-2026</Copyright>
-	<Description>UMapx extensions for video streaming and processing on Windows.</Description>
+	<Description>UMapx sub-library for video capturing and AVI processing on Windows.</Description>
 	<PackageProjectUrl>https://github.com/UMapx/UMapx.Video.Windows</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/UMapx/UMapx.Video.Windows</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
