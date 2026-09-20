@@ -9,6 +9,7 @@
 	<PackageId>UMapx.Video.Windows</PackageId>
 	<Company>Valery Asiryan</Company>
 	<Authors>Valery Asiryan</Authors>
+	<Product>UMapx</Product>
 	<Copyright>Valery Asiryan, © 2015-2026</Copyright>
 	<Description>UMapx extensions for video streaming and processing on Windows.</Description>
 	<PackageProjectUrl>https://github.com/UMapx/UMapx.Video.Windows</PackageProjectUrl>
@@ -21,8 +22,6 @@
 	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>umapxnet.png</PackageIcon>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -31,21 +30,7 @@
 	<DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<DefineConstants>DEBUG;TRACE</DefineConstants>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<Optimize>true</Optimize>
-	<DebugType>none</DebugType>
-	<DebugSymbols>false</DebugSymbols>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<Optimize>true</Optimize>
