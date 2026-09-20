@@ -46,8 +46,7 @@ namespace UMapx.Video.VFW
         // get frame interval from source or use manually specified
         private bool frameIntervalFromSource = true;
 
-		private Thread thread = null;
-		private ManualResetEvent stopEvent = null;
+		private readonly VideoSourceWorker worker = new VideoSourceWorker();
 
         /// <summary>
         /// New frame event.
@@ -142,9 +141,7 @@ namespace UMapx.Video.VFW
 		{
 			get
 			{
-				int frames = framesReceived;
-				framesReceived = 0;
-				return frames;
+				return Interlocked.Exchange(ref framesReceived, 0);
 			}
 		}
 
@@ -160,9 +157,7 @@ namespace UMapx.Video.VFW
 		{
             get
             {
-                long bytes = bytesReceived;
-                bytesReceived = 0;
-                return bytes;
+                return Interlocked.Exchange(ref bytesReceived, 0);
             }
 		}
 
@@ -172,22 +167,7 @@ namespace UMapx.Video.VFW
         /// 
         /// <remarks>Current state of video source object - running or not.</remarks>
         /// 
-        public bool IsRunning
-		{
-			get
-			{
-				if ( thread != null )
-				{
-                    // check thread status
-                    if ( thread.Join( 0 ) == false )
-						return true;
-
-					// the thread is not running, so free resources
-					Free( );
-				}
-				return false;
-			}
-		}
+        public bool IsRunning => worker.IsRunning;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AVIFileVideoSource"/> class.
@@ -216,26 +196,16 @@ namespace UMapx.Video.VFW
         /// 
         /// <exception cref="ArgumentException">Video source is not specified.</exception>
         /// 
-        public void Start( )
-		{
-            if ( !IsRunning )
-			{
-                // check source
-                if ( string.IsNullOrEmpty( source ) )
-                    throw new ArgumentException( "Video source is not specified" );
-                
+        public void Start()
+        {
+            worker.Start(() =>
+            {
+                if (string.IsNullOrEmpty(source))
+                    throw new ArgumentException("Video source is not specified");
                 framesReceived = 0;
                 bytesReceived = 0;
-
-				// create events
-				stopEvent = new ManualResetEvent( false );
-				
-				// create and start new thread
-				thread = new Thread( new ThreadStart( WorkerThread ) );
-				thread.Name = source;
-				thread.Start( );
-			}
-		}
+            }, WorkerThread, source);
+        }
 
         /// <summary>
         /// Signal video source to stop its work.
@@ -244,15 +214,10 @@ namespace UMapx.Video.VFW
         /// <remarks>Signals video source to stop its background thread, stop to
         /// provide new frames and free resources.</remarks>
         /// 
-        public void SignalToStop( )
-		{
-			// stop thread
-			if ( thread != null )
-			{
-				// signal to stop
-				stopEvent.Set( );
-			}
-		}
+        public void SignalToStop()
+        {
+            worker.SignalToStop();
+        }
 
         /// <summary>
         /// Wait for video source has stopped.
@@ -261,134 +226,66 @@ namespace UMapx.Video.VFW
         /// <remarks>Waits for source stopping after it was signalled to stop using
         /// <see cref="SignalToStop"/> method.</remarks>
         /// 
-        public void WaitForStop( )
-		{
-			if ( thread != null )
-			{
-				// wait for thread stop
-				thread.Join( );
-
-				Free( );
-			}
-		}
+        public void WaitForStop()
+        {
+            worker.WaitForStop();
+        }
 
         /// <summary>
         /// Stop video source.
         /// </summary>
         /// 
-        /// <remarks><para>Stops video source aborting its thread.</para>
-        /// 
-        /// <para><note>Since the method aborts background thread, its usage is highly not preferred
-        /// and should be done only if there are no other options. The correct way of stopping camera
-        /// is <see cref="SignalToStop">signaling it stop</see> and then
-        /// <see cref="WaitForStop">waiting</see> for background thread's completion.</note></para>
-        /// </remarks>
-        /// 
-        [Obsolete]
-        public void Stop( )
-		{
-			if ( this.IsRunning )
-			{
-				thread.Abort( );
-				WaitForStop( );
-			}
-		}
-
-        /// <summary>
-        /// Free resource.
-        /// </summary>
-        /// 
-        private void Free( )
-		{
-			thread = null;
-
-			// release events
-			stopEvent.Close();
-            stopEvent.Dispose();
-			stopEvent = null;
-		}
+        /// <remarks>Signals the source to stop and waits for completion. From a source callback,
+        /// only the stop is requested; the worker completes after the callback returns.</remarks>
+        [Obsolete("Use SignalToStop followed by WaitForStop.")]
+        public void Stop()
+        {
+            SignalToStop();
+            WaitForStop();
+        }
 
         /// <summary>
         /// Worker thread.
         /// </summary>
         /// 
-        private void WorkerThread( )
-		{
+        private void WorkerThread()
+        {
             ReasonToFinishPlaying reasonToStop = ReasonToFinishPlaying.StoppedByUser;
-            // AVI reader
-			AVIReader aviReader = new AVIReader( );
-
-			try
-			{
-				// open file
-				aviReader.Open( source );
-
-                // stop positions
-                int stopPosition = aviReader.Start + aviReader.Length;
-
-                // frame interval
-                int interval = ( frameIntervalFromSource ) ? (int) ( 1000 / aviReader.FrameRate ) : frameInterval;
-
-                while ( !stopEvent.WaitOne( 0, false ) )
-				{
-					// start time
-					DateTime start = DateTime.Now;
-
-					// get next frame
-					Bitmap bitmap = aviReader.GetNextFrame( );
-
-					framesReceived++;
-                    bytesReceived += bitmap.Width * bitmap.Height *
-                        ( Bitmap.GetPixelFormatSize( bitmap.PixelFormat ) >> 3 );
-
-					if ( NewFrame != null )
-						NewFrame( this, new NewFrameEventArgs( bitmap ) );
-
-					// free image
-					bitmap.Dispose( );
-
-                    // check current position
-                    if ( aviReader.Position >= stopPosition )
-                    {
-                        reasonToStop = ReasonToFinishPlaying.EndOfStreamReached;
-                        break;
-                    }
-
-                    // wait for a while ?
-                    if ( interval > 0 )
-                    {
-                        // get frame extract duration
-                        TimeSpan span = DateTime.Now.Subtract( start );
-
-                        // miliseconds to sleep
-                        int msec = interval - (int) span.TotalMilliseconds;
-
-                        if ( ( msec > 0 ) && ( stopEvent.WaitOne( msec, false ) ) )
-                            break;
-                    }
-				}
-			}
-			catch ( Exception exception )
-			{
-                // provide information to clients
-                if ( VideoSourceError != null )
-                {
-                    VideoSourceError( this, new VideoSourceErrorEventArgs( exception.Message ) );
-                }
-			}
-
-			aviReader.Dispose( );
-			aviReader = null;
-
-            if ( PlayingFinished != null )
+            try
             {
-                PlayingFinished( this, reasonToStop );
-            } 
-		}
+                using (var reader = new AVIReader())
+                {
+                    reader.Open(source);
+                    int stopPosition = checked(reader.Start + reader.Length);
+                    int interval = frameIntervalFromSource ? (int)(1000 / reader.FrameRate) : frameInterval;
+                    while (!worker.IsStopping)
+                    {
+                        var elapsed = System.Diagnostics.Stopwatch.StartNew();
+                        using (Bitmap frame = reader.GetNextFrame())
+                        {
+                            Interlocked.Increment(ref framesReceived);
+                            Interlocked.Add(ref bytesReceived, (long)frame.Width * frame.Height * (Bitmap.GetPixelFormatSize(frame.PixelFormat) / 8));
+                            VideoSourceCallbacks.Invoke(() => NewFrame?.Invoke(this, new NewFrameEventArgs(frame)));
+                        }
+                        if (reader.Position >= stopPosition)
+                        {
+                            reasonToStop = ReasonToFinishPlaying.EndOfStreamReached;
+                            break;
+                        }
+                        int remaining = interval - (int)Math.Min(int.MaxValue, elapsed.ElapsedMilliseconds);
+                        if (remaining > 0 && worker.WaitForStopSignal(remaining)) break;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                reasonToStop = ReasonToFinishPlaying.VideoSourceError;
+                VideoSourceCallbacks.Invoke(() => VideoSourceError?.Invoke(this, new VideoSourceErrorEventArgs(error.Message)));
+            }
+            VideoSourceCallbacks.Invoke(() => PlayingFinished?.Invoke(this, reasonToStop));
+        }
 
         #region IDisposable
-
-        private bool _disposed;
 
         /// <inheritdoc/>
         public void Dispose()
@@ -400,14 +297,7 @@ namespace UMapx.Video.VFW
         /// <inheritdoc/>
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    stopEvent?.Dispose();
-                }
-                _disposed = true;
-            }
+            if (disposing) worker.Dispose();
         }
 
         /// <inheritdoc/>

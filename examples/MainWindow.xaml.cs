@@ -1,162 +1,134 @@
-﻿using System.Drawing;
+using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
+using System.Windows;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 using UMapx.Video.DirectShow;
 
 namespace UMapx.Video.Windows.Example
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// <summary>Displays frames from the first available camera.</summary>
     public partial class MainWindow : System.Windows.Window
     {
-        #region Fields
+        private IVideoSource videoSource;
+        private volatile bool closing;
+        private int drawingPending;
 
-        private readonly IVideoSource _videoSource;
-        private static readonly object _locker = new object();
-        private Bitmap _frame;
-
-        #endregion
-
-        #region Launcher
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
+        /// <summary>Creates the camera preview window.</summary>
         public MainWindow()
         {
             InitializeComponent();
-            Closing += MainWindow_Closing;
-
-            // main camera
-            _videoSource = GetVideoDevice(0, 0);
-            _videoSource.NewFrame += OnNewFrame;
-            _videoSource.Start();
+            Loaded += (_, _) => StartCamera();
+            Closing += (_, _) => CloseCamera();
         }
 
-        /// <summary>
-        /// Window closing.
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event args</param>
-        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void StartCamera()
         {
-            _videoSource.SignalToStop();
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Get frame and dispose previous.
-        /// </summary>
-        Bitmap Frame
-        {
-            get
-            {
-                if (_frame is null)
-                    return null;
-
-                Bitmap frame;
-
-                lock (_locker)
-                {
-                    frame = (Bitmap)_frame.Clone();
-                }
-
-                return frame;
-            }
-            set
-            {
-                lock (_locker)
-                {
-                    if (_frame is object)
-                    {
-                        _frame.Dispose();
-                        _frame = null;
-                    }
-
-                    _frame = value;
-                }
-            }
-        }
-
-        #endregion
-
-        #region Handling events
-
-        /// <summary>
-        /// Frame handling on event call.
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="eventArgs">event arguments</param>
-        private void OnNewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            Frame = (Bitmap)eventArgs.Frame.Clone();
-            InvokeDrawing();
-        }
-
-        #endregion
-
-        #region Private voids
-
-        /// <summary>
-        /// Draw calculated <see cref="BitmapImage"/> based on <see cref="RealSenseVideoSource"/> bitmap converted frames
-        /// in <see cref="Window"/> Image element
-        /// </summary>
-        private void InvokeDrawing()
-        {
+            if (closing || videoSource != null) return;
             try
             {
-                // color drawing
-                var printColor = Frame;
-
-                if (printColor is object)
-                {
-                    var bitmapColor = ToBitmapImage(printColor);
-                    bitmapColor.Freeze();
-                    Dispatcher.BeginInvoke(new ThreadStart(delegate { imgColor.Source = bitmapColor; }));
-                }
+                videoSource = GetVideoDevice(0, 0);
+                videoSource.NewFrame += OnNewFrame;
+                videoSource.VideoSourceError += OnVideoSourceError;
+                videoSource.Start();
             }
-            catch { }
+            catch (Exception error)
+            {
+                videoSource?.Dispose();
+                videoSource = null;
+                statusText.Text = error.Message;
+            }
         }
 
-        /// <summary>
-        /// Converts a <see cref="Bitmap"/> to <see cref="BitmapImage"/>.
-        /// </summary>
-        /// <param name="bitmap">Bitmap</param>
-        /// <returns>BitmapImage</returns>
-        private BitmapImage ToBitmapImage(Bitmap bitmap)
+        private void CloseCamera()
         {
-            var bi = new BitmapImage();
-            bi.BeginInit();
-            var ms = new MemoryStream();
-            bitmap.Save(ms, ImageFormat.Bmp);
-            ms.Seek(0, SeekOrigin.Begin);
-            bi.StreamSource = ms;
-            bi.EndInit();
-            return bi;
+            closing = true;
+            if (videoSource == null) return;
+            videoSource.NewFrame -= OnNewFrame;
+            videoSource.VideoSourceError -= OnVideoSourceError;
+            videoSource.SignalToStop();
+            videoSource.WaitForStop();
+            videoSource.Dispose();
+            videoSource = null;
         }
 
-        /// <summary>
-        /// Returns configured camera device.
-        /// </summary>
-        /// <param name="camIndex">Camera index</param>
-        /// <param name="resIndex">Resolution index</param>
-        /// <returns>VideoCapabilities</returns>
+        private void OnVideoSourceError(object sender, VideoSourceErrorEventArgs args)
+        {
+            if (closing) return;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                if (closing) return;
+                statusText.Text = args.Description;
+                statusText.Visibility = Visibility.Visible;
+            }));
+        }
+
+        private void OnNewFrame(object sender, NewFrameEventArgs args)
+        {
+            // Bound the dispatcher queue; the source owns the bitmap until this method returns.
+            if (closing || Interlocked.CompareExchange(ref drawingPending, 1, 0) != 0) return;
+            try
+            {
+                BitmapImage frame = ToBitmapImage(args.Frame);
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    try
+                    {
+                        if (closing) return;
+                        imgColor.Source = frame;
+                        statusText.Visibility = Visibility.Collapsed;
+                    }
+                    finally { Interlocked.Exchange(ref drawingPending, 0); }
+                }));
+            }
+            catch (Exception error)
+            {
+                Interlocked.Exchange(ref drawingPending, 0);
+                OnVideoSourceError(sender, new VideoSourceErrorEventArgs(error.Message));
+            }
+        }
+
+        private static BitmapImage ToBitmapImage(Bitmap bitmap)
+        {
+            using (var stream = new MemoryStream())
+            {
+                bitmap.Save(stream, ImageFormat.Bmp);
+                stream.Position = 0;
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = stream;
+                image.EndInit();
+                image.Freeze();
+                return image;
+            }
+        }
+
+        /// <summary>Returns a configured camera, or throws an explanatory error.</summary>
+        /// <param name="camIndex">Index of the camera.</param>
+        /// <param name="resIndex">Index of the resolution.</param>
+        /// <returns>A camera ready to start.</returns>
         public static IVideoSource GetVideoDevice(int camIndex, int resIndex)
         {
-            var videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            var videoDevice = new VideoCaptureDevice(videoDevices[camIndex].MonikerString);
-            var videoCapabilities = videoDevice.VideoCapabilities;
-            videoDevice.VideoResolution = videoCapabilities[resIndex];
-            return videoDevice;
+            var devices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (devices.Count == 0) throw new InvalidOperationException("No camera is available.");
+            if (camIndex < 0 || camIndex >= devices.Count) throw new ArgumentOutOfRangeException(nameof(camIndex));
+            var device = new VideoCaptureDevice(devices[camIndex].MonikerString);
+            try
+            {
+                var capabilities = device.VideoCapabilities;
+                if (capabilities.Length == 0) throw new InvalidOperationException("The camera reports no supported video modes.");
+                if (resIndex < 0 || resIndex >= capabilities.Length) throw new ArgumentOutOfRangeException(nameof(resIndex));
+                device.VideoResolution = capabilities[resIndex];
+                return device;
+            }
+            catch
+            {
+                device.Dispose();
+                throw;
+            }
         }
-
-        #endregion
     }
 }

@@ -1,498 +1,313 @@
-﻿namespace UMapx.Video
+namespace UMapx.Video
 {
     using System;
     using System.Drawing;
-    using System.Drawing.Imaging;
     using System.Threading;
 
-    /// <summary>
-    /// Proxy video source for asynchronous processing of another nested video source.
-    /// </summary>
-    /// 
-    /// <remarks><para>The class represents a simple proxy, which wraps the specified <see cref="NestedVideoSource"/>
-    /// with the aim of asynchronous processing of received video frames. The class intercepts <see cref="NewFrame"/>
-    /// event from the nested video source and fires it to clients from its own thread, which is different from the thread
-    /// used by nested video source for video acquisition. This allows clients to perform processing of video frames
-    /// without blocking video acquisition thread, which continue to run and acquire next video frame while current is still
-    /// processed.</para>
-    /// 
-    /// <para>For example, let’s suppose that it takes 100 ms for the nested video source to acquire single frame, so the original
-    /// frame rate is 10 frames per second. Also let’s assume that we have an image processing routine, which also takes
-    /// 100 ms to process a single frame. If the acquisition and processing are done sequentially, then resulting
-    /// frame rate will drop to 5 frames per second. However, if doing both in parallel, then there is a good chance to
-    /// keep resulting frame rate equal (or close) to the original frame rate.</para>
-    /// 
-    /// <para>The class provides a bonus side effect - easer debugging of image processing routines, which are put into
-    /// <see cref="NewFrame"/> event handler. In many cases video source classes fire their <see cref="IVideoSource.NewFrame"/>
-    /// event from a try/catch block, which makes it very hard to spot error made in user's code - the catch block simply
-    /// hides exception raised in user’s code. The <see cref="AsyncVideoSource"/> does not have any try/catch blocks around
-    /// firing of <see cref="NewFrame"/> event, so always user gets exception in the case it comes from his code. At the same time
-    /// nested video source is not affected by the user's exception, since it runs in different thread.</para>
-    /// 
-    /// <para>Sample usage:</para>
-    /// <code>
-    /// // usage of AsyncVideoSource is the same as usage of any
-    /// // other video source class, so code change is very little
-    /// 
-    /// // create nested video source, for example JPEGStream
-    /// JPEGStream stream = new JPEGStream( "some url" );
-    /// // create async video source
-    /// AsyncVideoSource asyncSource = new AsyncVideoSource( stream );
-    /// // set NewFrame event handler
-    /// asyncSource.NewFrame += new NewFrameEventHandler( video_NewFrame );
-    /// // start the video source
-    /// asyncSource.Start( );
-    /// // ...
-    /// 
-    /// private void video_NewFrame( object sender, NewFrameEventArgs eventArgs )
-    /// {
-    ///     // get new frame
-    ///     Bitmap bitmap = eventArgs.Frame;
-    ///     // process the frame
-    /// }
-    /// </code>
+    /// <summary>Processes frames from a nested video source on a separate thread.</summary>
+    /// <remarks>
+    /// Clone a frame to retain it after its handler returns. SignalToStop never waits.
+    /// Stop, WaitForStop and Dispose wait outside video callbacks; inside a callback,
+    /// shutdown completes after it returns. Disposal also disposes the nested source.
+    /// Frame-handler exceptions are reported through VideoSourceError and stop processing.
     /// </remarks>
-    /// 
     public class AsyncVideoSource : IVideoSource
     {
-        private readonly IVideoSource nestedVideoSource = null;
-        private Bitmap lastVideoFrame = null;
-
-        private Thread imageProcessingThread = null;
-        private AutoResetEvent isNewFrameAvailable = null;
-        private AutoResetEvent isProcessingThreadAvailable = null;
-
-        // skip frames or not in the case if processing thread is busy
-        private bool skipFramesIfBusy = false;
-        // processed frames count
+        private readonly IVideoSource nestedVideoSource;
+        private readonly object sync = new object();
+        private ProcessingSession session;
+        private volatile bool skipFramesIfBusy;
+        private bool disposed;
+        private int nestedDisposed;
         private int framesProcessed;
 
-        /// <summary>
-        /// New frame event.
-        /// </summary>
-        /// 
-        /// <remarks><para>Notifies clients about new available frame from video source.</para>
-        /// 
-        /// <para><note>This event is fired from a different thread other than the video acquisition thread created
-        /// by <see cref="NestedVideoSource"/>. This allows nested video frame to continue acquisition of the next
-        /// video frame while clients perform processing of the current video frame.</note></para>
-        /// 
-        /// <para><note>Since video source may have multiple clients, each client is responsible for
-        /// making a copy (cloning) of the passed video frame, because the video source disposes its
-        /// own original copy after notifying of clients.</note></para>
-        /// </remarks>
-        /// 
+        /// <summary>Raised on the processing thread for each accepted frame.</summary>
         public event NewFrameEventHandler NewFrame;
-
-        /// <summary>
-        /// Video source error event.
-        /// </summary>
-        /// 
-        /// <remarks><para>This event is used to notify clients about any type of errors occurred in
-        /// video source object, for example internal exceptions.</para>
-        /// 
-        /// <para><note>Unlike <see cref="NewFrame"/> event, this event is simply redirected to the corresponding
-        /// event of the <see cref="NestedVideoSource"/>, so it is fired from the thread of the nested video source.</note></para>
-        /// </remarks>
-        ///
-        public event VideoSourceErrorEventHandler VideoSourceError
-        {
-            add { nestedVideoSource.VideoSourceError += value; }
-            remove { nestedVideoSource.VideoSourceError -= value; }
-        }
-
-        /// <summary>
-        /// Video playing finished event.
-        /// </summary>
-        /// 
-        /// <remarks><para>This event is used to notify clients that the video playing has finished.</para>
-        /// 
-        /// <para><note>Unlike <see cref="NewFrame"/> event, this event is simply redirected to the corresponding
-        /// event of the <see cref="NestedVideoSource"/>, so it is fired from the thread of the nested video source.</note></para>
-        /// </remarks>
-        /// 
-        public event PlayingFinishedEventHandler PlayingFinished
-        {
-            add { nestedVideoSource.PlayingFinished += value; }
-            remove { nestedVideoSource.PlayingFinished -= value; }
-        }
-
-        /// <summary>
-        /// Nested video source which is the target for asynchronous processing.
-        /// </summary>
-        /// 
-        /// <remarks><para>The property is set through the class constructor.</para>
-        /// 
-        /// <para>All calls to this object are actually redirected to the nested video source. The only
-        /// exception is the <see cref="NewFrame"/> event, which is handled differently. This object gets
-        /// <see cref="IVideoSource.NewFrame"/> event from the nested class and then fires another
-        /// <see cref="NewFrame"/> event, but from a different thread.</para>
-        /// </remarks>
-        /// 
-        public IVideoSource NestedVideoSource
-        {
-            get { return nestedVideoSource; }
-        }
-
-        /// <summary>
-        /// Specifies if the object should skip frames from the nested video source when it is busy. 
-        /// </summary>
-        /// 
-        /// <remarks><para>Specifies if the object should skip frames from the nested video source
-        /// in the case if it is still busy processing the previous video frame in its own thread.</para>
-        /// 
-        /// <para>Default value is set to <see langword="false"/>.</para></remarks>
-        /// 
+        /// <summary>Reports acquisition and frame-processing errors.</summary>
+        public event VideoSourceErrorEventHandler VideoSourceError;
+        /// <summary>Raised after acquisition stops and accepted frames are processed.</summary>
+        public event PlayingFinishedEventHandler PlayingFinished;
+        /// <summary>The wrapped video source.</summary>
+        public IVideoSource NestedVideoSource => nestedVideoSource;
+        /// <summary>Whether to drop frames while processing is busy. Default: false.</summary>
         public bool SkipFramesIfBusy
         {
-            get { return skipFramesIfBusy; }
-            set { skipFramesIfBusy = value; }
+            get => skipFramesIfBusy;
+            set => skipFramesIfBusy = value;
         }
-
-        /// <summary>
-        /// Video source string.
-        /// </summary>
-        /// 
-        /// <remarks><para>The property is redirected to the corresponding property of <see cref="NestedVideoSource"/>,
-        /// so check its documentation to find what it means.</para></remarks>
-        /// 
-        public string Source
-        {
-            get { return nestedVideoSource.Source; }
-        }
-
-        /// <summary>
-        /// Received frames count.
-        /// </summary>
-        /// 
-        /// <remarks><para>Number of frames the <see cref="NestedVideoSource">nested video source</see> received from
-        /// the moment of the last access to the property.</para>
-        /// </remarks>
-        /// 
-        public int FramesReceived
-        {
-            get { return nestedVideoSource.FramesReceived; }
-        }
-
-        /// <summary>
-        /// Received bytes count.
-        /// </summary>
-        /// 
-        /// <remarks><para>Number of bytes the <see cref="NestedVideoSource">nested video source</see> received from
-        /// the moment of the last access to the property.</para></remarks>
-        ///
-        public long BytesReceived
-        {
-            get { return nestedVideoSource.BytesReceived; }
-        }
-
-        /// <summary>
-        /// Processed frames count.
-        /// </summary>
-        /// 
-        /// <remarks><para>The property keeps the number of processed video frames since the last access to this property. 
-        /// </para>
-        /// 
-        /// <para>The value of this property equals to <see cref="FramesReceived"/> in most cases if the
-        /// <see cref="SkipFramesIfBusy"/> property is set to <see langword="false"/> - every received frame gets processed
-        /// sooner or later. However, if the <see cref="SkipFramesIfBusy"/> property is set to <see langword="true"/>,
-        /// then value of this property may be lower than the value of the <see cref="FramesReceived"/> property, which
-        /// means that nested video source performs acquisition faster than client perform processing of the received frame
-        /// and some frame are skipped from processing.</para>
-        /// </remarks>
-        /// 
-        public int FramesProcessed
-        {
-            get
-            {
-                int frames = framesProcessed;
-                framesProcessed = 0;
-                return frames;
-            }
-        }
-
-        /// <summary>
-        /// State of the video source.
-        /// </summary>
-        /// 
-        /// <remarks><para>Current state of the video source object - running or not.</para></remarks>
-        /// 
+        /// <summary>The nested source's identifier.</summary>
+        public string Source => nestedVideoSource.Source;
+        /// <summary>Frames received by the nested source since the last access.</summary>
+        public int FramesReceived => nestedVideoSource.FramesReceived;
+        /// <summary>Bytes received by the nested source since the last access.</summary>
+        public long BytesReceived => nestedVideoSource.BytesReceived;
+        /// <summary>Frames processed since the last access.</summary>
+        public int FramesProcessed => Interlocked.Exchange(ref framesProcessed, 0);
+        /// <summary>Whether acquisition or processing is still running.</summary>
         public bool IsRunning
         {
-            get
-            {
-                bool isRunning = nestedVideoSource.IsRunning;
-
-                if (!isRunning)
-                {
-                    Free();
-                }
-
-                return isRunning;
-            }
+            get { lock (sync) return session != null && session.Thread.IsAlive; }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AsyncVideoSource"/> class.
-        /// </summary>
-        /// 
-        /// <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing</param>
-        /// 
-        public AsyncVideoSource(IVideoSource nestedVideoSource)
-        {
-            this.nestedVideoSource = nestedVideoSource;
-        }
+        /// <summary>Creates a wrapper for a nested source.</summary>
+        /// <param name="nestedVideoSource">The source to process and eventually dispose.</param>
+        public AsyncVideoSource(IVideoSource nestedVideoSource) : this(nestedVideoSource, false) { }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AsyncVideoSource"/> class.
-        /// </summary>
-        /// 
-        /// <param name="nestedVideoSource">Nested video source which is the target for asynchronous processing</param>
-        /// <param name="skipFramesIfBusy">Specifies if the object should skip frames from the nested video source
-        /// in the case if it is still busy processing the previous video frame</param>
-        /// 
+        /// <summary>Creates a wrapper with the specified frame-dropping policy.</summary>
+        /// <param name="nestedVideoSource">The source to process and eventually dispose.</param>
+        /// <param name="skipFramesIfBusy">Whether to drop frames while a handler is running.</param>
         public AsyncVideoSource(IVideoSource nestedVideoSource, bool skipFramesIfBusy)
         {
-            this.nestedVideoSource = nestedVideoSource;
+            this.nestedVideoSource = nestedVideoSource ?? throw new ArgumentNullException(nameof(nestedVideoSource));
             this.skipFramesIfBusy = skipFramesIfBusy;
         }
 
-        /// <summary>
-        /// Start video source.
-        /// </summary>
-        /// 
-        /// <remarks><para>Starts the nested video source and returns execution to caller. This object creates
-        /// an extra thread which is used to fire <see cref="NewFrame"/> events, so the image processing could be
-        /// done on another thread without blocking video acquisition thread.</para></remarks>
-        /// 
+        /// <summary>Starts acquisition and asynchronous processing.</summary>
         public void Start()
         {
-            if (!IsRunning)
+            ProcessingSession current;
+            lock (sync)
             {
+                if (disposed) throw new ObjectDisposedException(nameof(AsyncVideoSource));
+                if (session != null && session.Thread.IsAlive) return;
+                if (nestedVideoSource.IsRunning) return;
                 framesProcessed = 0;
-
-                // create all synchronization events
-                isNewFrameAvailable = new AutoResetEvent(false);
-                isProcessingThreadAvailable = new AutoResetEvent(true);
-
-                // create image processing thread
-                imageProcessingThread = new Thread(new ThreadStart(ImageProcessingThread_Worker));
-                imageProcessingThread.Start();
-
-                // start the nested video source
-                nestedVideoSource.NewFrame += new NewFrameEventHandler(NestedVideoSource_NewFrame);
-                nestedVideoSource.Start();
+                current = new ProcessingSession(this);
+                session = current;
+                try
+                {
+                    current.Subscribe();
+                    current.Thread.Start();
+                }
+                catch
+                {
+                    current.Unsubscribe();
+                    session = null;
+                    throw;
+                }
             }
+
+            // Do not hold the lifecycle lock across user code or synchronous frame delivery.
+            try { nestedVideoSource.Start(); }
+            catch
+            {
+                current.RequestStop();
+                current.CompleteStart(false);
+                current.Thread.Join();
+                throw;
+            }
+            current.CompleteStart(true);
         }
 
-        /// <summary>
-        /// Signal video source to stop its work.
-        /// </summary>
-        /// 
-        /// <remarks><para>Signals video source to stop its background thread, stop to
-        /// provide new frames and free resources.</para></remarks>
-        ///
+        /// <summary>Requests shutdown without waiting for frame handlers.</summary>
         public void SignalToStop()
         {
-            nestedVideoSource.SignalToStop();
-            Free();
+            ProcessingSession current;
+            lock (sync) current = session;
+            if (current == null || !current.Thread.IsAlive) return;
+            current.RequestStop();
+            if (Volatile.Read(ref nestedDisposed) == 0) nestedVideoSource.SignalToStop();
         }
 
-        /// <summary>
-        /// Wait for video source has stopped.
-        /// </summary>
-        /// 
-        /// <remarks><para>Waits for video source stopping after it was signalled to stop using
-        /// <see cref="SignalToStop"/> method.</para></remarks>
-        ///
+        /// <summary>Waits for acquisition, processing and resource cleanup to complete.</summary>
+        /// <remarks>Does not block inside video callbacks, which must return before shutdown can finish.</remarks>
         public void WaitForStop()
         {
-            nestedVideoSource.WaitForStop();
-            Free();
+            ProcessingSession current;
+            lock (sync) current = session;
+            if (current != null && current.Thread != Thread.CurrentThread && !VideoSourceCallbacks.IsActive)
+                current.Thread.Join();
         }
 
-        /// <summary>
-        /// Stop video source.
-        /// </summary>
-        /// 
-        /// <remarks><para>Stops nested video source by calling its <see cref="IVideoSource.Stop"/> method.
-        /// See documentation of the particular video source for additional details.</para></remarks>
-        /// 
+        /// <summary>Requests shutdown and waits unless called from a video callback.</summary>
         public void Stop()
         {
-            nestedVideoSource.Stop();
-            Free();
+            SignalToStop();
+            WaitForStop();
         }
 
-        private void Free()
-        {
-            if (imageProcessingThread != null)
-            {
-                nestedVideoSource.NewFrame -= new NewFrameEventHandler(NestedVideoSource_NewFrame);
-
-                // make sure processing thread does nothing
-                isProcessingThreadAvailable.WaitOne();
-                // signal worker thread to stop and wait for it
-                lastVideoFrame = null;
-                isNewFrameAvailable.Set();
-                imageProcessingThread.Join();
-                imageProcessingThread = null;
-
-                // release events
-                isNewFrameAvailable.Close();
-                isNewFrameAvailable = null;
-
-                isProcessingThreadAvailable.Close();
-                isProcessingThreadAvailable = null;
-            }
-        }
-
-        // New frame from nested video source
-        private void NestedVideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            // don't even try doing something if there are no clients
-            if (NewFrame == null)
-                return;
-
-            if (skipFramesIfBusy)
-            {
-                if (!isProcessingThreadAvailable.WaitOne(0, false))
-                {
-                    // return in the case if image processing thread is still busy and
-                    // we are allowed to skip frames
-                    return;
-                }
-            }
-            else
-            {
-                // make sure image processing thread is available in the case we cannot skip frames
-                isProcessingThreadAvailable.WaitOne();
-            }
-
-            // pass the image to processing frame and exit
-            lastVideoFrame = CloneImage(eventArgs.Frame);
-            isNewFrameAvailable.Set();
-        }
-
-        private void ImageProcessingThread_Worker()
-        {
-            while (true)
-            {
-                // wait for new frame to process
-                isNewFrameAvailable.WaitOne();
-
-                // if it is null, then we need to exit
-                if (lastVideoFrame == null)
-                {
-                    break;
-                }
-
-                NewFrame?.Invoke(this, new NewFrameEventArgs(lastVideoFrame));
-
-                lastVideoFrame.Dispose();
-                lastVideoFrame = null;
-                framesProcessed++;
-
-                // we are free now for new image
-                isProcessingThreadAvailable.Set();
-            }
-        }
-
-        // Note: image cloning is taken from UMapx.Imaging.Image.Clone() to avoid reference,
-        // which may be unwanted
-
-        private static Bitmap CloneImage(Bitmap source)
-        {
-            // lock source bitmap data
-            BitmapData sourceData = source.LockBits(
-                new Rectangle(0, 0, source.Width, source.Height),
-                ImageLockMode.ReadOnly, source.PixelFormat);
-
-            // create new image
-            Bitmap destination = CloneImage(sourceData);
-
-            // unlock source image
-            source.UnlockBits(sourceData);
-
-            //
-            if (
-                (source.PixelFormat == PixelFormat.Format1bppIndexed) ||
-                (source.PixelFormat == PixelFormat.Format4bppIndexed) ||
-                (source.PixelFormat == PixelFormat.Format8bppIndexed) ||
-                (source.PixelFormat == PixelFormat.Indexed))
-            {
-                ColorPalette srcPalette = source.Palette;
-                ColorPalette dstPalette = destination.Palette;
-
-                int n = srcPalette.Entries.Length;
-
-                // copy pallete
-                for (int i = 0; i < n; i++)
-                {
-                    dstPalette.Entries[i] = srcPalette.Entries[i];
-                }
-
-                destination.Palette = dstPalette;
-            }
-
-            return destination;
-        }
-
-        private static Bitmap CloneImage(BitmapData sourceData)
-        {
-            // get source image size
-            int width = sourceData.Width;
-            int height = sourceData.Height;
-
-            // create new image
-            Bitmap destination = new Bitmap(width, height, sourceData.PixelFormat);
-
-            // lock destination bitmap data
-            BitmapData destinationData = destination.LockBits(
-                new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, destination.PixelFormat);
-
-            SystemTools.CopyUnmanagedMemory(destinationData.Scan0, sourceData.Scan0, height * sourceData.Stride);
-
-            // unlock destination image
-            destination.UnlockBits(destinationData);
-
-            return destination;
-        }
-
-        #region IDisposable
-
-        private bool _disposed;
-
-        /// <inheritdoc/>
+        /// <summary>Stops processing and disposes the nested source.</summary>
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        /// <inheritdoc/>
+        /// <summary>Releases resources after processing has stopped.</summary>
+        /// <param name="disposing">Whether disposal was requested explicitly.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
+            if (!disposing) return;
+            lock (sync) disposed = true;
+            SignalToStop();
+            WaitForStop();
+            if (!IsRunning) DisposeNestedIfRequested();
+        }
+
+        private void DisposeNestedIfRequested()
+        {
+            bool requested;
+            lock (sync) requested = disposed;
+            if (requested && Interlocked.Exchange(ref nestedDisposed, 1) == 0)
+                nestedVideoSource.Dispose();
+        }
+
+        private void ReportError(object sender, VideoSourceErrorEventArgs error)
+        {
+            VideoSourceCallbacks.Invoke(() => VideoSourceError?.Invoke(sender, error));
+        }
+
+        // Each start owns its queue and subscriptions. Late events from an old run cannot
+        // publish into a restarted source. Shutdown also wakes producers waiting for a slot.
+        private sealed class ProcessingSession
+        {
+            private readonly AsyncVideoSource owner;
+            private readonly object queue = new object();
+            private Bitmap pending;
+            private bool processing;
+            private bool stopping;
+            private bool finished;
+            private bool startCompleted;
+            private bool startSucceeded;
+            private ReasonToFinishPlaying reason = ReasonToFinishPlaying.StoppedByUser;
+            internal readonly Thread Thread;
+
+            internal ProcessingSession(AsyncVideoSource owner)
             {
-                if (disposing)
+                this.owner = owner;
+                Thread = new Thread(Process) { IsBackground = true, Name = "AsyncVideoSource" };
+            }
+
+            internal bool StopRequested { get { lock (queue) return stopping; } }
+
+            internal void Subscribe()
+            {
+                owner.nestedVideoSource.NewFrame += ReceiveFrame;
+                owner.nestedVideoSource.VideoSourceError += ReceiveError;
+                owner.nestedVideoSource.PlayingFinished += ReceiveFinished;
+            }
+
+            internal void Unsubscribe()
+            {
+                owner.nestedVideoSource.NewFrame -= ReceiveFrame;
+                owner.nestedVideoSource.VideoSourceError -= ReceiveError;
+                owner.nestedVideoSource.PlayingFinished -= ReceiveFinished;
+            }
+
+            internal void CompleteStart(bool succeeded)
+            {
+                // Shutdown cannot dispose the nested source until this handshake finishes.
+                if (succeeded && StopRequested) owner.nestedVideoSource.SignalToStop();
+                lock (queue)
                 {
-                    isNewFrameAvailable?.Dispose();
-                    isProcessingThreadAvailable?.Dispose();
-                    nestedVideoSource?.Dispose();
-                    lastVideoFrame?.Dispose();
+                    startSucceeded = succeeded;
+                    startCompleted = true;
+                    Monitor.PulseAll(queue);
                 }
-                _disposed = true;
+            }
+
+            internal void RequestStop()
+            {
+                lock (queue)
+                {
+                    stopping = true;
+                    Monitor.PulseAll(queue);
+                }
+            }
+
+            private void ReceiveFrame(object sender, NewFrameEventArgs args)
+            {
+                if (owner.NewFrame == null) return;
+                lock (queue)
+                {
+                    while ((processing || pending != null) && !stopping && !finished)
+                    {
+                        if (owner.skipFramesIfBusy) return;
+                        Monitor.Wait(queue);
+                    }
+                    if (stopping || finished) return;
+                    pending = (Bitmap)args.Frame.Clone();
+                    Monitor.PulseAll(queue);
+                }
+            }
+
+            private void ReceiveError(object sender, VideoSourceErrorEventArgs args) => owner.ReportError(sender, args);
+
+            private void ReceiveFinished(object sender, ReasonToFinishPlaying finishReason)
+            {
+                lock (queue)
+                {
+                    if (reason != ReasonToFinishPlaying.VideoSourceError) reason = finishReason;
+                    finished = true;
+                    Monitor.PulseAll(queue);
+                }
+            }
+
+            private void Process()
+            {
+                try
+                {
+                    while (true)
+                    {
+                        Bitmap frame;
+                        lock (queue)
+                        {
+                            while (pending == null && !stopping && !finished) Monitor.Wait(queue);
+                            if (pending == null) break;
+                            frame = pending;
+                            pending = null;
+                            processing = true;
+                        }
+                        try
+                        {
+                            using (frame)
+                                VideoSourceCallbacks.Invoke(() => owner.NewFrame?.Invoke(owner, new NewFrameEventArgs(frame)));
+                            Interlocked.Increment(ref owner.framesProcessed);
+                        }
+                        finally
+                        {
+                            lock (queue)
+                            {
+                                processing = false;
+                                Monitor.PulseAll(queue);
+                            }
+                        }
+                    }
+                }
+                catch (Exception error)
+                {
+                    lock (queue) reason = ReasonToFinishPlaying.VideoSourceError;
+                    RequestStop();
+                    owner.ReportError(owner, new VideoSourceErrorEventArgs(error.Message));
+                }
+                finally
+                {
+                    RequestStop();
+                    try
+                    {
+                        lock (queue)
+                            while (!startCompleted) Monitor.Wait(queue);
+                        owner.nestedVideoSource.SignalToStop();
+                        owner.nestedVideoSource.WaitForStop();
+                    }
+                    finally
+                    {
+                        Unsubscribe();
+                        lock (queue)
+                        {
+                            pending?.Dispose();
+                            pending = null;
+                            Monitor.PulseAll(queue);
+                        }
+                        try
+                        {
+                            if (startSucceeded)
+                                VideoSourceCallbacks.Invoke(() => owner.PlayingFinished?.Invoke(owner, reason));
+                        }
+                        finally { owner.DisposeNestedIfRequested(); }
+                    }
+                }
             }
         }
-
-        /// <inheritdoc/>
-        ~AsyncVideoSource()
-        {
-            Dispose(false);
-        }
-
-        #endregion
     }
 }

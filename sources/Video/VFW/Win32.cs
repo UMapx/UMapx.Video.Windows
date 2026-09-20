@@ -606,7 +606,7 @@ namespace UMapx.Video.VFW
         /// Structure, which contains information about a stream and how it is compressed and saved. 
         /// </summary>
         /// 
-        [StructLayout( LayoutKind.Sequential, Pack = 1 )]
+        [StructLayout(LayoutKind.Sequential)]
         public struct AVICOMPRESSOPTIONS
         {
             /// <summary>
@@ -655,8 +655,7 @@ namespace UMapx.Video.VFW
             /// Pointer to a structure defining the data format.
             /// </summary>
             /// 
-            [MarshalAs( UnmanagedType.I4 )]
-            public int format;
+            public IntPtr format;
 
             /// <summary>
             /// Size, in bytes, of the data referenced by <b>format</b>.
@@ -669,8 +668,7 @@ namespace UMapx.Video.VFW
             /// Video-compressor-specific data; used internally.
             /// </summary>
             /// 
-            [MarshalAs( UnmanagedType.I4 )]
-            public int parameters;
+            public IntPtr parameters;
 
             /// <summary>
             /// Size, in bytes, of the data referenced by <b>parameters</b>.
@@ -787,8 +785,8 @@ namespace UMapx.Video.VFW
             AVISaveOptionsFree( 1, infPtrs );
 
             // clear it, because the information already freed by AVISaveOptionsFree
-            options.format = 0;
-            options.parameters = 0;
+            options.format = IntPtr.Zero;
+            options.parameters = IntPtr.Zero;
 
             // free unmanaged memory
             Marshal.FreeHGlobal( mem );

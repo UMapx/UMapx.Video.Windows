@@ -8,5 +8,8 @@
         Title="UMapx.Video.Windows.Example" Height="450" Width="800">
     <Grid>
         <Image x:Name="imgColor" Grid.Column="0" />
+        <TextBlock x:Name="statusText" Text="Starting camera…" Margin="20"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   TextWrapping="Wrap" />
     </Grid>
 </Window>

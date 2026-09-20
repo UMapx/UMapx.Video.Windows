@@ -41,8 +41,8 @@ namespace UMapx.Video.DirectShow
         // provide snapshots or not
         private bool provideSnapshots = false;
 
-        private Thread thread = null;
-        private ManualResetEvent stopEvent = null;
+        private readonly VideoSourceWorker worker = new VideoSourceWorker();
+        private int callbackFailed;
 
         private WindowsVideoCapabilities[] videoCapabilities;
         private WindowsVideoCapabilities[] snapshotCapabilities;
@@ -259,9 +259,7 @@ namespace UMapx.Video.DirectShow
         {
             get
             {
-                int frames = framesReceived;
-                framesReceived = 0;
-                return frames;
+                return Interlocked.Exchange(ref framesReceived, 0);
             }
         }
 
@@ -277,9 +275,7 @@ namespace UMapx.Video.DirectShow
         {
             get
             {
-                long bytes = bytesReceived;
-                bytesReceived = 0;
-                return bytes;
+                return Interlocked.Exchange(ref bytesReceived, 0);
             }
         }
 
@@ -289,22 +285,7 @@ namespace UMapx.Video.DirectShow
         /// 
         /// <remarks>Current state of video source object - running or not.</remarks>
         /// 
-        public bool IsRunning
-        {
-            get
-            {
-                if (thread != null)
-                {
-                    // check thread status
-                    if (thread.Join(0) == false)
-                        return true;
-
-                    // the thread is not running, free resources
-                    Free();
-                }
-                return false;
-            }
-        }
+        public bool IsRunning => worker.IsRunning;
 
         /// <summary>
         /// Obsolete - no longer in use
@@ -555,6 +536,7 @@ namespace UMapx.Video.DirectShow
         public VideoCaptureDevice(string deviceMoniker, PixelFormat pixelFormat)
         {
             this.deviceMoniker = deviceMoniker;
+            _ = MediaSubType.ConvertFrom(pixelFormat);
             this.pixelFormat = pixelFormat;
         }
 
@@ -568,30 +550,16 @@ namespace UMapx.Video.DirectShow
         /// 
         public void Start()
         {
-            if (!IsRunning)
+            worker.Start(() =>
             {
-                // check source
                 if (string.IsNullOrEmpty(deviceMoniker))
                     throw new ArgumentException("Video source is not specified");
-
                 framesReceived = 0;
                 bytesReceived = 0;
+                callbackFailed = 0;
                 isCrossbarAvailable = null;
                 needToSetVideoInput = true;
-
-                // create events
-                stopEvent = new ManualResetEvent(false);
-
-                lock (sync)
-                {
-                    // create and start new thread
-                    thread = new Thread(new ThreadStart(WorkerThread))
-                    {
-                        Name = deviceMoniker // mainly for debugging
-                    };
-                    thread.Start();
-                }
-            }
+            }, WorkerThread, deviceMoniker);
         }
 
         /// <summary>
@@ -603,12 +571,7 @@ namespace UMapx.Video.DirectShow
         /// 
         public void SignalToStop()
         {
-            // stop thread
-            if (thread != null)
-            {
-                // signal to stop
-                stopEvent.Set();
-            }
+            worker.SignalToStop();
         }
 
         /// <summary>
@@ -620,49 +583,20 @@ namespace UMapx.Video.DirectShow
         /// 
         public void WaitForStop()
         {
-            if (thread != null)
-            {
-                // wait for thread stop
-                thread.Join();
-
-                Free();
-            }
+            worker.WaitForStop();
         }
 
         /// <summary>
         /// Stop video source.
         /// </summary>
         /// 
-        /// <remarks><para>Stops video source aborting its thread.</para>
-        /// 
-        /// <para><note>Since the method aborts background thread, its usage is highly not preferred
-        /// and should be done only if there are no other options. The correct way of stopping camera
-        /// is <see cref="SignalToStop">signaling it stop</see> and then
-        /// <see cref="WaitForStop">waiting</see> for background thread's completion.</note></para>
-        /// </remarks>
-        /// 
-        [Obsolete]
+        /// <remarks>Signals the source to stop and waits for completion. From a source callback,
+        /// only the stop is requested; the worker completes after the callback returns.</remarks>
+        [Obsolete("Use SignalToStop followed by WaitForStop.")]
         public void Stop()
         {
-            if (this.IsRunning)
-            {
-                thread.Abort();
-                WaitForStop();
-            }
-        }
-
-        /// <summary>
-        /// Free resource.
-        /// </summary>
-        /// 
-        private void Free()
-        {
-            thread = null;
-
-            // release events
-            stopEvent.Close();
-            stopEvent.Dispose();
-            stopEvent = null;
+            SignalToStop();
+            WaitForStop();
         }
 
         /// <summary>
@@ -802,7 +736,6 @@ namespace UMapx.Video.DirectShow
                 return isCrossbarAvailable ?? false;
             }
         }
-
 
         /// <summary>
         /// Simulates an external trigger.
@@ -1139,7 +1072,6 @@ namespace UMapx.Video.DirectShow
             return ret;
         }
 
-
         /// <summary>
         /// Worker thread.
         /// </summary>
@@ -1240,7 +1172,7 @@ namespace UMapx.Video.DirectShow
                 graph.AddFilter(snapshotGrabberBase, "grabber_snapshot");
 
                 // set media type
-                AMMediaType mediaType = new AMMediaType
+                using AMMediaType mediaType = new AMMediaType
                 {
                     MajorType = MediaType.Video,
                     SubType = MediaSubType.ConvertFrom(pixelFormat)
@@ -1318,13 +1250,13 @@ namespace UMapx.Video.DirectShow
 
                     if (videoSampleGrabber.GetConnectedMediaType(mediaType) == 0)
                     {
-                        VideoInfoHeader vih = (VideoInfoHeader)Marshal.PtrToStructure(mediaType.FormatPtr, typeof(VideoInfoHeader));
-
-                        videoGrabber.Width = vih.BmiHeader.Width;
-                        videoGrabber.Height = vih.BmiHeader.Height;
+                        var header = RgbVideoFormat.Read(mediaType, pixelFormat);
+                        videoGrabber.Width = header.Width;
+                        videoGrabber.Height = header.Height;
 
                         mediaType.Dispose();
                     }
+                    else throw new NotSupportedException("Failed to obtain the negotiated video format.");
 
                     if ((isSnapshotSupported) && (provideSnapshots))
                     {
@@ -1333,13 +1265,13 @@ namespace UMapx.Video.DirectShow
 
                         if (snapshotSampleGrabber.GetConnectedMediaType(mediaType) == 0)
                         {
-                            VideoInfoHeader vih = (VideoInfoHeader)Marshal.PtrToStructure(mediaType.FormatPtr, typeof(VideoInfoHeader));
-
-                            snapshotGrabber.Width = vih.BmiHeader.Width;
-                            snapshotGrabber.Height = vih.BmiHeader.Height;
+                            var header = RgbVideoFormat.Read(mediaType, pixelFormat);
+                            snapshotGrabber.Width = header.Width;
+                            snapshotGrabber.Height = header.Height;
 
                             mediaType.Dispose();
                         }
+                        else throw new NotSupportedException("Failed to obtain the negotiated video format.");
                     }
 
                     // get media control
@@ -1416,18 +1348,22 @@ namespace UMapx.Video.DirectShow
                             }
                         }
                     }
-                    while (!stopEvent.WaitOne(100, false));
+                    while (!worker.WaitForStopSignal(100));
 
-                    mediaControl.Stop();
                 }
             }
             catch (Exception exception)
             {
+                reasonToStop = ReasonToFinishPlaying.VideoSourceError;
                 // provide information to clients
                 VideoSourceError?.Invoke(this, new VideoSourceErrorEventArgs(exception.Message));
             }
             finally
             {
+                // Native callbacks must finish before graph resources are released.
+                try { mediaControl?.Stop(); }
+                catch (COMException) { }
+
                 // release all objects
                 captureGraph = null;
                 graph = null;
@@ -1435,6 +1371,7 @@ namespace UMapx.Video.DirectShow
                 mediaControl = null;
                 videoControl = null;
                 mediaEvent = null;
+                if (pinStillImage != null) Marshal.ReleaseComObject(pinStillImage);
                 pinStillImage = null;
                 crossbar = null;
 
@@ -1475,7 +1412,11 @@ namespace UMapx.Video.DirectShow
                 }
             }
 
-            PlayingFinished?.Invoke(this, reasonToStop);
+            if (runGraph)
+            {
+                if (Volatile.Read(ref callbackFailed) != 0) reasonToStop = ReasonToFinishPlaying.VideoSourceError;
+                PlayingFinished?.Invoke(this, reasonToStop);
+            }
         }
 
         // Set resolution for the specified stream configuration
@@ -1735,11 +1676,11 @@ namespace UMapx.Video.DirectShow
         /// 
         private void OnNewFrame(Bitmap image)
         {
-            framesReceived++;
-            bytesReceived += image.Width * image.Height * (Bitmap.GetPixelFormatSize(image.PixelFormat) >> 3);
+            Interlocked.Increment(ref framesReceived);
+            Interlocked.Add(ref bytesReceived, (long)image.Width * image.Height * (Bitmap.GetPixelFormatSize(image.PixelFormat) >> 3));
 
-            if ((!stopEvent.WaitOne(0, false)) && (NewFrame != null))
-                NewFrame(this, new NewFrameEventArgs(image));
+            if ((!worker.IsStopping) && (NewFrame != null))
+                VideoSourceCallbacks.Invoke(() => NewFrame?.Invoke(this, new NewFrameEventArgs(image)));
         }
 
         /// <summary>
@@ -1756,8 +1697,8 @@ namespace UMapx.Video.DirectShow
             // automatically (or better disable it)
             if (timeSinceStarted.TotalSeconds >= 4)
             {
-                if ((!stopEvent.WaitOne(0, false)) && (SnapshotFrame != null))
-                    SnapshotFrame(this, new NewFrameEventArgs(image));
+                if ((!worker.IsStopping) && (SnapshotFrame != null))
+                    VideoSourceCallbacks.Invoke(() => SnapshotFrame?.Invoke(this, new NewFrameEventArgs(image)));
             }
         }
 
@@ -1801,58 +1742,28 @@ namespace UMapx.Video.DirectShow
             // Callback method that receives a pointer to the sample buffer
             public int BufferCB(double sampleTime, IntPtr buffer, int bufferLen)
             {
-                if (parent.NewFrame != null)
+                try
                 {
-                    // create new image
-                    Bitmap image = new Bitmap(width, height, this.pixelFormat);
-
-                    // lock bitmap data
-                    BitmapData imageData = image.LockBits(
-                        new Rectangle(0, 0, width, height),
-                        ImageLockMode.ReadWrite,
-                        this.pixelFormat);
-
-                    // copy image data
-                    int srcStride = imageData.Stride;
-                    int dstStride = imageData.Stride;
-
-                    unsafe
+                    if (!parent.worker.IsStopping && (snapshotMode ? parent.SnapshotFrame != null : parent.NewFrame != null))
                     {
-                        byte* dst = (byte*)imageData.Scan0.ToPointer() + dstStride * (height - 1);
-                        byte* src = (byte*)buffer.ToPointer();
-
-                        for (int y = 0; y < height; y++)
+                        using (Bitmap image = BitmapFrame.Copy(buffer, bufferLen, width, height, pixelFormat))
                         {
-                            Win32.memcpy(dst, src, srcStride);
-                            dst -= dstStride;
-                            src += srcStride;
+                            if (snapshotMode) parent.OnSnapshotFrame(image);
+                            else parent.OnNewFrame(image);
                         }
                     }
-
-                    // unlock bitmap data
-                    image.UnlockBits(imageData);
-
-                    // notify parent
-                    if (snapshotMode)
-                    {
-                        parent.OnSnapshotFrame(image);
-                    }
-                    else
-                    {
-                        parent.OnNewFrame(image);
-                    }
-
-                    // release the image
-                    image.Dispose();
                 }
-
+                catch (Exception error)
+                {
+                    Interlocked.Exchange(ref parent.callbackFailed, 1);
+                    parent.SignalToStop();
+                    VideoSourceCallbacks.Invoke(() => parent.VideoSourceError?.Invoke(parent, new VideoSourceErrorEventArgs(error.Message)));
+                }
                 return 0;
             }
         }
 
         #region IDisposable
-
-        private bool _disposed;
 
         /// <inheritdoc/>
         public void Dispose()
@@ -1864,14 +1775,7 @@ namespace UMapx.Video.DirectShow
         /// <inheritdoc/>
         protected virtual void Dispose(bool disposing)
         {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    stopEvent?.Dispose();
-                }
-                _disposed = true;
-            }
+            if (disposing) worker.Dispose();
         }
 
         /// <inheritdoc/>
