@@ -264,7 +264,7 @@ namespace UMapx.Video.DirectShow.Internals
                 case PixelFormat.Format32bppRgb:
                     return MediaSubType.RGB32;
                 default:
-                    return MediaSubType.RGB24;
+                    throw new ArgumentException("Only Format24bppRgb and Format32bppRgb are supported.", nameof(pixelFormat));
             }
         }
     }

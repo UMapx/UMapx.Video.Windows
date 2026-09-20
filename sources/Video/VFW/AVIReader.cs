@@ -53,7 +53,8 @@ namespace UMapx.Video.VFW
         private string codec;
 
         // dummy object to lock for synchronization
-        private object sync = new object( );
+        private readonly object sync = new object();
+        private bool disposed;
 
         /// <summary>
         /// Width of video frames.
@@ -173,15 +174,15 @@ namespace UMapx.Video.VFW
         /// 
         /// <param name="disposing">Indicates if disposing was initiated manually</param>
         /// 
-        protected virtual void Dispose( bool disposing )
+        protected virtual void Dispose(bool disposing)
         {
-            if ( disposing )
+            lock (sync)
             {
-                // dispose managed resources
+                if (disposed) return;
+                disposed = true;
+                Close();
+                Win32.AVIFileExit();
             }
-            // close current AVI file if any opened and uninitialize AVI library
-            Close( );
-            Win32.AVIFileExit( );
         }
 
         /// <summary>
@@ -209,6 +210,7 @@ namespace UMapx.Video.VFW
             {
                 lock ( sync )
                 {
+                    if (disposed) throw new ObjectDisposedException(nameof(AVIReader));
                     // open AVI file
                     if ( Win32.AVIFileOpen( out file, fileName, Win32.OpenFileMode.ShareDenyWrite, IntPtr.Zero ) != 0 )
                         throw new System.IO.IOException( "Failed opening the specified AVI file" );
@@ -322,52 +324,15 @@ namespace UMapx.Video.VFW
                 // copy BITMAPINFOHEADER from unmanaged memory
                 bitmapInfoHeader = (Win32.BITMAPINFOHEADER) Marshal.PtrToStructure( DIB, typeof( Win32.BITMAPINFOHEADER ) );
 
-                // create new bitmap
-                Bitmap image = new Bitmap( width, height, PixelFormat.Format24bppRgb );
+                if (bitmapInfoHeader.width != width || Math.Abs((long)bitmapInfoHeader.height) != height ||
+                    bitmapInfoHeader.bitCount != 24 || bitmapInfoHeader.compression != 0 ||
+                    bitmapInfoHeader.planes != 1 || bitmapInfoHeader.size < Marshal.SizeOf<Win32.BITMAPINFOHEADER>() ||
+                    bitmapInfoHeader.colorsUsed != 0)
+                    throw new VideoException("The decoder returned an unsupported bitmap layout");
 
-                // lock bitmap data
-                BitmapData imageData = image.LockBits(
-                    new Rectangle( 0, 0, width, height ),
-                    ImageLockMode.ReadWrite,
-                    PixelFormat.Format24bppRgb );
-
-                // copy image data
-                int srcStride = imageData.Stride;
-                int dstStride = imageData.Stride;
-
-                // check image direction
-                if ( bitmapInfoHeader.height > 0 )
-                {
-                    // it`s a bottom-top image
-                    var dst = Win32.Add(imageData.Scan0, dstStride * (height - 1));
-                    var src = Win32.Add(DIB, Marshal.SizeOf(typeof(Win32.BITMAPINFOHEADER)));
-
-                    //int dst = imageData.Scan0.ToInt32( ) + dstStride * ( height - 1 );
-                    //int src = DIB.ToInt32( ) + Marshal.SizeOf( typeof( Win32.BITMAPINFOHEADER ) );
-
-                    for ( int y = 0; y < height; y++ )
-                    {
-                        Win32.memcpy(dst, src, dstStride);
-                        dst = Win32.Add(dst, -dstStride);
-                        src = Win32.Add(src, srcStride);
-
-                        //Win32.memcpy( dst, src, srcStride );
-                        //dst -= dstStride;
-                        //src += srcStride;
-                    }
-                }
-                else
-                {
-                    // it`s a top bootom image
-                    int dst = imageData.Scan0.ToInt32( );
-                    int src = DIB.ToInt32( ) + Marshal.SizeOf( typeof( Win32.BITMAPINFOHEADER ) );
-
-                    // copy the whole image
-                    Win32.memcpy( dst, src, srcStride * height );
-                }
-
-                // unlock bitmap data
-                image.UnlockBits( imageData );
+                int bufferLength = checked(BitmapFrame.GetStride(width, PixelFormat.Format24bppRgb) * height);
+                Bitmap image = BitmapFrame.Copy(IntPtr.Add(DIB, bitmapInfoHeader.size), bufferLength,
+                    width, bitmapInfoHeader.height, PixelFormat.Format24bppRgb);
 
                 // move position to the next frame
                 position++;

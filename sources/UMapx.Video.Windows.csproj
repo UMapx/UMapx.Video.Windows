@@ -55,6 +55,7 @@
 
   <ItemGroup>
     <PackageReference Include="UMapx" Version="8.0.0.1" />
+    <InternalsVisibleTo Include="UMapx.Video.Windows.Tests" />
   </ItemGroup>
 
 	<ItemGroup>

@@ -58,7 +58,8 @@ namespace UMapx.Video.VFW
         private string codec = "DIB ";
 
         // dummy object to lock for synchronization
-        private object sync = new object( );
+        private readonly object sync = new object();
+        private bool disposed;
 
         /// <summary>
         /// Width of video frames.
@@ -202,16 +203,16 @@ namespace UMapx.Video.VFW
         /// 
         /// <param name="disposing">Indicates if disposing was initiated manually</param>
         /// 
-        protected virtual void Dispose( bool disposing )
-		{
-			if ( disposing )
-			{
-				// dispose managed resources
-			}
-            // close current AVI file if any opened and uninitialize AVI library
-            Close( );
-			Win32.AVIFileExit( );
-		}
+        protected virtual void Dispose(bool disposing)
+        {
+            lock (sync)
+            {
+                if (disposed) return;
+                disposed = true;
+                Close();
+                Win32.AVIFileExit();
+            }
+        }
 
         /// <summary>
         /// Create new AVI file and open it for writing.
@@ -235,7 +236,7 @@ namespace UMapx.Video.VFW
 			Close( );
 
            // check width and height
-            if ( ( ( width & 1 ) != 0 ) || ( ( height & 1 ) != 0 ) )
+            if (width <= 0 || height <= 0 || (width & 1) != 0 || (height & 1) != 0)
             {
 	            throw new ArgumentException( "Video file resolution must be a multiple of two" );
             }
@@ -246,10 +247,12 @@ namespace UMapx.Video.VFW
             {
                 lock ( sync )
                 {
+                    if (disposed) throw new ObjectDisposedException(nameof(AVIWriter));
                     // calculate stride
-                    stride = width * 3;
+                    stride = checked(width * 3);
                     if ( ( stride % 4 ) != 0 )
-                        stride += ( 4 - stride % 4 );
+                        stride = checked(stride + (4 - stride % 4));
+                    _ = checked(stride * height);
 
                     // create new file
                     if ( Win32.AVIFileOpen( out file, fileName, Win32.OpenFileMode.Create | Win32.OpenFileMode.Write, IntPtr.Zero ) != 0 )
@@ -380,6 +383,8 @@ namespace UMapx.Video.VFW
                 if ( buffer == IntPtr.Zero )
                     throw new System.IO.IOException( "AVI file should be successfully opened before writing" );
 
+                if (frameImage == null) throw new ArgumentNullException(nameof(frameImage));
+
                 // check image dimension
                 if ( ( frameImage.Width != width ) || ( frameImage.Height != height ) )
                     throw new ArgumentException( "Bitmap size must be of the same as video size, which was specified on opening video file" );
@@ -389,29 +394,18 @@ namespace UMapx.Video.VFW
                     new Rectangle( 0, 0, width, height ),
                     ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb );
 
-                // copy image data
-                int srcStride = imageData.Stride;
-                int dstStride = stride;
-
-                var src = Win32.Add(imageData.Scan0, srcStride * ( height - 1 ));
-                var dst = buffer;
-
-                //int src = imageData.Scan0.ToInt32() + srcStride * (height - 1);
-                //int dst = buffer.ToInt32();
-
-                for ( int y = 0; y < height; y++ )
+                try
                 {
-                    Win32.memcpy(dst, src, dstStride);
-                    dst = Win32.Add(dst, dstStride);
-                    src = Win32.Add(src, -srcStride);
-
-                    //Win32.memcpy( dst, src, dstStride );
-                    //dst += dstStride;
-                    //src -= srcStride;
+                    IntPtr src = IntPtr.Add(imageData.Scan0, checked(imageData.Stride * (height - 1)));
+                    IntPtr dst = buffer;
+                    for (int y = 0; y < height; y++)
+                    {
+                        SystemTools.CopyUnmanagedMemory(dst, src, stride);
+                        dst = IntPtr.Add(dst, stride);
+                        src = IntPtr.Add(src, -imageData.Stride);
+                    }
                 }
-
-                // unlock bitmap data
-                frameImage.UnlockBits( imageData );
+                finally { frameImage.UnlockBits(imageData); }
 
                 // write to stream
                 if ( Win32.AVIStreamWrite( streamCompressed, position, 1, buffer,
