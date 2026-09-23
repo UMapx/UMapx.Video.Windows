@@ -15,7 +15,7 @@
 	<PackageProjectUrl>https://github.com/UMapx/UMapx.Video.Windows</PackageProjectUrl>
 	<RepositoryUrl>https://github.com/UMapx/UMapx.Video.Windows</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
-	<PackageTags>image video signal processing camera umapx windows</PackageTags>
+	<PackageTags>image video signal processing camera windows mpeg directshow avi</PackageTags>
 	<NeutralLanguage>en</NeutralLanguage>  
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
