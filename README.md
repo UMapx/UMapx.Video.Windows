@@ -5,11 +5,32 @@
 Install **UMapx.Video.Windows** to your project using [NuGet](https://www.nuget.org/packages/UMapx.Video.Windows/) package manager.
 
 ```csharp
+using UMapx.Video;
 using UMapx.Video.DirectShow;
 using UMapx.Video.VFW;
 ```
 
 See the [WPF camera example](https://github.com/UMapx/UMapx.Video.Windows/tree/main/examples).
+
+Starting with version **8.0.0.2**, the `UMapx.Video` types previously supplied by
+the main UMapx package are included in this library. Their namespaces are unchanged.
+This version depends on **UMapx 8.0.0.2**; rebuild consumers when migrating from
+the earlier package because the video types now belong to a different assembly.
+
+# Video sources
+
+| Source | Purpose |
+| --- | --- |
+| `VideoCaptureDevice` | DirectShow camera capture, settings and snapshots |
+| `FileVideoSource`, `AVIFileVideoSource` | DirectShow and VFW file playback |
+| `JPEGStream`, `MJPEGStream` | HTTP JPEG polling and multipart/raw MJPEG streams |
+| `ScreenCaptureStream` | Capture a rectangular screen region |
+| `VideoImageSource` | Generate frames from a bitmap |
+| `VideoImageDepthSource` | Generate image and depth frames from a bitmap and depth array |
+| `AsyncVideoSource` | Process incoming frames on a separate thread |
+
+The shared API includes `IVideoSource`, `IVideoDepthSource`, `VideoCapabilities`,
+frame/depth event arguments and video error/completion events.
 
 # Platform support
 
@@ -46,12 +67,18 @@ source.SignalToStop();
 source.WaitForStop();
 ```
 
-`SignalToStop()` requests cooperative shutdown without waiting. `WaitForStop()`
+For DirectShow/VFW sources, `SignalToStop()` requests cooperative shutdown without waiting. `WaitForStop()`
 waits for completion; `Dispose()` requests shutdown and waits before releasing
 resources. Calling `Stop()` or `Dispose()` from a video callback requests shutdown
 and returns so that the callback can finish. Call `WaitForStop()` from outside the
 callback if you need to wait for full completion. A blocked driver or a handler
 that never returns can still delay shutdown; `Thread.Abort()` is not used.
+
+For `JPEGStream`, `MJPEGStream` and `ScreenCaptureStream`, use `SignalToStop()`
+followed by `WaitForStop()`, or call `Dispose()`. Their legacy `Stop()` methods
+are obsolete. Image and depth-image sources stop through `SignalToStop()` or
+`Dispose()`; their obsolete `Stop()` and `WaitForStop()` methods are not implemented.
+These image sources take ownership of the supplied bitmap and dispose it with the source.
 
 The capture constructor accepts `Format24bppRgb` (default) and `Format32bppRgb`.
 Other pixel formats throw `ArgumentException` before a device starts. Incoming RGB
@@ -76,9 +103,20 @@ dotnet build examples/UMapx.Video.Windows.Example.sln -c Release
 dotnet test tests/UMapx.Video.Windows.Tests.csproj -c Release
 ```
 
-Tests generate temporary video files and do not open a camera. They cover native
+If UMapx 8.0.0.2 is not yet available from your NuGet feed, restore it from a local
+package source first. For a sibling UMapx checkout containing the built package:
+
+```powershell
+dotnet restore UMapx.Video.Windows.sln --source ../UMapx/sources/bin/Release --source https://api.nuget.org/v3/index.json
+dotnet restore examples/UMapx.Video.Windows.Example.sln --source ../UMapx/sources/bin/Release --source https://api.nuget.org/v3/index.json
+```
+
+Tests generate temporary video files and use local HTTP fixtures. They do not
+open a camera or capture the desktop. They cover native
 AVI/DirectShow playback, Microsoft Video 1 compression, frame bounds and orientation,
-snapshot callbacks, startup failures, concurrent shutdown, disposal and restarts.
+snapshot callbacks, JPEG/MJPEG parsing and streaming, large and partial frames,
+stream timeouts, image/depth sources, startup failures, concurrent shutdown,
+disposal and restarts.
 
 To also run the built tests in an x86 process, install the corresponding x86 .NET
 runtime and run, for example:

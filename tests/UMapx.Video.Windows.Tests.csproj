@@ -4,6 +4,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>annotations</Nullable>
     <NoWarn>$(NoWarn);CS0067;CS0618;CS0612</NoWarn>
   </PropertyGroup>
   <ItemGroup>

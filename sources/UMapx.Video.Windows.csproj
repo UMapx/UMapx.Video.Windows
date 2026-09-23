@@ -38,7 +38,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="UMapx" Version="8.0.0.1" />
+    <PackageReference Include="UMapx" Version="8.0.0.2" />
     <InternalsVisibleTo Include="UMapx.Video.Windows.Tests" />
   </ItemGroup>
 
