@@ -98,14 +98,6 @@ dotnet build examples/UMapx.Video.Windows.Example.sln -c Release
 dotnet test tests/UMapx.Video.Windows.Tests.csproj -c Release
 ```
 
-If UMapx 8.0.0.2 is not yet available from your NuGet feed, restore it from a local
-package source first. For a sibling UMapx checkout containing the built package:
-
-```powershell
-dotnet restore UMapx.Video.Windows.sln --source ../UMapx/sources/bin/Release --source https://api.nuget.org/v3/index.json
-dotnet restore examples/UMapx.Video.Windows.Example.sln --source ../UMapx/sources/bin/Release --source https://api.nuget.org/v3/index.json
-```
-
 Tests generate temporary video files and use local HTTP fixtures. They do not
 open a camera or capture the desktop. They cover native
 AVI/DirectShow playback, Microsoft Video 1 compression, frame bounds and orientation,
