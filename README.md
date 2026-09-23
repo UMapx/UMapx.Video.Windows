@@ -12,11 +12,6 @@ using UMapx.Video.VFW;
 
 See the [WPF camera example](https://github.com/UMapx/UMapx.Video.Windows/tree/main/examples).
 
-Starting with version **8.0.0.2**, the `UMapx.Video` types previously supplied by
-the main UMapx package are included in this library. Their namespaces are unchanged.
-This version depends on **UMapx 8.0.0.2**; rebuild consumers when migrating from
-the earlier package because the video types now belong to a different assembly.
-
 # Video sources
 
 | Source | Purpose |
